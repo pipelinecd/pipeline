@@ -1,3 +1,5 @@
+package colony;
+
 // @Immutable
 public class JobConfig {
 
