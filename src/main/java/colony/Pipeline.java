@@ -19,6 +19,6 @@ public class Pipeline {
     }
 
     public void add(final Task task) {
-        this.tasks.add(task);
+        tasks.add(task);
     }
 }

@@ -1,5 +1,6 @@
 package colony;
 
+import colony.stages.SerialStage;
 import colony.tasks.FailingTask;
 import org.junit.Test;
 
@@ -35,6 +36,21 @@ public class PipelineTest {
 
         Pipeline pipeline = new Pipeline();
         pipeline.add(new FailingTask());
+
+        JobResult result = pipeline.handle(config);
+
+        assertNotNull(result);
+        assertTrue(result.isFailed());
+    }
+
+    @Test
+    public void canRunTasksInStages() {
+        JobConfig config = new JobConfig("My Job Name");
+
+        Pipeline pipeline = new Pipeline();
+        final SerialStage stage = new SerialStage();
+        stage.add(new FailingTask());
+        pipeline.add(stage);
 
         JobResult result = pipeline.handle(config);
 
