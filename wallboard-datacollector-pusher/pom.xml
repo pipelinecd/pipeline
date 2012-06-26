@@ -11,4 +11,15 @@
 
     <artifactId>wallboard-datacollector-pusher</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>taskexecutor</groupId>
+            <artifactId>api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+        </dependency>
+    </dependencies>
+
 </project>

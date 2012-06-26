@@ -8,7 +8,7 @@
     <artifactId>parent</artifactId>
     <packaging>pom</packaging>
     <version>1.0.0-SNAPSHOT</version>
-    
+
     <modules>
         <module>api</module>
         <module>wallboard-datacollector-pusher</module>
@@ -17,9 +17,14 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>junit</groupId>
-                <artifactId>junit</artifactId>
-                <version>4.10</version>
+                <groupId>taskexecutor</groupId>
+                <artifactId>api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.testng</groupId>
+                <artifactId>testng</artifactId>
+                <version>6.5.2</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

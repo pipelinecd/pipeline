@@ -2,9 +2,9 @@ package colony;
 
 import colony.stages.SerialStage;
 import colony.tasks.FailingTask;
-import org.junit.Test;
+import org.testng.annotations.Test;
 
-import static org.junit.Assert.*;
+import static org.testng.Assert.*;
 
 public class PipelineTest {
 
