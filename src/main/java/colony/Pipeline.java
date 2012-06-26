@@ -13,7 +13,6 @@ public class Pipeline {
         for (Task task : tasks) {
             task.execute(result);
         }
-
         System.out.println(String.format("Finished job \"%s\"", config.getName()));
         return result;
     }
