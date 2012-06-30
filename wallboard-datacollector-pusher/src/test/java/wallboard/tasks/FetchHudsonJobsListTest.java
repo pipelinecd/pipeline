@@ -25,20 +25,20 @@ public class FetchHudsonJobsListTest {
 
     @Test
     public void enrichesJobResultWithHudsonList() {
-        final JobResult expectedJob = new JobResult(new JobConfig("basic"));
+        final JobResult expectedResult = new JobResult(new JobConfig("basic"));
         final String propKey = "hudson.jobs";
         final ArrayList<HudsonJob> expectedJobsList = new ArrayList<HudsonJob>();
         expectedJobsList.add(new HudsonJob("job1", URI.create("http://localhost/job1")));
         expectedJobsList.add(new HudsonJob("job2", URI.create("http://localhost/job2")));
-        expectedJob.put(propKey, expectedJobsList);
+        expectedResult.put(propKey, expectedJobsList);
 
-        final JobResult actualJob = new JobResult(new JobConfig("basic"));
+        final JobResult actualResult = new JobResult(new JobConfig("basic"));
 
-        task.execute(actualJob);
+        task.execute(actualResult);
 
-        final List<HudsonJob> actualList = actualJob.get(propKey, List.class, HudsonJob.class);
+        final List<HudsonJob> actualJobList = actualResult.get(propKey, List.class, HudsonJob.class);
 
-        assertFalse(actualJob.isFailed());
-        assertEquals(actualList, expectedJobsList);
+        assertFalse(actualResult.isFailed(), "Job should not be failed if successful enriched");
+        assertEquals(actualJobList, expectedJobsList, "Job list is not as expected");
     }
 }
