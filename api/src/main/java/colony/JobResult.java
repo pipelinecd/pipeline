@@ -32,16 +32,15 @@ public class JobResult {
         return failed;
     }
 
-    public <T extends Collection<E>, E> T get(final String propertyName, final Class<T> type, final Class<E> subtype) {
+    public <T> T get(final String propertyName, final Class<T> type) {
         if (!properties.containsKey(propertyName)) {
             throw new IllegalArgumentException(String.format("Property '%s' does not exist", propertyName));
         }
         final Object value = properties.get(propertyName);
-        if (!type.isInstance(value)) {
+        if (!type.isAssignableFrom(value.getClass())) {
             throw new IllegalStateException(
                     String.format("Property '%s' has a value of type '%s' while expected to be of type '%s'",
-                            propertyName,
-                            value.getClass().getSimpleName(), type.getSimpleName()));
+                            propertyName, value.getClass().getSimpleName(), type.getSimpleName()));
         }
         return (T) value;
     }

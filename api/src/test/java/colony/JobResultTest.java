@@ -3,7 +3,6 @@ package colony;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 
 import static org.testng.Assert.*;
@@ -34,27 +33,38 @@ public class JobResultTest {
     }
 
     @Test
-    public void canPutAndGetListProperties() {
+    public void canPutAndGetPropertyByName() {
         final JobResult result = new JobResult(getJobConfig());
-        final ArrayList<String> expectedProperties = new ArrayList<String>();
+        final ResultsListStub expectedProperties = new ResultsListStub();
         final String propertyName = "my.task.results";
         result.put(propertyName, expectedProperties);
 
-        final List actualProperties = result.get(propertyName, List.class, String.class);
+        final ResultsListStub actualProperties = result.get(propertyName, ResultsListStub.class);
         assertEquals(actualProperties, expectedProperties);
     }
 
     @Test(
             expectedExceptions = IllegalStateException.class
-            , expectedExceptionsMessageRegExp = "Property 'my.task.results' has a value of type 'ArrayList' while expected to be of type 'Set'"
+            ,
+            expectedExceptionsMessageRegExp = "Property 'my.task.results' has a value of type 'ResultsListStub' while expected to be of type 'Set'"
     )
-    public void propertyValueTypeIsVerifiedOnGet() {
+    public void propertyValueTypeIsVerifiedOnGetNonSuperClassThrowsException() {
         final JobResult result = new JobResult(getJobConfig());
-        final ArrayList<String> expectedProperties = new ArrayList<String>();
+        final ResultsListStub expectedProperties = new ResultsListStub();
         final String propertyName = "my.task.results";
         result.put(propertyName, expectedProperties);
 
-        result.get(propertyName, Set.class, String.class);
+        result.get(propertyName, Set.class);
+    }
+
+    @Test
+    public void propertyValueTypeIsVerifiedOnGetSuperClassIsFine() {
+        final JobResult result = new JobResult(getJobConfig());
+        final ResultsListStub expectedProperties = new ResultsListStub();
+        final String propertyName = "my.task.results";
+        result.put(propertyName, expectedProperties);
+
+        result.get(propertyName, Object.class);
     }
 
     @Test(
@@ -63,12 +73,12 @@ public class JobResultTest {
     )
     public void propertyNameMustExistOnGet() {
         final JobResult result = new JobResult(getJobConfig());
-        final ArrayList<String> expectedProperties = new ArrayList<String>();
+        final ResultsListStub expectedProperties = new ResultsListStub();
         final String propertyName = "my.task.results";
         result.put(propertyName, expectedProperties);
 
         final String invalidPropertyName = propertyName + "invalid";
-        result.get(invalidPropertyName, List.class, String.class);
+        result.get(invalidPropertyName, ResultsListStub.class);
     }
 
     @Test(
@@ -88,17 +98,6 @@ public class JobResultTest {
             expectedExceptions = NullPointerException.class,
             expectedExceptionsMessageRegExp = "Property value of 'my.task.results' may not be null"
     )
-    public void propertyCollectionMayNotBeNull() {
-        final JobResult result = new JobResult(getJobConfig());
-        final ArrayList<String> expectedProperties = null;
-        final String propertyName = "my.task.results";
-        result.put(propertyName, expectedProperties);
-    }
-
-    @Test(
-            expectedExceptions = NullPointerException.class,
-            expectedExceptionsMessageRegExp = "Property value of 'my.task.results' may not be null"
-    )
     public void propertyObjectMayNotBeNull() {
         final JobResult result = new JobResult(getJobConfig());
         final Object expectedProperty = null;
@@ -106,8 +105,23 @@ public class JobResultTest {
         result.put(propertyName, expectedProperty);
     }
 
+    @Test
+    public void canPutPropertyStringValue() {
+        final JobResult result = new JobResult(getJobConfig());
+        final Object expectedProperty = "teststring";
+        final String propertyName = "my.task.results";
+        result.put(propertyName, expectedProperty);
+
+        final String actualProperty = result.get(propertyName, String.class);
+        assertEquals(actualProperty, expectedProperty);
+    }
+
     private JobConfig getJobConfig() {
         final String jobName = "myjob";
         return new JobConfig(jobName);
+    }
+
+    private class ResultsListStub extends ArrayList<String> {
+
     }
 }
