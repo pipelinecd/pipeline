@@ -31,6 +31,12 @@
                 <artifactId>commons-lang3</artifactId>
                 <version>3.1</version>
             </dependency>
+            <dependency>
+                <!-- Groovy interpreter and libraries. -->
+                <groupId>org.codehaus.groovy</groupId>
+                <artifactId>groovy-all</artifactId>
+                <version>1.8.6</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -38,9 +44,17 @@
         <pluginManagement>
             <plugins>
                 <plugin>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.12</version>
+                    <configuration>
+                        <parallel>methods</parallel>
+                    </configuration>
+                </plugin>
+                <plugin>
                     <artifactId>maven-failsafe-plugin</artifactId>
                     <version>2.12</version>
                     <configuration>
+                        <parallel>methods</parallel>
                         <testSourceDirectory>${project.basedir}/src/it/java</testSourceDirectory>
                     </configuration>
                 </plugin>
