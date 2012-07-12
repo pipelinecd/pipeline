@@ -1,6 +1,7 @@
 package wallboard;
 
-import colony.Pipeline;import wallboard.tasks.FetchHudsonJobsList;
+import colony.Pipeline;
+import wallboard.tasks.hudson.FetchHudsonJobsList;
 
 public class Main {
 
@@ -8,5 +9,5 @@ public class Main {
 
         final Pipeline pipeline = new Pipeline();
         pipeline.add(new FetchHudsonJobsList());
-}
+    }
 }

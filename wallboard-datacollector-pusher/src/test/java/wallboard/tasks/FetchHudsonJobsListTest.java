@@ -5,6 +5,7 @@ import colony.JobResult;
 import colony.Task;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import wallboard.tasks.hudson.FetchHudsonJobsList;
 import wallboard.tasks.hudson.HudsonJob;
 import wallboard.tasks.hudson.HudsonJobList;
 
@@ -41,5 +42,11 @@ public class FetchHudsonJobsListTest {
 
         assertFalse(actualResult.isFailed(), "Job should not be failed if successful enriched");
         assertEquals(actualJobList, expectedJobsList, "Job list is not as expected");
+    }
+
+    @Test
+    public void fetchJobs() {
+        final FetchHudsonJobsList jobsTask = (FetchHudsonJobsList) task;
+        jobsTask.fetchHudsonJobs();
     }
 }
