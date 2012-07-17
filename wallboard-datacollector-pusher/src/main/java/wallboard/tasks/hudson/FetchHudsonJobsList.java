@@ -5,24 +5,16 @@ import colony.Task;
 import org.apache.http.HttpResponse;
 import org.apache.http.auth.AuthScope;
 import org.apache.http.auth.UsernamePasswordCredentials;
-import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.utils.HttpClientUtils;
 import org.apache.http.conn.scheme.Scheme;
 import org.apache.http.conn.ssl.SSLSocketFactory;
-import org.apache.http.conn.ssl.TrustStrategy;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.client.DefaultHttpRequestRetryHandler;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URI;
-import java.security.KeyManagementException;
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
-import java.security.UnrecoverableKeyException;
-import java.security.cert.CertificateException;
-import java.security.cert.X509Certificate;
 
 public class FetchHudsonJobsList implements Task {
 
@@ -46,76 +38,32 @@ public class FetchHudsonJobsList implements Task {
         // enable debugging
 //        System.setProperty("javax.net.debug", "true");
         System.setProperty("javax.net.debug", "all");
+//        System.setProperty("javax.net.debug", "ssl:handshake");
 
-        SSLSocketFactory socketFactory = null;
-        try {
-//            socketFactory = new SSLSocketFactory(new TrustSelfSignedStrategy(), SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
-//            socketFactory = new SSLSocketFactory();
-            final TrustStrategy trustStrategy = new TrustStrategy() {
-                @Override
-                public boolean isTrusted(final X509Certificate[] chain, final String authType)
-                        throws CertificateException {
-                    return true;
-                }
-            };
-            socketFactory = new SSLSocketFactory(trustStrategy, SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        } catch (KeyManagementException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        } catch (KeyStoreException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        } catch (UnrecoverableKeyException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        }
-        Scheme sch = new Scheme("https", 443, socketFactory);
         DefaultHttpClient httpClient = new DefaultHttpClient();
-        HttpGet getRequest = new HttpGet("https://builds.proxy.tricode.nl/");
-        httpClient.getConnectionManager().getSchemeRegistry().register(sch);
+        httpClient.setHttpRequestRetryHandler(new DefaultHttpRequestRetryHandler(0, false));
 
-        // Via Scoped authentication (whatever that means...)
-        final AuthScope authScope = new AuthScope(getRequest.getURI().getHost(), sch.getDefaultPort());
-        System.out.println("authScope: " + authScope.toString());
-        final UsernamePasswordCredentials credentials = new UsernamePasswordCredentials("user", "passwd");
+        final UsernamePasswordCredentials credentials = new UsernamePasswordCredentials("lala", "lalala");
         System.out.println("creds: " + credentials.toString());
         httpClient.getCredentialsProvider().setCredentials(AuthScope.ANY, credentials);
 
-        // Via BASIC auth
-//        AuthCache authCache = new BasicAuthCache();
-//        BasicScheme basicAuth = new BasicScheme();
-//        final HttpHost httpHost = new HttpHost(getRequest.getURI().getHost(), getRequest.getURI().getPort(),
-//                getRequest.getURI().getScheme());
-//        authCache.put(httpHost, basicAuth);
+        registerHttpsScheme(443, httpClient);
 
-        // Via DIGEST auth
-//        AuthCache authCache = new BasicAuthCache();
-//        DigestScheme digestAuth = new DigestScheme();
-////        digestAuth.overrideParamter("realm", "some realm");
-////        digestAuth.overrideParamter("nonce", "whatever");
-//        final HttpHost httpHost = new HttpHost(getRequest.getURI().getHost(), getRequest.getURI().getPort(),
-//                getRequest.getURI().getScheme());
-//        authCache.put(httpHost, digestAuth);
+        HttpGet getRequest = new HttpGet("https://builds.proxy.tricode.nl/");
+        getRequest.addHeader("Content-Type", "UTF-8");
 
-        // Via BASIC or DIGEST auth
-//        BasicHttpContext localcontext = new BasicHttpContext();
-//        localcontext.setAttribute(ClientContext.AUTH_CACHE, authCache);
-
-        HttpResponse response = null;
+        final HttpResponse response;
         try {
-            getRequest.addHeader("accept", "application/xml");
-
-            // When using Scoped auth
             response = httpClient.execute(getRequest);
-            // When using BASIC or DIGEST auth
-//            response = httpClient.execute(getRequest, localcontext);
-
             if (response.getStatusLine().getStatusCode() != 200) {
-                final String message = "Failed : HTTP error code : "
-                        + response.getStatusLine().getStatusCode()
-                        + " - " + response.getStatusLine().getReasonPhrase();
-                throw new RuntimeException(message);
+                final int code = response.getStatusLine().getStatusCode();
+                final String reason = response.getStatusLine().getReasonPhrase();
+                throw new RuntimeException(code + " " + reason);
             }
-
+            if (response.getEntity() == null) {
+                final String reason = "No content";
+                throw new RuntimeException(reason);
+            }
             BufferedReader br = new BufferedReader(
                     new InputStreamReader((response.getEntity().getContent())));
 
@@ -124,14 +72,88 @@ public class FetchHudsonJobsList implements Task {
             while ((output = br.readLine()) != null) {
                 System.out.println(output);
             }
-        } catch (ClientProtocolException e) {
-            e.printStackTrace();
         } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-//            httpClient.getConnectionManager().shutdown();
-            HttpClientUtils.closeQuietly(response);
-            HttpClientUtils.closeQuietly(httpClient);
+            throw new RuntimeException(e);
         }
     }
+
+    private void registerHttpsScheme(final int port, final DefaultHttpClient httpClient) {
+        final Scheme scheme = createHttpsScheme(port);
+        httpClient.getConnectionManager().getSchemeRegistry().register(scheme);
+    }
+
+    private Scheme createHttpsScheme(final int port) {
+        SSLSocketFactory sf = null;
+        sf = SSLSocketFactory.getSocketFactory();
+//        try {
+//            sf = new SSLSocketFactory(
+//                    new AcceptCertificateBasedOnHostName(certificateHostName),
+//                    SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
+//        } catch (KeyStoreException ex) {
+//            throw new HttpFileTransferSslException(ex);
+//        } catch (UnrecoverableKeyException ex) {
+//            throw new HttpFileTransferSslException(ex);
+//        } catch (NoSuchAlgorithmException ex) {
+//            throw new HttpFileTransferSslException(ex);
+//        } catch (KeyManagementException ex) {
+//            throw new HttpFileTransferSslException(ex);
+//        }
+        return new Scheme("https", port, sf);
+    }
+
+//    public void someOldStuff() {
+//        // Via BASIC auth
+//        AuthCache authCache = new BasicAuthCache();
+//        BasicScheme basicAuth = new BasicScheme();
+//        final HttpHost httpHost = new HttpHost(getRequest.getURI().getHost(), getRequest.getURI().getPort(),
+//                getRequest.getURI().getScheme());
+//        authCache.put(httpHost, basicAuth);
+//
+//        // Via DIGEST auth
+////        AuthCache authCache = new BasicAuthCache();
+////        DigestScheme digestAuth = new DigestScheme();
+//////        digestAuth.overrideParamter("realm", "some realm");
+//////        digestAuth.overrideParamter("nonce", "whatever");
+////        final HttpHost httpHost = new HttpHost(getRequest.getURI().getHost(), getRequest.getURI().getPort(),
+////                getRequest.getURI().getScheme());
+////        authCache.put(httpHost, digestAuth);
+//
+//        // Via BASIC or DIGEST auth
+//        BasicHttpContext localcontext = new BasicHttpContext();
+//        localcontext.setAttribute(ClientContext.AUTH_CACHE, authCache);
+//
+//        HttpResponse response = null;
+//        try {
+//            getRequest.addHeader("accept", "application/xml");
+//
+//            // When using Scoped auth
+//            response = httpClient.execute(getRequest);
+//            // When using BASIC or DIGEST auth
+//            response = httpClient.execute(getRequest, localcontext);
+//
+//            if (response.getStatusLine().getStatusCode() != 200) {
+//                final String message = "Failed : HTTP error code : "
+//                        + response.getStatusLine().getStatusCode()
+//                        + " - " + response.getStatusLine().getReasonPhrase();
+//                throw new RuntimeException(message);
+//            }
+//
+//            BufferedReader br = new BufferedReader(
+//                    new InputStreamReader((response.getEntity().getContent())));
+//
+//            String output;
+//            System.out.println("Output from Server .... \n");
+//            while ((output = br.readLine()) != null) {
+//                System.out.println(output);
+//            }
+//        } catch (ClientProtocolException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        } finally {
+////            httpClient.getConnectionManager().shutdown();
+//            HttpClientUtils.closeQuietly(httpClient);
+//            HttpClientUtils.closeQuietly(response);
+//        }
+//    }
 }
