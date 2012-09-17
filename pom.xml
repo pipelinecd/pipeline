@@ -12,6 +12,7 @@
     <modules>
         <module>api</module>
         <module>wallboard-datacollector-pusher</module>
+        <module>externalcommand</module>
     </modules>
 
     <dependencyManagement>
