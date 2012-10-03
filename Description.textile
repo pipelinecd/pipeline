@@ -85,6 +85,19 @@ h2. Name ideas
 *** "Drone Bee":http://en.wikipedia.org/wiki/Drone_(bee) and "Drone":http://en.wikipedia.org/wiki/Drone
 * "Pipeline" is kinda CI/CD focussed, in the physical world this is called an "Assembly line"
 * something related to "Orchestation Platform/Manage" as used in http://vimeo.com/49367413
+* Cy / Centurion / Centuri
+** Background info:
+*** http://en.wikipedia.org/wiki/CY
+*** http://en.wikipedia.org/wiki/Cy_%28Battlestar_Galactica%29
+*** http://en.battlestarwiki.org/wiki/Cyrus_%28Cylon%29
+*** http://en.battlestarwiki.org/wiki/Centurion_%28TOS%29
+*** http://en.wikipedia.org/wiki/Centurion
+*** http://en.battlestarwiki.org/wiki/Centuri
+*** http://en.wikipedia.org/wiki/Centuri
+** Domain ideas:
+*** cy.ci
+*** cy.io <- Cy Input/Output :D <- preferred
+*** centur.io/n
 
 h1. References for ideas
 
