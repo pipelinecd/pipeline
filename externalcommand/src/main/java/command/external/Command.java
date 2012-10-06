@@ -34,8 +34,9 @@ public class Command {
         BufferedReader reader = new BufferedReader(tempReader);
         while (true) {
             String line = reader.readLine();
-            if (line == null)
+            if (line == null) {
                 break;
+            }
             System.out.println(line);
         }
     }
