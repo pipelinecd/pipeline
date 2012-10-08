@@ -164,3 +164,20 @@ h1. Implementation resources
 
 * Using Java as Native Linux Apps – Calling C, Daemonization, Packaging, CLI
   "http://java.dzone.com/articles/using-java-native-linux-apps-%E2%80%93":http://java.dzone.com/articles/using-java-native-linux-apps-%E2%80%93
+* Good architectural characteristics:
+  "http://www.infoq.com/news/2012/10/future-monitoring":http://www.infoq.com/news/2012/10/future-monitoring
+** Characteristics like:
+*** composable ("well-defined responsibilities, interfaces and protocols")
+*** resilient ("resilient to outages within the monitoring architecture")
+*** self-service ("doesn't require root access or an Ops member to deploy")
+*** automated ("it's capable of being automated")
+*** correlative ("implicitly model relationships between services")
+*** craftsmanship ("it's a pleasure to use")
+** Possible components (based on a monitoring system):
+*** sensors "are stateless agents that gather and emit metrics to a log stream, over HTTP as JSON, or directly to the metrics store"
+*** aggregators "are responsible for transformation, aggregation, or possibly simply relaying of metrics"
+*** state engine "tracks changes within the event stream, ideally it can ascertain faults according to seasonality and forecasting"
+*** storage engines "should support transformative functions and aggregations, ideally should be capable of near-realtime metrics retrieval and output in standard formats such as JSON, XML or SVG"
+*** scheduler "provides an interface for managing on-call and escalation calendars"
+*** notifiers "are responsible for composing alert messages using data provided by the state engine and tracking their state for escalation purposes"
+*** visualizers "consist of dashboards and other user interfaces that consume metrics and alerts from the system" 
