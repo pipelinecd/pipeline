@@ -159,3 +159,8 @@ h2. Continuous Integration in general
 
 A good write-up of CI in general, CI architectures, etc:
 "http://www.aosabook.org/en/integration.html":http://www.aosabook.org/en/integration.html
+
+h1. Implementation resources
+
+* Using Java as Native Linux Apps – Calling C, Daemonization, Packaging, CLI
+  "http://java.dzone.com/articles/using-java-native-linux-apps-%E2%80%93":http://java.dzone.com/articles/using-java-native-linux-apps-%E2%80%93
