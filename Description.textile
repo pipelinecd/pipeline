@@ -117,6 +117,7 @@ h2. Name ideas
 * Continous Build AuTomation aka CBAT
 * Build AutomatiON aka BArON
 * Build Automation CONtinuous aka BACON
+
 h1. References for ideas
 
 * "https://github.com/travis-ci/travis-ci#readme":https://github.com/travis-ci/travis-ci#readme
