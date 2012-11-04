@@ -74,6 +74,8 @@ h2. Feature ideas
 *** on schedule trigger?; ....
 * Bulk actions, any UI should support doing bulk actions to make maintenance as easy as possible
 * SCM plugins must provide an easy solution for defining security details like ssh-keys, eg. via a connection-store(?). The must be no need for manually placing authentication files anywhere then as part of the job config. All authentication details must be kept securily and no passwords should be logged in any log
+* Option of mounting the commands and reports as a fuse file system for unix based servers. This again increases the options for easy integration. eg. a /proc or /sys or /dev a-like view on the builds
+
 
 h2. Name ideas
 
@@ -98,7 +100,23 @@ h2. Name ideas
 *** cy.ci
 *** cy.io <- Cy Input/Output :D <- preferred
 *** centur.io/n
-
+* Continuous (Build) Automation (or Other things/stuff you want to automate)
+** cbaootywta
+** cbaoosywta
+** CiBiAuto
+* BuiLd AutomatIoN aka BLAIN
+* Build Continuous AutoMation aka BeCAMe
+* Automation COntinuous Build aka ACrOBat
+* COntinuous Build AuTomation aka aCrOBAT
+* Build Automation COntinuous aka BACklOg
+* Build Continuous AUtomation aka BeCAUse
+* COntinuous Build Automation aka CrOwBAr
+* Build AutoMation aka BeAM
+* Continuous AutomatioN aka CyAN
+* Continuous Your AutomatioN aka CyAN
+* Continous Build AuTomation aka CBAT
+* Build AutomatiON aka BArON
+* Build Automation CONtinuous aka BACON
 h1. References for ideas
 
 * "https://github.com/travis-ci/travis-ci#readme":https://github.com/travis-ci/travis-ci#readme
