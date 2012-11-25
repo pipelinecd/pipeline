@@ -5,7 +5,7 @@
 This creates a .beam.config file with a template config.
 This config contains all properties of this project required to run the job on the daemon side.
 A sample config file looks like:
-
+TBA
 
 ## Daemon commands
 ### Setup the daemon workspace
