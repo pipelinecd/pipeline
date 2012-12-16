@@ -1,3 +1,4 @@
+
 class Main {
     def run(scriptName, args) {
         CliBuilder cli = new CliBuilder(usage: "${scriptName} <command>")
@@ -18,7 +19,7 @@ class Main {
         cli.usage()
     }
 
-    def init() {
+    private def init() {
         def proc = "git init".execute()
         proc.waitFor() ? print(proc.err.text) : print(proc.text)
     }

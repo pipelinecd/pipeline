@@ -5,7 +5,7 @@ import static org.testng.Assert.assertTrue;
 public class MainTest {
 
     @Test
-    public void name() {
-        assertTrue(true);
+    public void showHelp() {
+        new Main().run(this, "-h");
     }
 }
