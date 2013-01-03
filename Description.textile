@@ -202,4 +202,4 @@ h1. Implementation resources
 *** visualizers "consist of dashboards and other user interfaces that consume metrics and alerts from the system" 
 
 h1. Maintaining an open-source project
-* http://coding.smashingmagazine.com/2013/01/03/starting-open-source-project/
+* "http://coding.smashingmagazine.com/2013/01/03/starting-open-source-project/":http://coding.smashingmagazine.com/2013/01/03/starting-open-source-project/
