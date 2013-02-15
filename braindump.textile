@@ -15,7 +15,7 @@ h2. Focus points
 * Lightweight
 * Monitored / Usage Statistics
 
-h2. Features
+h2. Feature ideas
 
 * workflow/Pipeline support, meaning
 ** a pipeline describes the complete delivery process of a project
@@ -60,7 +60,7 @@ h2. Features
 * Monitored so usage, performance, failure(, etc.?) statistics are gathered and exposed:
 ** These should be made available for external use. Maybe messagebus where "backend-frontends" can subscribe one.
 
-h2. Feature ideas
+h2. Feature ideas 2
 
 * A job manager, instead of Locks & Latches, a manager that takes control of a set of jobs/stages/pipelines with the possibility to configure that the jobs need to run in parallel or not
 * Eventqueue/Worker setup. Tasks should be executed thru some kind of eventqueue/worker system so tasks can be executed and watched on the background. Even better will be when all tasks are executed by seperated processes, meaning when one process hangs non of the other processes are influenced by it (except for running slower maybe), making it possible to kill the specific problematic process
