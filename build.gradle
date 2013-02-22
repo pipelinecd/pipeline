@@ -1,0 +1,37 @@
+apply plugin: 'groovy'
+apply plugin: 'application'
+apply plugin: 'executable-jar'
+apply plugin: 'idea'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'net.nisgits.gradle:gradle-executable-jar-plugin:master-REL-6'
+    }
+}
+
+project.ext.mainClass = 'nl.ikoodi.io.cy.beam'
+
+repositories {
+    mavenCentral()
+}
+
+test {
+    useTestNG()
+}
+
+idea {
+    module {
+        downloadJavadoc = true
+        downloadSources = true
+    }
+}
+
+dependencies {
+    groovy group: 'org.codehaus.groovy', name: 'groovy', version: '2.1.0'
+    compile group: 'com.beust', name: 'jcommander', version: '1.30'
+    testCompile group: 'org.testng', name: 'testng', version: '6.8'
+    testCompile group: 'org.hamcrest', name: 'hamcrest-library', version: '1.3'
+}
