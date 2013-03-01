@@ -30,6 +30,15 @@ class BuildScriptRunnerTest {
         runScript(script)
     }
 
+    @Test
+    public void executeSystemCommand() {
+        String script = """
+            // Change directory to current directory
+            run "cd ./"
+        """
+        runScript(script)
+    }
+
     private void runScript(final String script) {
         final BuildScriptRunner buildScript = new BuildScriptRunner(script);
         buildScript.run();

@@ -13,13 +13,4 @@ import java.util.List;
 public class HelpCommand {
     public static final String CMD_NAME = "help";
 
-    @Parameter(
-            description = "Command"
-            , arity = 1
-    )
-    private List<String> commands = new ArrayList<String>();
-
-    public List<String> getCommands() {
-        return commands;
-    }
 }
