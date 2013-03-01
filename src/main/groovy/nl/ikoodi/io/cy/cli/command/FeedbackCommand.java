@@ -3,9 +3,6 @@ package nl.ikoodi.io.cy.cli.command;
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.Parameters;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Parameters(
         commandNames = {FeedbackCommand.CMD_NAME}
         , commandDescription = "Give feedback about your experience with this tool"

@@ -1,4 +1,4 @@
-package nl.ikoodi.builder;
+package nl.ikoodi.io.cy.builder;
 
 import groovy.lang.GroovyCodeSource;
 import groovy.lang.GroovyShell;

@@ -1,4 +1,5 @@
-import nl.ikoodi.builder.BuildScriptRunner
+package nl.ikoodi.io.cy.builder
+
 import org.testng.annotations.Test
 
 class BuildScriptRunnerTest {
