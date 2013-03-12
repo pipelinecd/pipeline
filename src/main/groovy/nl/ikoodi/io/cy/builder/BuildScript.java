@@ -8,25 +8,22 @@ import java.util.Arrays;
 
 public abstract class BuildScript extends Script {
 
-    public void stage(Object stage, Closure closure) {
+    public void stage(final Object stage, final Closure closure) {
         printf("executing stage %s\n", stage);
         closure.run();
     }
 
-    public void echo(Object value) {
-        println(value);
+    public void echo(final Object value) {
+        print(value);
     }
 
-    public void echo(String format, Object... values) {
+    public void echo(final String format, final Object... values) {
         printf(format, values);
     }
 
-    public boolean run(String command) throws Exception {
+    public boolean run(final String command) throws Exception {
         final ProcessWrapper wrapper = new ProcessWrapper(Arrays.asList(command));
-        echo("Command has terminated with status: " + wrapper.getStatus());
-        echo("Output:\n" + wrapper.getInfos());
-        echo("Error: " + wrapper.getErrors());
-        if (wrapper.getStatus() == 0) {
+        if (wrapper.getExitStatus() == 0) {
             return true;
         }
         return false;
@@ -41,5 +38,4 @@ public abstract class BuildScript extends Script {
 //        }
 //        return false;
     }
-
 }

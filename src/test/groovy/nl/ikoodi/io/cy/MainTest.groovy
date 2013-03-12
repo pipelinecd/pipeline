@@ -68,6 +68,21 @@ public class MainTest {
         assertThat(output.toString(), equalTo('Thnx, received your negative feedback: did bad\n'))
     }
 
+    @DataProvider(name = 'differentWaysToRunAScript')
+    public Object[][] differentWaysToRunAScript() {
+        [
+                [['run', 'src/test/resources/script.txt'] as String[]],
+        ] as Object[][]
+    }
+
+    @Test(dataProvider = 'differentWaysToRunAScript')
+    public void canRunAScript(args) {
+        final main = getTestableMain()
+        main.run(this, args)
+
+        assertThat(output.toString(), equalTo('Hello World'))
+    }
+
     private Main getTestableMain() {
         def main = new Main()
         main.outputConsumer = new PrintStream(output)
