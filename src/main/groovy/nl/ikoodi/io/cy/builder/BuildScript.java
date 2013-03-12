@@ -2,8 +2,9 @@ package nl.ikoodi.io.cy.builder;
 
 import groovy.lang.Closure;
 import groovy.lang.Script;
+import nl.ikoodi.io.cy.builder.process.ProcessWrapper;
 
-import java.io.IOException;
+import java.util.Arrays;
 
 public abstract class BuildScript extends Script {
 
@@ -20,17 +21,25 @@ public abstract class BuildScript extends Script {
         printf(format, values);
     }
 
-    public boolean run(String command) {
-        final ProcessBuilder processBuilder = new ProcessBuilder(command);
-        try {
-            echo("Executing command [%s]%n", command);
-            processBuilder.start();
-        } catch (IOException e) {
-            echo("Executing command [%s] FAILED!%nBecause of %s", command, e.toString());
-            return false;
+    public boolean run(String command) throws Exception {
+        final ProcessWrapper wrapper = new ProcessWrapper(Arrays.asList(command));
+        echo("Command has terminated with status: " + wrapper.getStatus());
+        echo("Output:\n" + wrapper.getInfos());
+        echo("Error: " + wrapper.getErrors());
+        if (wrapper.getStatus() == 0) {
+            return true;
         }
-        echo("Executing command [%s] SUCCEEDED%n", command);
         return false;
+
+//        final ProcessBuilder processBuilder = new ProcessBuilder(command);
+//        echo("Executing command [%s]%n", command);
+//        final Process process = processBuilder.start();
+//
+//        if (0 == process.waitFor()) {
+//            echo("Executing command [%s] SUCCEEDED%n", command);
+//            return true;
+//        }
+//        return false;
     }
 
 }

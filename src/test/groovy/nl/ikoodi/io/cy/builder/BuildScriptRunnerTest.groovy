@@ -2,6 +2,10 @@ package nl.ikoodi.io.cy.builder
 
 import org.testng.annotations.Test
 
+import static org.hamcrest.Matchers.allOf
+import static org.hamcrest.Matchers.containsString
+import static org.junit.Assert.assertThat
+
 class BuildScriptRunnerTest {
 
     @Test
@@ -19,7 +23,8 @@ class BuildScriptRunnerTest {
                 println "Hello Using my own binding"
             }
         """
-        runScript(script)
+        def output = runScript(script)
+        assertThat(output, containsString('Hello Using my own binding'))
     }
 
     @Test
@@ -27,20 +32,29 @@ class BuildScriptRunnerTest {
         String script = """
             echo "Hello World"
         """
-        runScript(script)
+        def output = runScript(script)
+        assertThat(output, containsString('Hello World'))
     }
 
     @Test
     public void executeSystemCommand() {
         String script = """
             // Change directory to current directory
-            run "cd ./"
+            run "dir"
         """
-        runScript(script)
+        def output = runScript(script)
+        assertThat(output, allOf(
+                containsString('build.gradle')
+                , containsString('gradlew')
+        ))
     }
 
-    private void runScript(final String script) {
-        final BuildScriptRunner buildScript = new BuildScriptRunner(script);
-        buildScript.run();
+
+    private String runScript(final String script) {
+        def output = new StringWriter()
+        def writer = new PrintWriter(output)
+        final BuildScriptRunner buildScript = new BuildScriptRunner(writer, script)
+        buildScript.run()
+        return output.toString()
     }
 }
