@@ -43,6 +43,7 @@ class BuildScriptRunnerTest {
             run "dir"
         """
         def output = runScript(script)
+        println(output)
         assertThat(output, allOf(
                 containsString('build.gradle')
                 , containsString('gradlew')

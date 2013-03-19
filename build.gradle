@@ -3,6 +3,8 @@ apply plugin: 'application'
 apply plugin: 'executable-jar'
 apply plugin: 'idea'
 
+task wrapper(type: Wrapper)
+
 buildscript {
     repositories {
         mavenCentral()
@@ -12,24 +14,12 @@ buildscript {
     }
 }
 
-project.ext.mainClass = 'nl.ikoodi.io.cy.beam'
-
 repositories {
     mavenCentral()
 }
 
 test {
     useTestNG()
-    testLogging {
-        exceptionFormat "full" // default is "short"
-    }
-}
-
-idea {
-    module {
-        downloadJavadoc = true
-        downloadSources = true
-    }
 }
 
 dependencies {

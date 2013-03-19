@@ -80,6 +80,8 @@ public class MainTest {
         final main = getTestableMain()
         main.run(this, args)
 
+//        output.flush()
+
         assertThat(output.toString(), equalTo('Hello World'))
     }
 
