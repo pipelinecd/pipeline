@@ -2,9 +2,9 @@ package nl.ikoodi.io.cy.builder
 
 import org.testng.annotations.Test
 
+import static org.hamcrest.MatcherAssert.assertThat
 import static org.hamcrest.Matchers.allOf
 import static org.hamcrest.Matchers.containsString
-import static org.junit.Assert.assertThat
 
 class BuildScriptRunnerTest {
 
@@ -33,6 +33,16 @@ class BuildScriptRunnerTest {
             echo "Hello World"
         """
         def output = runScript(script)
+        println(output)
+        assertThat(output, containsString('Hello World'))
+    }
+
+    @Test
+    public void echoWithStringFormatting() {
+        String script = """
+            echo "Hello %s", "World"
+        """
+        def output = runScript(script)
         assertThat(output, containsString('Hello World'))
     }
 
@@ -52,10 +62,12 @@ class BuildScriptRunnerTest {
 
 
     private String runScript(final String script) {
-        def output = new StringWriter()
-        def writer = new PrintWriter(output)
-        final BuildScriptRunner buildScript = new BuildScriptRunner(writer, script)
+        def output = new ByteArrayOutputStream()
+        def stream = new PrintStream(output)
+        final BuildScriptRunner buildScript = new BuildScriptRunner(stream, script)
+
         buildScript.run()
+
         return output.toString()
     }
 }
