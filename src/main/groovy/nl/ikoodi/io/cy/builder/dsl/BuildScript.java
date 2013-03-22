@@ -6,7 +6,7 @@ import groovy.lang.Script;
 public abstract class BuildScript extends Script {
 
     public void stage(final Object stage, final Closure closure) {
-        printf("executing stage %s\n", stage);
+//        printf("executing stage %s\n", stage);
         closure.run();
     }
 
@@ -20,7 +20,7 @@ public abstract class BuildScript extends Script {
 
     public boolean run(final String command) throws Exception {
         final ProcessBuilder processBuilder = new ProcessBuilder(command);
-        final Process process = processBuilder.start();
+        final Process process = processBuilder.inheritIO().start();
         if (0 == process.waitFor()) {
             return true;
         }

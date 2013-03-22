@@ -1,49 +1,60 @@
 package nl.ikoodi.io.cy.builder
 
+import org.testng.Assert
 import org.testng.annotations.Test
 
 import static org.hamcrest.MatcherAssert.assertThat
-import static org.hamcrest.Matchers.allOf
-import static org.hamcrest.Matchers.containsString
+import static org.hamcrest.Matchers.*
 
 class BuildScriptRunnerTest {
 
     @Test
-    public void runHelloWorld() {
+    public void canUseWithBuildInGroovyPrintln() {
         String script = """
             println "Hello World";
         """
-        runScript(script)
+        def output = runScript(script)
+        assertThat(output, is(equalTo('Hello World\n')));
     }
 
     @Test
-    public void useOwnBinding() {
+    public void executeNamedStageWithBuildInGroovyPrintln() {
         String script = """
             stage 'hello', {
                 println "Hello Using my own binding"
             }
         """
         def output = runScript(script)
-        assertThat(output, containsString('Hello Using my own binding'))
+        assertThat(output, is(equalTo('Hello Using my own binding\n')));
     }
 
     @Test
-    public void echo() {
+    public void executeNamedStageWithSelfDefinedEcho() {
+        String script = """
+            stage 'hello', {
+                echo "Hello %s", "World"
+            }
+        """
+        def output = runScript(script)
+        assertThat(output, equalTo('Hello World'));
+    }
+
+    @Test
+    public void canUseSelfDefinedEcho() {
         String script = """
             echo "Hello World"
         """
         def output = runScript(script)
-        println(output)
-        assertThat(output, containsString('Hello World'))
+        assertThat(output, equalTo('Hello World'));
     }
 
     @Test
-    public void echoWithStringFormatting() {
+    public void canUseSelfDefinedEchoWithStringFormatting() {
         String script = """
             echo "Hello %s", "World"
         """
         def output = runScript(script)
-        assertThat(output, containsString('Hello World'))
+        assertThat(output, equalTo('Hello World'));
     }
 
     @Test
@@ -53,13 +64,13 @@ class BuildScriptRunnerTest {
             run "dir"
         """
         def output = runScript(script)
-        println(output)
-        assertThat(output, allOf(
-                containsString('build.gradle')
-                , containsString('gradlew')
-        ))
+        Assert.fail("output of 'dir' is directly sent to system.out instead via the logger....")
+//        println(output)
+//        assertThat(output, allOf(
+//                containsString('build.gradle')
+//                , containsString('gradlew')
+//        ))
     }
-
 
     private String runScript(final String script) {
         def output = new ByteArrayOutputStream()
