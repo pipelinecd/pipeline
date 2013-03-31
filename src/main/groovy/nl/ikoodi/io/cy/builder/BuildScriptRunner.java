@@ -6,7 +6,6 @@ import nl.ikoodi.io.cy.builder.dsl.BuildScript;
 import org.codehaus.groovy.control.CompilerConfiguration;
 
 import java.io.PrintStream;
-import java.io.PrintWriter;
 
 public class BuildScriptRunner {
 
@@ -21,7 +20,6 @@ public class BuildScriptRunner {
         config.setScriptBaseClass(BuildScript.class.getName());
 
         final GroovyShell shell = new GroovyShell(config);
-
         script = shell.parse(scriptText);
     }
 

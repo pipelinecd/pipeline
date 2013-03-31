@@ -46,10 +46,6 @@ class Main {
 
     private List<Command> createCommands() {
         final List<Command> commands = new ArrayList<>()
-//        commands.with {
-//            add new RunCommand(outputConsumer)
-//            add new FeedbackCommand(outputConsumer)
-//        }
         commands.add(new RunCommand(outputConsumer))
         commands.add(new FeedbackCommand(outputConsumer))
         return commands

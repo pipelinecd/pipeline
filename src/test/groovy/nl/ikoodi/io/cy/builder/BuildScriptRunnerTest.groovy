@@ -1,6 +1,5 @@
 package nl.ikoodi.io.cy.builder
 
-import org.testng.Assert
 import org.testng.annotations.Test
 
 import static org.hamcrest.MatcherAssert.assertThat
@@ -64,12 +63,10 @@ class BuildScriptRunnerTest {
             run "dir"
         """
         def output = runScript(script)
-        Assert.fail("output of 'dir' is directly sent to system.out instead via the logger....")
-//        println(output)
-//        assertThat(output, allOf(
-//                containsString('build.gradle')
-//                , containsString('gradlew')
-//        ))
+        assertThat(output, allOf(
+                containsString('build.gradle')
+                , containsString('gradlew')
+        ))
     }
 
     private String runScript(final String script) {

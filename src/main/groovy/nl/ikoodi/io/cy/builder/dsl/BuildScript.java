@@ -2,11 +2,12 @@ package nl.ikoodi.io.cy.builder.dsl;
 
 import groovy.lang.Closure;
 import groovy.lang.Script;
+import org.apache.maven.shared.utils.cli.CommandLineUtils;
+import org.apache.maven.shared.utils.cli.Commandline;
 
 public abstract class BuildScript extends Script {
 
     public void stage(final Object stage, final Closure closure) {
-//        printf("executing stage %s\n", stage);
         closure.run();
     }
 
@@ -19,12 +20,15 @@ public abstract class BuildScript extends Script {
     }
 
     public boolean run(final String command) throws Exception {
-        final ProcessBuilder processBuilder = new ProcessBuilder(command);
-        final Process process = processBuilder.inheritIO().start();
-        if (0 == process.waitFor()) {
+        final Commandline cl = new Commandline(command);
+        final CommandLineUtils.StringStreamConsumer stdOut = new CommandLineUtils.StringStreamConsumer();
+        final CommandLineUtils.StringStreamConsumer stdErr = new CommandLineUtils.StringStreamConsumer();
+        final int exitStatus = CommandLineUtils.executeCommandLine(cl, stdOut, stdErr);
+        System.out.print(stdOut.getOutput());
+        System.err.print(stdErr.getOutput());
+        if (0 == exitStatus) {
             return true;
         }
         return false;
     }
-
 }
