@@ -85,11 +85,11 @@ When executed, the above pipeline would do the following:
     * a configuration model based on provided configuration
     * a configuration verification model based the configuration section of the pipeline definition
     * a Directed Acyclic Graph (DAG) of the stages that looks as following:
+        * _commit_
+            * _document_
+            * _inspect_
+                * _snapshot-release_
 
-        commit
-        ├─ document
-        └─ inspect
-           └─ snapshot-release
 2. Prepare an execution environment containing:
     * maven version 3.0.5 on the PATH
     * git version 1.7.9.5 on the PATH
