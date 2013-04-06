@@ -203,6 +203,7 @@ h1. Implementation resources
 *** scheduler "provides an interface for managing on-call and escalation calendars"
 *** notifiers "are responsible for composing alert messages using data provided by the state engine and tracking their state for escalation purposes"
 *** visualizers "consist of dashboards and other user interfaces that consume metrics and alerts from the system" 
+* Directed Acyclic Graph: http://jgrapht.org
 
 h1. Maintaining an open-source project
 * "http://coding.smashingmagazine.com/2013/01/03/starting-open-source-project/":http://coding.smashingmagazine.com/2013/01/03/starting-open-source-project/
