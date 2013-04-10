@@ -68,6 +68,10 @@ Pipeline definition:
         run 'mvn deploy'
     }
 
+    announce(type: email) {
+        to: 'group@mailinglist.xx
+    }
+
 Required configuration to provide for pipeline:
 
     scm(name: latest, type: 'git') {
