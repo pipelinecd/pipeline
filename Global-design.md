@@ -22,54 +22,67 @@ Pipeline definition:
     environment {
         mvn: '3.0.5'
         git: '1.7.9.5'
+        env.vars {
+            EDITOR: 'nano'
+        }
     }
 
     configuration {
-        scm(name: latest, type: 'git') {
-            url:           assert
-            branch:        'develop'
-            username:      'CI server'
-            email:         'ci@mydomain.tld'
+        scm(name: latest, type: git) {
+            url:           assertGitUrl
+            branch:        assertString
+            username:      assertString
+            email:         assertEmail
             key {
-                type:      'rsa'
-                private:   '....'
+                type:      assertString
+                private:   assertString
             }
         }
-        run {
+    }
+
+    environment.afterConfigure {
+        prepare scm {
             file('.gitconfig') << '''
                 [user]
-                    name = ${scm.latest.username}
-                    email = ${scm.latest.email}
+                name = ${scm.latest.username}
+                email = ${scm.latest.email}
             '''
-            file('.ssh/id_rsa') << ${scm.latest.key.private}
-            command: 'git ls-remote --exit-code ${scm.latest.url} ${scm.latest.branch}'
+            file('.ssh/id_rsa') << '${scm.latest.key.private}'
+        }
+
+        verify scm {
+            run 'git ls-remote --exit-code ${scm.latest.url} ${scm.latest.branch}'
         }
     }
 
     stage commit {
         title: 'Compile and Test'
         run {
+            env.vars {
+                SOME_VAR: 'some value'
+            }
             command: git clone ${scm.latest.url} --branch ${scm.latest.branch}
         }
+        run 'mvn clean install'
     }
 
     stage document(dependsOn: commit) {
-        title: 'Generate documentation'
+        description: 'Generate documentation'
         run 'mvn -P generate-docs'
     }
 
     stage inspect(dependsOn: commit) {
-        title: 'Inspect the quality'
+        description: 'Inspect the quality'
         run 'mvn sonar:sonar'
     }
 
     stage snapshot-release(dependsOn: inspect) {
-        title: 'Do a snapshot release'
+        description: 'Do a snapshot release'
         run 'mvn deploy'
     }
 
     announce(type: email) {
-        to: 'group@mailinglist.xx
+        to: 'list@mailing.org'
     }
 
 Required configuration to provide for pipeline:
@@ -98,8 +111,9 @@ When executed, the above pipeline would do the following:
     * maven version 3.0.5 on the PATH
     * git version 1.7.9.5 on the PATH
 3. Verify that the provided configuration is valid according to the pipeline definition
-   (incl. verification that the provided scm configuration is correct by trying to connect)
-4. Start executing the _commit_ stage, as that's the starting point of this graph of stages
+4. Do some additional environment preparation and verification after the configuration is found valid
+   (eg. Verify that the provided scm configuration is correct by trying to connect)
+5. Start executing the _commit_ stage, as that's the starting point of this graph of stages
     1. Start stage _document_
     2. Start stage _inspect_
         1. Start stage _snapshot-release_
