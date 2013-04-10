@@ -87,7 +87,7 @@ Pipeline definition:
 
 Required configuration to provide for pipeline:
 
-    scm(name: latest, type: 'git') {
+    scm(name: latest) {
         url:           'git@github.com/myuser/myrepo'
         branch:        'develop'
         username:      'CI server'
