@@ -1,0 +1,11 @@
+
+run './gradlew check'
+run './gradlew distTar'
+
+//stage 'build' {
+//    run 'gradlew check'
+//}
+
+//stage 'distribution' {
+//    run 'gradlew distTar'
+//}
