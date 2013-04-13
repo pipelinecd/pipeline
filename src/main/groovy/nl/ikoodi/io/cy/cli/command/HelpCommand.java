@@ -35,13 +35,13 @@ public class HelpCommand implements Command {
         outputUsage();
     }
 
-    public void outputUsage(final PrintStream output) {
+    public void outputUsage() {
+        outputUsage(outputConsumer);
+    }
+
+    private void outputUsage(final PrintStream output) {
         final StringBuilder stringOutput = new StringBuilder();
         cli.usage(stringOutput);
         output.print(stringOutput);
-    }
-
-    public void outputUsage() {
-        outputUsage(outputConsumer);
     }
 }

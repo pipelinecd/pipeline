@@ -5,13 +5,15 @@ import com.beust.jcommander.ParameterException
 import nl.ikoodi.io.cy.cli.command.*
 
 class Main {
-    def PrintStream outputConsumer = System.out
-    def PrintStream errorConsumer = System.err
+    static final int EXIT_FAILURE = 1
+    static final int EXIT_SUCCESS = 0
+    PrintStream outputConsumer = System.out
+    PrintStream errorConsumer = System.err
 
-    def run(scriptName, String... args) {
+    int run(scriptName, String... args) {
         final mainOptions = new MainCommand()
         final JCommander cli = createCommander(mainOptions)
-        final helpCmd = new HelpCommand(outputConsumer, cli)
+        final helpCmd = new HelpCommand(errorConsumer, cli)
         final List<Command> commands = new ArrayList<>()
         commands.add(helpCmd)
         commands.addAll(createCommands())
@@ -20,28 +22,35 @@ class Main {
         }
 
         final cmdName
+        final handledCommand
         try {
             cli.parse(args)
             cmdName = cli.getParsedCommand()
-            handleCommand(mainOptions, helpCmd, commands, cmdName)
+            handledCommand = handleCommand(mainOptions, helpCmd, commands, cmdName)
         } catch (ParameterException e) {
             errorConsumer.println(e.getMessage())
-            helpCmd.outputUsage(errorConsumer)
+            helpCmd.outputUsage()
+            return EXIT_FAILURE
         }
+        if (handledCommand) {
+            return EXIT_SUCCESS
+        }
+        return EXIT_FAILURE
     }
 
-    private void handleCommand(final MainCommand mainOptions, final HelpCommand helpCmd,
-                               final List<Command> commands, final String cmdName) {
+    private boolean handleCommand(final MainCommand mainOptions, final HelpCommand helpCmd,
+                                  final List<Command> commands, final String cmdName) {
         if (mainOptions.help) {
             helpCmd.outputUsage()
-            return
+            return false
         }
         final Command cmd = commands.find { it.canHandle(cmdName) }
         if (cmd) {
             cmd.handle()
-            return
+            return true
         }
-        helpCmd.outputUsage(errorConsumer)
+        helpCmd.outputUsage()
+        return false
     }
 
     private List<Command> createCommands() {

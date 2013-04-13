@@ -5,35 +5,40 @@ import org.testng.annotations.DataProvider
 import org.testng.annotations.Test
 
 import static org.hamcrest.MatcherAssert.assertThat
-import static org.hamcrest.Matchers.containsString
-import static org.hamcrest.Matchers.equalTo
+import static org.hamcrest.Matchers.*
 
 public class MainTest {
 
-    private ByteArrayOutputStream output
+    static final int EXIT_SUCCESS = 0
+    static final int EXIT_FAILURE = 1
+    ByteArrayOutputStream stdout
+    ByteArrayOutputStream errout
 
     @BeforeMethod
     public void setUp() {
-        output = new ByteArrayOutputStream()
+        stdout = new ByteArrayOutputStream()
+        errout = new ByteArrayOutputStream()
     }
 
     @DataProvider(name = 'differentWaysToOutputUsageInfo')
     private Object[][] differentWaysToOutputHelp() {
         [
-                [[] as String[]],
-                [['-h'] as String[]],
-                [['--help'] as String[]],
-                [['help'] as String[]],
+                [[] as String[], EXIT_FAILURE],
+                [['-h'] as String[], EXIT_FAILURE],
+                [['--help'] as String[], EXIT_FAILURE],
+                [['help'] as String[], EXIT_SUCCESS],
         ] as Object[][]
     }
 
     @Test(dataProvider = 'differentWaysToOutputUsageInfo')
-    void outputsUsageInfo(args) {
+    public void outputsUsageInfo(args, expectedExitCode) {
         final main = getTestableMain()
-        main.run(this, args)
+        final exitCode = main.run(this, args)
 
-        assertThat(output.toString(), containsString('--help, -h'))
-        assertThat(output.toString(), containsString('help      Show help information about a command'))
+        assertThat(stdout.toString(), isEmptyString())
+        assertThat(errout.toString(), containsString('--help, -h'))
+        assertThat(errout.toString(), containsString('help      Show help information about a command'))
+        assertThat(exitCode, equalTo(expectedExitCode))
     }
 
     @DataProvider(name = 'differentWaysToGivePositiveFeedback')
@@ -47,9 +52,11 @@ public class MainTest {
     @Test(dataProvider = 'differentWaysToGivePositiveFeedback')
     public void canGivePositiveFeedback(args) {
         final main = getTestableMain()
-        main.run(this, args)
+        final exitCode = main.run(this, args)
 
-        assertThat(output.toString(), equalTo('Thnx, received your positive feedback: did good\n'))
+        assertThat(errout.toString(), isEmptyString())
+        assertThat(stdout.toString(), equalTo('Thnx, received your positive feedback: did good\n'))
+        assertThat(exitCode, equalTo(EXIT_SUCCESS))
     }
 
     @DataProvider(name = 'differentWaysToGiveNegativeFeedback')
@@ -63,30 +70,34 @@ public class MainTest {
     @Test(dataProvider = 'differentWaysToGiveNegativeFeedback')
     public void canGiveNegativeFeedback(args) {
         final main = getTestableMain()
-        main.run(this, args)
+        final exitCode = main.run(this, args)
 
-        assertThat(output.toString(), equalTo('Thnx, received your negative feedback: did bad\n'))
+        assertThat(errout.toString(), isEmptyString())
+        assertThat(stdout.toString(), equalTo('Thnx, received your negative feedback: did bad\n'))
+        assertThat(exitCode, equalTo(EXIT_SUCCESS))
     }
 
     @DataProvider(name = 'differentWaysToRunAScript')
     public Object[][] differentWaysToRunAScript() {
         [
-                [['run', 'src/test/resources/script.txt'] as String[]],
+                [['run', 'src/test/resources/helloworld.txt'] as String[]],
         ] as Object[][]
     }
 
     @Test(dataProvider = 'differentWaysToRunAScript')
     public void canRunAScript(args) {
         final main = getTestableMain()
-        main.run(this, args)
+        final exitCode = main.run(this, args)
 
-        assertThat(output.toString(), equalTo('Hello World'))
+        assertThat(errout.toString(), isEmptyString())
+        assertThat(stdout.toString(), equalTo('Hello World'))
+        assertThat(exitCode, equalTo(EXIT_SUCCESS))
     }
 
     private Main getTestableMain() {
         def main = new Main()
-        main.outputConsumer = new PrintStream(output)
-        main.errorConsumer = new PrintStream(output)
+        main.outputConsumer = new PrintStream(stdout)
+        main.errorConsumer = new PrintStream(errout)
         return main
     }
 }
