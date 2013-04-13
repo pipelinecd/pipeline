@@ -1,0 +1,10 @@
+
+stage 'build', {
+    echo 'Building...'
+    run './gradlew check'
+}
+
+stage 'distribution', {
+    echo 'Creating a distributable...'
+    run './gradlew distTar'
+}
