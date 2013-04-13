@@ -2,77 +2,70 @@ package nl.ikoodi.io.cy
 
 import com.beust.jcommander.JCommander
 import com.beust.jcommander.ParameterException
-import nl.ikoodi.io.cy.cli.command.FeedbackCommand
-import nl.ikoodi.io.cy.cli.command.HelpCommand
-import nl.ikoodi.io.cy.cli.command.MainCommand
+import nl.ikoodi.io.cy.cli.command.*
 
 class Main {
-    def PrintStream outputConsumer = System.out
-    def PrintStream errorConsumer = System.err
+    static final int EXIT_FAILURE = 1
+    static final int EXIT_SUCCESS = 0
+    PrintStream outputConsumer = System.out
+    PrintStream errorConsumer = System.err
 
-    def run(scriptName, String... args) {
+    int run(scriptName, String... args) {
         final mainOptions = new MainCommand()
-        final helpCmd = new HelpCommand()
-        final feedbackCmd = new FeedbackCommand()
+        final JCommander cli = createCommander(mainOptions)
+        final helpCmd = new HelpCommand(errorConsumer, cli)
+        final List<Command> commands = new ArrayList<>()
+        commands.add(helpCmd)
+        commands.addAll(createCommands())
+        commands.each { cmd ->
+            cli.addCommand(cmd)
+        }
 
-        final cli = new JCommander(mainOptions);
-        cli.setProgramName('beam')
-        cli.allowAbbreviatedOptions = true
-        cli.addCommand(helpCmd)
-        cli.addCommand(feedbackCmd)
-
-        final cmd
+        final cmdName
+        final handledCommand
         try {
             cli.parse(args)
-            cmd = cli.getParsedCommand()
+            cmdName = cli.getParsedCommand()
+            handledCommand = handleCommand(mainOptions, helpCmd, commands, cmdName)
         } catch (ParameterException e) {
             errorConsumer.println(e.getMessage())
-            outputUsage(cli)
-            return
+            helpCmd.outputUsage()
+            return EXIT_FAILURE
         }
-
-        if (HelpCommand.CMD_NAME.equals(cmd) || mainOptions.help) {
-            outputUsage(cli)
-            return
+        if (handledCommand) {
+            return EXIT_SUCCESS
         }
+        return EXIT_FAILURE
+    }
 
-        if (FeedbackCommand.CMD_NAME.equals(cmd)) {
-            def feedbackType;
-            def msg;
-            if (feedbackCmd.negative) {
-                feedbackType = 'negative'
-                msg = feedbackCmd.negative;
-            } else if (feedbackCmd.positive) {
-                feedbackType = 'positive'
-                msg = feedbackCmd.positive;
-            } else {
-                outputUsage(cli, cmd)
-                return
-            }
-            outputConsumer.printf('Thnx, received your %s feedback: %s\n', feedbackType, msg)
-            return
+    private boolean handleCommand(final MainCommand mainOptions, final HelpCommand helpCmd,
+                                  final List<Command> commands, final String cmdName) {
+        if (mainOptions.help) {
+            helpCmd.outputUsage()
+            return false
         }
-
-        outputUsage(cli)
+        final Command cmd = commands.find { it.canHandle(cmdName) }
+        if (cmd) {
+            cmd.handle()
+            return true
+        }
+        helpCmd.outputUsage()
+        return false
     }
 
-    private void outputUsage(final JCommander cli) {
-        final output = new StringBuilder()
-        cli.usage(output)
-        errorConsumer.print(output);
+    private List<Command> createCommands() {
+        final List<Command> commands = new ArrayList<>()
+        commands.add(new RunCommand(outputConsumer))
+        commands.add(new FeedbackCommand(outputConsumer))
+        return commands
     }
 
-    private void outputUsage(final JCommander cli, final String commandName) {
-        final output = new StringBuilder()
-        cli.usage(commandName, output)
-        errorConsumer.print(output);
-    }
-
-    void setOutputConsumer(final PrintStream consumer) {
-        this.outputConsumer = consumer
-    }
-
-    void setErrorConsumer(final PrintStream errorConsumer) {
-        this.errorConsumer = errorConsumer
+    private JCommander createCommander(final MainCommand mainOptions) {
+        final cli = new JCommander(mainOptions);
+        cli.with {
+            programName = 'beam'
+            allowAbbreviatedOptions = true
+        }
+        return cli
     }
 }

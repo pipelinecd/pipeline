@@ -1,25 +1,47 @@
 package nl.ikoodi.io.cy.cli.command;
 
-import com.beust.jcommander.Parameter;
+import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameters;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.PrintStream;
 
 @Parameters(
-        commandNames = {HelpCommand.CMD_NAME}
+        commandNames = {HelpCommand.NAME}
         , commandDescription = "Show help information about a command"
 )
-public class HelpCommand {
-    public static final String CMD_NAME = "help";
+public class HelpCommand implements Command {
+    public static final String NAME = "help";
 
-    @Parameter(
-            description = "Command"
-            , arity = 1
-    )
-    private List<String> commands = new ArrayList<String>();
+    private final PrintStream outputConsumer;
+    private final JCommander cli;
 
-    public List<String> getCommands() {
-        return commands;
+    public HelpCommand(final PrintStream outputConsumer, final JCommander cli) {
+        this.outputConsumer = outputConsumer;
+        this.cli = cli;
+    }
+
+    @Override
+    public String getName() {
+        return NAME;
+    }
+
+    @Override
+    public boolean canHandle(final String commandName) {
+        return getName().equals(commandName);
+    }
+
+    @Override
+    public void handle() {
+        outputUsage();
+    }
+
+    public void outputUsage() {
+        outputUsage(outputConsumer);
+    }
+
+    private void outputUsage(final PrintStream output) {
+        final StringBuilder stringOutput = new StringBuilder();
+        cli.usage(stringOutput);
+        output.print(stringOutput);
     }
 }
