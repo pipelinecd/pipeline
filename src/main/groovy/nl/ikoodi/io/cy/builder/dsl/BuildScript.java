@@ -19,16 +19,16 @@ public abstract class BuildScript extends Script {
         printf(format, values);
     }
 
-    public boolean run(final String command) throws Exception {
+    public void run(final String command) throws Exception {
         final Commandline cl = new Commandline(command);
         final CommandLineUtils.StringStreamConsumer stdOut = new CommandLineUtils.StringStreamConsumer();
         final CommandLineUtils.StringStreamConsumer stdErr = new CommandLineUtils.StringStreamConsumer();
         final int exitStatus = CommandLineUtils.executeCommandLine(cl, stdOut, stdErr);
         System.out.print(stdOut.getOutput());
         System.err.print(stdErr.getOutput());
-        if (0 == exitStatus) {
-            return true;
+        if (0 != exitStatus) {
+            final String msg = "Error occured during execution of command [%s]";
+            throw new RuntimeException(String.format(msg, command));
         }
-        return false;
     }
 }

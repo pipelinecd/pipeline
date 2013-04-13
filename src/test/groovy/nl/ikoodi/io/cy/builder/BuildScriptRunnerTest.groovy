@@ -57,10 +57,24 @@ class BuildScriptRunnerTest {
     }
 
     @Test
-    public void executeSystemCommand() {
+    public void canExecuteSystemCommand() {
         String script = """
             // Change directory to current directory
             run "dir"
+        """
+        def output = runScript(script)
+        assertThat(output, allOf(
+                containsString('build.gradle')
+                , containsString('gradlew')
+        ))
+    }
+
+    @Test
+    public void canExecuteSystemCommandFromAStage() {
+        String script = """
+            stage 'execute dir system command', {
+                run "dir"
+            }
         """
         def output = runScript(script)
         assertThat(output, allOf(

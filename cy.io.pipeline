@@ -1,11 +1,10 @@
 
-run './gradlew check'
-run './gradlew distTar'
+stage 'build', {
+    echo 'Building...'
+    run './gradlew check'
+}
 
-//stage 'build' {
-//    run 'gradlew check'
-//}
-
-//stage 'distribution' {
-//    run 'gradlew distTar'
-//}
+stage 'distribution', {
+    echo 'Creating a distributable...'
+    run './gradlew distTar'
+}
