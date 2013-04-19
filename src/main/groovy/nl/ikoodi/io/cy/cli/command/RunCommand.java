@@ -3,7 +3,7 @@ package nl.ikoodi.io.cy.cli.command;
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.Parameters;
 import com.beust.jcommander.converters.FileConverter;
-import nl.ikoodi.io.cy.builder.BuildScriptRunner;
+import nl.ikoodi.io.cy.builder.PipelineScriptRunner;
 
 import java.io.File;
 import java.io.IOException;
@@ -57,7 +57,7 @@ public class RunCommand implements Command {
             final String msg = String.format("Could not read script [%s]", file.getAbsolutePath());
             throw new IllegalArgumentException(msg, e);
         }
-        final BuildScriptRunner buildScript = new BuildScriptRunner(outputConsumer, script);
-        buildScript.run();
+        final PipelineScriptRunner pipeline = new PipelineScriptRunner(outputConsumer, script);
+        pipeline.run();
     }
 }

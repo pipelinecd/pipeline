@@ -2,22 +2,22 @@ package nl.ikoodi.io.cy.builder;
 
 import groovy.lang.GroovyShell;
 import groovy.lang.Script;
-import nl.ikoodi.io.cy.builder.dsl.BuildScript;
+import nl.ikoodi.io.cy.builder.script.PipelineScript;
 import org.codehaus.groovy.control.CompilerConfiguration;
 
 import java.io.PrintStream;
 
-public class BuildScriptRunner {
+public class PipelineScriptRunner {
 
     private final Script script;
     private final PrintStream redirectedOutput;
     private PrintStream originalStdOut;
     private PrintStream originalStdErr;
 
-    public BuildScriptRunner(final PrintStream output, final String scriptText) {
+    public PipelineScriptRunner(final PrintStream output, final String scriptText) {
         redirectedOutput = output;
         final CompilerConfiguration config = new CompilerConfiguration();
-        config.setScriptBaseClass(BuildScript.class.getName());
+        config.setScriptBaseClass(PipelineScript.class.getName());
 
         final GroovyShell shell = new GroovyShell(config);
         script = shell.parse(scriptText);

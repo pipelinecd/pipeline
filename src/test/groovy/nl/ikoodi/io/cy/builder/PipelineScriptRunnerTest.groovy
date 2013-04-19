@@ -5,7 +5,7 @@ import org.testng.annotations.Test
 import static org.hamcrest.MatcherAssert.assertThat
 import static org.hamcrest.Matchers.*
 
-class BuildScriptRunnerTest {
+class PipelineScriptRunnerTest {
 
     @Test
     public void canUseWithBuildInGroovyPrintln() {
@@ -86,7 +86,7 @@ class BuildScriptRunnerTest {
     private String runScript(final String script) {
         def output = new ByteArrayOutputStream()
         def stream = new PrintStream(output)
-        final BuildScriptRunner buildScript = new BuildScriptRunner(stream, script)
+        final PipelineScriptRunner buildScript = new PipelineScriptRunner(stream, script)
 
         buildScript.run()
 

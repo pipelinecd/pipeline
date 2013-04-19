@@ -1,13 +1,15 @@
-package nl.ikoodi.io.cy.builder.dsl;
+package nl.ikoodi.io.cy.builder.script;
 
 import groovy.lang.Closure;
 import groovy.lang.Script;
+import nl.ikoodi.io.cy.api.Pipeline;
 import org.apache.maven.shared.utils.cli.CommandLineUtils;
 import org.apache.maven.shared.utils.cli.Commandline;
 
-public abstract class BuildScript extends Script {
+public abstract class PipelineScript extends Script implements Pipeline {
 
-    public void stage(final Object stage, final Closure closure) {
+    @Override
+    public void stage(final String name, final Closure closure) {
         closure.run();
     }
 
