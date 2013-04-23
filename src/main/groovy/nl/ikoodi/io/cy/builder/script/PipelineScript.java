@@ -8,9 +8,15 @@ import org.apache.maven.shared.utils.cli.Commandline;
 
 public abstract class PipelineScript extends Script implements Pipeline {
 
+    private Pipeline pipeline;
+
+    public void init(final Pipeline pipeline) {
+        this.pipeline = pipeline;
+    }
+
     @Override
     public void stage(final String name, final Closure closure) {
-        closure.run();
+        pipeline.stage(name, closure);
     }
 
     public void echo(final Object value) {

@@ -3,13 +3,14 @@ package nl.ikoodi.io.cy.builder;
 import groovy.lang.GroovyShell;
 import groovy.lang.Script;
 import nl.ikoodi.io.cy.builder.script.PipelineScript;
+import nl.ikoodi.io.cy.model.Pipeline;
 import org.codehaus.groovy.control.CompilerConfiguration;
 
 import java.io.PrintStream;
 
 public class PipelineScriptRunner {
 
-    private final Script script;
+    private final PipelineScript script;
     private final PrintStream redirectedOutput;
     private PrintStream originalStdOut;
     private PrintStream originalStdErr;
@@ -20,7 +21,10 @@ public class PipelineScriptRunner {
         config.setScriptBaseClass(PipelineScript.class.getName());
 
         final GroovyShell shell = new GroovyShell(config);
-        script = shell.parse(scriptText);
+        script = (PipelineScript)shell.parse(scriptText);
+
+        final Pipeline pipeline = new Pipeline();
+        script.init(pipeline);
     }
 
     public void run() {
