@@ -1,9 +1,8 @@
 package nl.ikoodi.io.cy.builder;
 
 import groovy.lang.GroovyShell;
-import groovy.lang.Script;
 import nl.ikoodi.io.cy.builder.script.PipelineScript;
-import nl.ikoodi.io.cy.model.Pipeline;
+import nl.ikoodi.io.cy.model.DefaultPipeline;
 import org.codehaus.groovy.control.CompilerConfiguration;
 
 import java.io.PrintStream;
@@ -23,7 +22,7 @@ public class PipelineScriptRunner {
         final GroovyShell shell = new GroovyShell(config);
         script = (PipelineScript)shell.parse(scriptText);
 
-        final Pipeline pipeline = new Pipeline();
+        final DefaultPipeline pipeline = new DefaultPipeline();
         script.init(pipeline);
     }
 

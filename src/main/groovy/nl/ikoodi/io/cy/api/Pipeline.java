@@ -4,6 +4,6 @@ import groovy.lang.Closure;
 
 public interface Pipeline {
 
-    void stage(String name, Closure closure);
+    Stage stage(String name, Closure closure);
 
 }

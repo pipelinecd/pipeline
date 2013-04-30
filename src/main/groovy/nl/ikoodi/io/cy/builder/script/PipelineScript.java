@@ -3,6 +3,7 @@ package nl.ikoodi.io.cy.builder.script;
 import groovy.lang.Closure;
 import groovy.lang.Script;
 import nl.ikoodi.io.cy.api.Pipeline;
+import nl.ikoodi.io.cy.api.Stage;
 import org.apache.maven.shared.utils.cli.CommandLineUtils;
 import org.apache.maven.shared.utils.cli.Commandline;
 
@@ -15,8 +16,8 @@ public abstract class PipelineScript extends Script implements Pipeline {
     }
 
     @Override
-    public void stage(final String name, final Closure closure) {
-        pipeline.stage(name, closure);
+    public Stage stage(final String name, final Closure closure) {
+        return pipeline.stage(name, closure);
     }
 
     public void echo(final Object value) {
@@ -35,7 +36,7 @@ public abstract class PipelineScript extends Script implements Pipeline {
         System.out.print(stdOut.getOutput());
         System.err.print(stdErr.getOutput());
         if (0 != exitStatus) {
-            final String msg = "Error occured during execution of command [%s]";
+            final String msg = "Error occurred during execution of command [%s]";
             throw new RuntimeException(String.format(msg, command));
         }
     }
