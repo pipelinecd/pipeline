@@ -56,7 +56,7 @@ Pipeline definition:
     }
 
     stage commit {
-        title: 'Compile and Test'
+        description: 'Compile and Test'
         run {
             env.vars {
                 SOME_VAR: 'some value'
