@@ -1,4 +1,4 @@
-# Global Design
+# DSL Design
 
 ## Legenda
 * **DSL**
