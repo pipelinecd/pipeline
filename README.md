@@ -7,4 +7,4 @@ Read [Why a new CI tool][1] for the reason and focus points behind this CI tool.
 
 [0]: LICENSE
 [1]: docs/Why-a-new-CI-tool.md
-[2]: https://github.com/pvdissel/cy.io/wiki/DSL-design
+[2]: docs/DSL-design.md
