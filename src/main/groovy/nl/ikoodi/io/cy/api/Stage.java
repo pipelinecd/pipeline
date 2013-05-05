@@ -8,16 +8,6 @@ public interface Stage {
 
     void setDescription(String description);
 
-//    /**
-//     * Example of a self defined echo.
-//     *
-//     * @param format
-//     * @param values
-//     * @deprecated just for trying out?
-//     */
-//    @Deprecated
-//    void echo(String format, Object... values);
-
     void run(String command) throws Exception;
 
 }

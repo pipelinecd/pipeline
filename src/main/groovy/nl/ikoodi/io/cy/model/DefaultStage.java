@@ -1,7 +1,9 @@
 package nl.ikoodi.io.cy.model;
 
 import nl.ikoodi.io.cy.api.Stage;
-import org.apache.maven.shared.utils.cli.*;
+import org.apache.maven.shared.utils.cli.CommandLineUtils;
+import org.apache.maven.shared.utils.cli.Commandline;
+import org.apache.maven.shared.utils.cli.WriterStreamConsumer;
 
 import java.io.BufferedWriter;
 import java.io.OutputStreamWriter;
@@ -29,17 +31,10 @@ public class DefaultStage implements Stage {
         this.description = description;
     }
 
-//    @Override
-//    @Deprecated
-//    public void echo(final String format, final Object... values) {
-//        System.out.printf(format, values);
-//    }
-
     @Override
     public void run(final String command) throws Exception {
-        final Commandline cl = new Commandline(command);
-
         System.out.println();
+        final Commandline cl = new Commandline(command);
         final WriterStreamConsumer stdOut = new WriterStreamConsumer(new BufferedWriter(new OutputStreamWriter(System.out)));
         final WriterStreamConsumer stdErr = new WriterStreamConsumer(new BufferedWriter(new OutputStreamWriter(System.err)));
         final int exitStatus = CommandLineUtils.executeCommandLine(cl, stdOut, stdErr);
