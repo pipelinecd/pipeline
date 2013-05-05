@@ -18,7 +18,7 @@ class DefaultPipelineTest {
     }
 
     @Test
-    public void stageShouldCanHaveADescriptionSetViaClosure() {
+    public void stageShouldBeAbleToHaveADescriptionSetViaClosure() {
         def pipeline = new DefaultPipeline();
         def expectedDescription = 'Commit stage description'
         def stage = pipeline.stage('commit', {
@@ -29,12 +29,24 @@ class DefaultPipelineTest {
 
     @Test(
             expectedExceptions = MissingPropertyException
-            , expectedExceptionsMessageRegExp = 'No such property: name for class.*'
+            , expectedExceptionsMessageRegExp = '.*Cannot set readonly property: name for class:.*'
     )
-    public void stageShouldNotAllowTryingToChangeTheStageNameInTheClosure() {
+    public void stageShouldNotAllowChangingTheStageNameInTheClosure() {
         def pipeline = new DefaultPipeline();
         pipeline.stage('stageName', {
             name = 'changedStageName'
+        })
+    }
+
+    @Test(
+            expectedExceptions = MissingMethodException
+    )
+    public void stageClosureShouldNotBeAbleToCallPipelineMethods() {
+        def pipeline = new DefaultPipeline();
+        pipeline.stage('commit', {
+            stage 'stageFromAStage', {
+
+            }
         })
     }
 }

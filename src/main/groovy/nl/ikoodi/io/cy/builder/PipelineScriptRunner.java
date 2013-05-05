@@ -20,7 +20,7 @@ public class PipelineScriptRunner {
         config.setScriptBaseClass(PipelineScript.class.getName());
 
         final GroovyShell shell = new GroovyShell(config);
-        script = (PipelineScript)shell.parse(scriptText);
+        script = (PipelineScript) shell.parse(scriptText);
 
         final DefaultPipeline pipeline = new DefaultPipeline();
         script.init(pipeline);

@@ -1,6 +1,7 @@
 package nl.ikoodi.io.cy.api;
 
 public interface Stage {
+
     String getName();
 
     String getDescription();
@@ -16,4 +17,7 @@ public interface Stage {
      */
     @Deprecated
     void echo(String format, Object... values);
+
+    void run(String command) throws Exception;
+
 }
