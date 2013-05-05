@@ -1,8 +1,10 @@
 package nl.ikoodi.io.cy.model;
 
 import nl.ikoodi.io.cy.api.Stage;
-import org.apache.maven.shared.utils.cli.CommandLineUtils;
-import org.apache.maven.shared.utils.cli.Commandline;
+import org.apache.maven.shared.utils.cli.*;
+
+import java.io.BufferedWriter;
+import java.io.OutputStreamWriter;
 
 public class DefaultStage implements Stage {
     private final String name;
@@ -36,11 +38,10 @@ public class DefaultStage implements Stage {
     @Override
     public void run(final String command) throws Exception {
         final Commandline cl = new Commandline(command);
-        final CommandLineUtils.StringStreamConsumer stdOut = new CommandLineUtils.StringStreamConsumer();
-        final CommandLineUtils.StringStreamConsumer stdErr = new CommandLineUtils.StringStreamConsumer();
+
+        final WriterStreamConsumer stdOut = new WriterStreamConsumer(new BufferedWriter(new OutputStreamWriter(System.out)));
+        final WriterStreamConsumer stdErr = new WriterStreamConsumer(new BufferedWriter(new OutputStreamWriter(System.err)));
         final int exitStatus = CommandLineUtils.executeCommandLine(cl, stdOut, stdErr);
-        System.out.print(stdOut.getOutput());
-        System.err.print(stdErr.getOutput());
         if (0 != exitStatus) {
             final String msg = "Error occurred during execution of command [%s]";
             throw new RuntimeException(String.format(msg, command));
