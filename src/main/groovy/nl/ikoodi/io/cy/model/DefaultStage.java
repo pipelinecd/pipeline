@@ -29,16 +29,17 @@ public class DefaultStage implements Stage {
         this.description = description;
     }
 
-    @Override
-    @Deprecated
-    public void echo(final String format, final Object... values) {
-        System.out.printf(format, values);
-    }
+//    @Override
+//    @Deprecated
+//    public void echo(final String format, final Object... values) {
+//        System.out.printf(format, values);
+//    }
 
     @Override
     public void run(final String command) throws Exception {
         final Commandline cl = new Commandline(command);
 
+        System.out.println();
         final WriterStreamConsumer stdOut = new WriterStreamConsumer(new BufferedWriter(new OutputStreamWriter(System.out)));
         final WriterStreamConsumer stdErr = new WriterStreamConsumer(new BufferedWriter(new OutputStreamWriter(System.err)));
         final int exitStatus = CommandLineUtils.executeCommandLine(cl, stdOut, stdErr);
