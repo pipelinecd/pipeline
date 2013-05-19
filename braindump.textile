@@ -10,7 +10,7 @@ h2. Focus points
 ** Configuration-as-Code
 ** Infrastructure-as-Code
 ** Audit-able
-* Distributed (master-slave)
+* Distributed (master-slave?)
 * Don't re-invent the wheel, reuse/integrate existing tools/libraries, ideas, principles
 * Lightweight
 * Monitored / Usage Statistics
@@ -181,6 +181,9 @@ h2. Continuous Integration in general
 
 A good write-up of CI in general, CI architectures, etc:
 "http://www.aosabook.org/en/integration.html":http://www.aosabook.org/en/integration.html
+
+Release management side of CI:
+"http://niek.bartholomeus.be/2013/05/14/implementing-a-release-management-solution-in-a-traditonal-enterprise/":http://niek.bartholomeus.be/2013/05/14/implementing-a-release-management-solution-in-a-traditonal-enterprise/
 
 h1. Implementation resources
 
