@@ -210,6 +210,8 @@ h1. Implementation resources
 ** "http://plexus.codehaus.org/plexus-utils/apidocs/index.html":http://plexus.codehaus.org/plexus-utils/apidocs/index.html
    (as used in Maven)
 ** "http://jgrapht.org":http://jgrapht.org
+* DSLs in Jenkins:
+** https://wiki.jenkins-ci.org/display/JENKINS/Build+Flow+Plugin
 
 h1. Maintaining an open-source project
 * "http://coding.smashingmagazine.com/2013/01/03/starting-open-source-project/":http://coding.smashingmagazine.com/2013/01/03/starting-open-source-project/
