@@ -2,7 +2,7 @@
 I hear you think "Another one? There are so many existing ones already!?!" and you're completely right. But if you have ever managed multiple projects/jobs in any existing CI tool, you've probably noticed that the existing tools:
 
 * Force you to copy jobs even though they only differ in some specific configuration properties
-* That provide "template"-based job configurations for minimizing job configuration duplication, often only only up to a specific point. Still forcing you to manually verify all jobs that extend/use a template that you've updated to see if the change is applied correctly, which mostly is not the case and thereby loosing the benefits of the template-base job configuration
+* That provide "template"-based job configurations for minimizing job configuration duplication, often only provide this up to a specific point. Still forcing you to manually verify all jobs that extend/use a template that you've updated to see if the change is applied correctly, which mostly is not the case and thereby loosing the benefits of the template-base job configuration
 * Except Travis-CI as far as I know, are mostly GUI-based for configuring jobs. Some provide a REST-api, a CLI tool and/or provide scripting functionality for configuring and controlling the jobs from outside the GUI of the tool meaning you have to write your own tools/scripts around your CI tool to make the tool easier to work for your situation
 * Provide no way of experimenting:
 
