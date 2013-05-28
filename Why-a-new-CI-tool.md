@@ -22,10 +22,10 @@ For our code and infrastructure we've best practices like:
 
 And we focus on applying this practices as good and useful as possible. But it seems like when it comes to CI, all this is thrown overboard. We just accept these CI tools which do not follow the same best practices. While these CI tools automate most of the things that happens with our code and infrastructure til it's on production (and beyond?). Isn't this a bit crooked/awry/weird?
 
-## This CI server
-So because of all the things above, I want to set things right by developing this new CI server.
+# This CI tool
+So because of all the things above, I want to set things right by developing this new CI tool.
 
-### Why write my own
+## Why write my own
 I've looked at many different CI tools and, where available, I've looked at their code, played with their GUI's and inspected their directory structures. And I came to the conclusion that those tools are simply implemented differently in a way it's very hard to make right (in my opinion of course). So I've decided to start with a clean-slate to not have to think about any backwards-compatibility issues of any kind and just go for the best solution possible with the features we want.
 I'm writing this tool on the JVM by choice, currently in Java but the JVM provides the possibility to use the best language for the job. Meaning I could be using Groovy in some parts, JRuby in others, Jython, Scala, or any other language available on the JVM.
 
@@ -44,7 +44,7 @@ In summary the focus points of this CI server:
   * With new versions of plugins
   * With new versions of external tools
   * With new configurations of external tools
-* Have scriptable job configurations to minimize the use of plugins
+* Have scriptable job configurations in the domain specific language
 * Have plugins that really provide special functionality
 * Distributed (in-house and/or in the cloud)
 * Lightweight
