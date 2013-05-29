@@ -185,6 +185,9 @@ A good write-up of CI in general, CI architectures, etc:
 Release management side of CI:
 "http://niek.bartholomeus.be/2013/05/14/implementing-a-release-management-solution-in-a-traditonal-enterprise/":http://niek.bartholomeus.be/2013/05/14/implementing-a-release-management-solution-in-a-traditonal-enterprise/
 
+Managing Build Jobs for Continuous Delivery:
+"http://www.infoq.com/articles/Build-Jobs-Continuous-Delivery":http://www.infoq.com/articles/Build-Jobs-Continuous-Delivery
+
 h1. Implementation resources
 
 * Using Java as Native Linux Apps – Calling C, Daemonization, Packaging, CLI
