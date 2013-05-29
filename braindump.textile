@@ -98,7 +98,7 @@ h2. Name ideas
 *** http://en.wikipedia.org/wiki/Centuri
 ** Domain ideas:
 *** cy.ci
-*** cy.io <- Cy Input/Output :D <- preferred
+*** cy.io <- Cy Input/Output
 *** centur.io/n
 * Continuous (Build) Automation (or Other things/stuff you want to automate)
 ** cbaootywta
