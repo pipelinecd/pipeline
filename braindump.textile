@@ -155,6 +155,26 @@ Cons:
 
 Note that they are looking into creating a on-demand/in-house solution: "www.travis-ci.com":http://www.travis-ci.com
 
+h2. CicleCI
+
+Travis-CI look-a-like
+"https://circleci.com":https://circleci.com
+
+h2. Tddium
+
+Travis-CI look-a-like
+"https://www.tddium.com":https://www.tddium.com
+
+h2. Semaphore
+
+Travis-CI look-a-like, specific for ruby
+"https://semaphoreapp.com":https://semaphoreapp.com
+
+h2. Electric Cloud
+
+After quick look at their site. It looks like the combined tools of electic-cloud come to the same set of features as ThoughtWorks Go and UrbanCode' tools.
+"http://www.electric-cloud.com":http://www.electric-cloud.com
+
 h2. Rundeck
 
 RunDeck looks interesting: "http://rundeck.org":http://rundeck.org
