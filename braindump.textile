@@ -170,10 +170,14 @@ h2. Semaphore
 Travis-CI look-a-like, specific for ruby
 "https://semaphoreapp.com":https://semaphoreapp.com
 
-h2. Electric Cloud
+h2. Electric Cloud toolset
 
 After quick look at their site. It looks like the combined tools of electic-cloud come to the same set of features as ThoughtWorks Go and UrbanCode' tools.
 "http://www.electric-cloud.com":http://www.electric-cloud.com
+
+h2. Urban Code toolset
+
+"http://www.urbancode.com":http://www.urbancode.com
 
 h2. Rundeck
 
