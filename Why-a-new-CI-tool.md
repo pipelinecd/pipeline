@@ -49,3 +49,9 @@ In summary the focus points of this CI server:
 * Distributed (in-house and/or in the cloud)
 * Lightweight
 * Provides hooks to monitor the daemons
+
+## Slogan
+
+> Make the Simple Go Away  
+> Make the Possible Simple  
+> Make the Impossible Possible  
