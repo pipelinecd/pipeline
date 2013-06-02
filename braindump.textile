@@ -240,6 +240,8 @@ h1. Implementation resources
 * DSLs in Jenkins:
 ** "https://wiki.jenkins-ci.org/display/JENKINS/Build+Flow+Plugin":https://wiki.jenkins-ci.org/display/JENKINS/Build+Flow+Plugin
 ** "https://wiki.jenkins-ci.org/display/JENKINS/Job+DSL+Plugin":https://wiki.jenkins-ci.org/display/JENKINS/Job+DSL+Plugin
+* Server troubleshooting, the first 5 minutes
+** "http://devo.ps/blog/2013/03/06/troubleshooting-5minutes-on-a-yet-unknown-box.html":http://devo.ps/blog/2013/03/06/troubleshooting-5minutes-on-a-yet-unknown-box.html
 
 h1. Maintaining an open-source project
 * "http://coding.smashingmagazine.com/2013/01/03/starting-open-source-project/":http://coding.smashingmagazine.com/2013/01/03/starting-open-source-project/
