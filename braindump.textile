@@ -245,3 +245,17 @@ h1. Implementation resources
 
 h1. Maintaining an open-source project
 * "http://coding.smashingmagazine.com/2013/01/03/starting-open-source-project/":http://coding.smashingmagazine.com/2013/01/03/starting-open-source-project/
+
+h1. Slogan explained
+
+bq. Make the Impossible Possible
+
+Continuous Integration, Delivery, no way, that will never work...
+
+bq. Make the Possible Simple
+
+Sure it will work, just make it simpeler
+
+bq. Make the Simple Go Away
+
+Automate
