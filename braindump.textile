@@ -76,7 +76,6 @@ h2. Feature ideas 2
 * SCM plugins must provide an easy solution for defining security details like ssh-keys, eg. via a connection-store(?). The must be no need for manually placing authentication files anywhere then as part of the job config. All authentication details must be kept securily and no passwords should be logged in any log
 * Option of mounting the commands and reports as a fuse file system for unix based servers. This again increases the options for easy integration. eg. a /proc or /sys or /dev a-like view on the builds
 
-
 h2. Name ideas
 
 * "Hive" or "colony"; from a bees hive/colony, having a queen-bee (master), ({specific}) worker-bee(s) (slaves), ({specific}) drone(s) (side-tasks, eg. UI, reporting, stats, logging, ...)
@@ -242,6 +241,8 @@ h1. Implementation resources
 ** "https://wiki.jenkins-ci.org/display/JENKINS/Job+DSL+Plugin":https://wiki.jenkins-ci.org/display/JENKINS/Job+DSL+Plugin
 * Server troubleshooting, the first 5 minutes
 ** "http://devo.ps/blog/2013/03/06/troubleshooting-5minutes-on-a-yet-unknown-box.html":http://devo.ps/blog/2013/03/06/troubleshooting-5minutes-on-a-yet-unknown-box.html
+* look at "gradle":http://www.gradle.org for implementation ideas
+* look at "Tesla":http://tesla.io/tesla/index.html for implementation ideas
 
 h1. Maintaining an open-source project
 * "http://coding.smashingmagazine.com/2013/01/03/starting-open-source-project/":http://coding.smashingmagazine.com/2013/01/03/starting-open-source-project/
