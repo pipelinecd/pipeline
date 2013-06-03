@@ -50,8 +50,10 @@ In summary the focus points of this CI server:
 * Lightweight
 * Provides hooks to monitor the daemons
 
-## Slogan
+## Slogans
 
 > Make the Simple Go Away  
 > Make the Possible Simple  
 > Make the Impossible Possible  
+
+> free, open-source CI tool that's simpel to use for hobbyists, flexible enough for startups and powerful enough for the enterprise
