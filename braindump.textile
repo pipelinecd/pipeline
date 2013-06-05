@@ -115,6 +115,10 @@ h2. Name ideas
 * Continuous Your AutomatioN aka CyAN
 * Continous Build AuTomation aka CBAT
 * Build AutomatiON aka BArON
+** Possible logo: "http://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Ermine_Robe_%28Heraldry%29.svg/265px-Ermine_Robe_%28Heraldry%29.svg.png":http://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Ermine_Robe_%28Heraldry%29.svg/265px-Ermine_Robe_%28Heraldry%29.svg.png
+** Possible Slogans:
+*** "Baron has all these butlers working for him. Hudson, Travis, Jenkins."
+*** ¨You have butlers.. and then you have the Baron!¨
 * Build Automation CONtinuous aka BACON
 * FreshCI
 * Fresh-CI
