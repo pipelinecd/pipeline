@@ -119,6 +119,8 @@ h2. Name ideas
 ** Possible Slogans:
 *** "Baron has all these butlers working for him. Hudson, Travis, Jenkins."
 *** ¨You have butlers.. and then you have the Baron!¨
+** GreenBaron
+* Continuous Integration For All Stakeholders aka CIfas
 * Build Automation CONtinuous aka BACON
 * FreshCI
 * Fresh-CI
