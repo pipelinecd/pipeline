@@ -19,6 +19,7 @@ This makes it possible, to just have one pipeline definition and as many executi
 #### Simple Continous Integration pipeline
 Pipeline definition:
 
+```groovy
     environment {
         mvn: '3.0.5'
         git: '1.7.9.5'
@@ -84,9 +85,11 @@ Pipeline definition:
     announce(type: email) {
         to: 'list@mailing.org'
     }
+```
 
 Required configuration to provide for pipeline:
 
+```groovy
     scm(name: latest) {
         url:           'git@github.com/myuser/myrepo'
         branch:        'develop'
@@ -94,6 +97,7 @@ Required configuration to provide for pipeline:
         email:         'ci@mydomain.tld'
         key.private:   '....'
     }
+```
 
 When executed, the above pipeline would do the following:
 
