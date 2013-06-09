@@ -11,9 +11,9 @@ A Continuous Delivery (CD) tool for the 21st Century. Licensed under the [MIT Li
 
 Read [Why a new CI tool][1] for the reason and focus points behind this CI tool. And [DSL Design][2] to give you an intro into the Domain Specific Languange (DSL) that is used to define the pipeline and configure the jobs.
 
-> Making the Impossible Possible
-> the Possible Simple
-> the Simple automated Away
+> Making the Impossible Possible  
+> the Possible Simple  
+> the Simple automated Away  
 
 Feedback
 --------
