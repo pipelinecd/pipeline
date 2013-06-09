@@ -1,6 +1,7 @@
 *.iml
 *.ipr
 *.iws
+*.un~
 .idea
 build
 target
