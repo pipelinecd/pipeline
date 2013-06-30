@@ -1,7 +1,7 @@
 cy.io
 =====
 
-A Continuous Delivery (CD) tool for the 21st Century. Licensed under the [MIT License][0]
+A Continuous Delivery (CD) tool, which we and all stakeholders of the CD Pipeline love to use. Licensed under the [MIT License][0]
 
 > free, open-source  
 > Continuous Delivery tool  
@@ -22,10 +22,14 @@ I love to receive your feedback and your ideas, together we can create a CD tool
 
 Find me on twitter as @pvdissel, you can also use this handle to contact me via google.com, linkedin.com and slideshare.net
 
+I've started a Google discussion group, you can find it at [Google Groups][6]
+
+![Google Groups][7]
+
 Name
 ----
 
-The name "cy.io" is still temporary, I haven't found a better name yet. See my [name ideas section][3] on my [braindump][4] page for ideas I came across. Please let me know your naming ideas with their reasoning.
+The name "cy.io" is still temporary, I haven't found a better name yet. See my [name ideas section][3] on my [braindump][4] page for ideas I came across. Please let me know your naming ideas with their reasoning by posting to the [discussion on this topic][8]
 
 eg. The reasoning behind "cy.io" is:
 
@@ -38,3 +42,6 @@ eg. The reasoning behind "cy.io" is:
 [3]: docs/braindump.md#name-ideas
 [4]: docs/braindump.md
 [5]: http://en.wikipedia.org/wiki/Cy_%28Battlestar_Galactica%29
+[6]: https://groups.google.com/d/forum/cdtool
+[7]: https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=https%3A%2F%2Fgroups.google.com%2Fd%2Fforum%2Fcdtool
+[8]: https://groups.google.com/forum/#!topic/cdtool/GuN9rhZ881s
