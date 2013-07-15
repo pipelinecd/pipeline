@@ -1,4 +1,4 @@
-package nl.ikoodi.io.cy.api;
+package nl.ikoodi.io.cy.dsl.api;
 
 public interface Stage {
 
@@ -9,5 +9,4 @@ public interface Stage {
     void setDescription(String description);
 
     void run(String command) throws Exception;
-
 }

@@ -1,8 +1,8 @@
-package nl.ikoodi.io.cy.builder;
+package nl.ikoodi.io.cy.runner;
 
 import groovy.lang.GroovyShell;
-import nl.ikoodi.io.cy.builder.script.PipelineScript;
-import nl.ikoodi.io.cy.model.DefaultPipeline;
+import nl.ikoodi.io.cy.dsl.model.DefaultPipeline;
+import nl.ikoodi.io.cy.runner.script.PipelineScript;
 import org.codehaus.groovy.control.CompilerConfiguration;
 
 import java.io.PrintStream;

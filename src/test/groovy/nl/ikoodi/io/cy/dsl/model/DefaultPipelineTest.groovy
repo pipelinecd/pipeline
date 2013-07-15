@@ -1,4 +1,4 @@
-package nl.ikoodi.io.cy.model
+package nl.ikoodi.io.cy.dsl.model
 
 import org.testng.annotations.Test
 

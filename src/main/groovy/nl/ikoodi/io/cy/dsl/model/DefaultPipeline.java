@@ -1,8 +1,8 @@
-package nl.ikoodi.io.cy.model;
+package nl.ikoodi.io.cy.dsl.model;
 
 import groovy.lang.Closure;
-import nl.ikoodi.io.cy.api.Pipeline;
-import nl.ikoodi.io.cy.api.Stage;
+import nl.ikoodi.io.cy.dsl.api.Pipeline;
+import nl.ikoodi.io.cy.dsl.api.Stage;
 
 public class DefaultPipeline implements Pipeline {
 
@@ -24,5 +24,4 @@ public class DefaultPipeline implements Pipeline {
     public void echo(final String format, final Object... values) {
         System.out.printf(format, values);
     }
-
 }

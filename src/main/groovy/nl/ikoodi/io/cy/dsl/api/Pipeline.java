@@ -1,4 +1,4 @@
-package nl.ikoodi.io.cy.api;
+package nl.ikoodi.io.cy.dsl.api;
 
 import groovy.lang.Closure;
 
@@ -9,5 +9,4 @@ public interface Pipeline {
     void echo(Object value);
 
     void echo(String format, Object... values);
-
 }

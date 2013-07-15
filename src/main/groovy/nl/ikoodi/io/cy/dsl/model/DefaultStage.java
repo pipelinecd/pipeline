@@ -1,6 +1,6 @@
-package nl.ikoodi.io.cy.model;
+package nl.ikoodi.io.cy.dsl.model;
 
-import nl.ikoodi.io.cy.api.Stage;
+import nl.ikoodi.io.cy.dsl.api.Stage;
 import org.apache.maven.shared.utils.cli.CommandLineException;
 import org.apache.maven.shared.utils.cli.CommandLineUtils;
 import org.apache.maven.shared.utils.cli.Commandline;
@@ -89,5 +89,4 @@ public class DefaultStage implements Stage {
             return new WriterStreamConsumer(new BufferedWriter(new OutputStreamWriter(stream)));
         }
     }
-
 }

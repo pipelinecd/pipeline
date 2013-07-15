@@ -1,4 +1,4 @@
-package nl.ikoodi.io.cy.builder
+package nl.ikoodi.io.cy.runner
 
 import org.testng.annotations.Test
 

@@ -1,4 +1,4 @@
-package nl.ikoodi.io.cy
+package nl.ikoodi.io.cy.cli
 
 import org.testng.annotations.BeforeMethod
 import org.testng.annotations.DataProvider

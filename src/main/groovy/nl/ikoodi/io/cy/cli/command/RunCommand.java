@@ -3,7 +3,7 @@ package nl.ikoodi.io.cy.cli.command;
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.Parameters;
 import com.beust.jcommander.converters.FileConverter;
-import nl.ikoodi.io.cy.builder.PipelineScriptRunner;
+import nl.ikoodi.io.cy.runner.PipelineScriptRunner;
 
 import java.io.File;
 import java.io.IOException;

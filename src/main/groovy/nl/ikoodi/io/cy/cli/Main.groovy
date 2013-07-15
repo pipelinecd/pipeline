@@ -1,4 +1,4 @@
-package nl.ikoodi.io.cy
+package nl.ikoodi.io.cy.cli
 
 import com.beust.jcommander.JCommander
 import com.beust.jcommander.ParameterException
