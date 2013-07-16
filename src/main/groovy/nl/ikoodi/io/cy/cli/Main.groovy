@@ -10,9 +10,9 @@ class Main {
     PrintStream outputConsumer = System.out
     PrintStream errorConsumer = System.err
 
-    int run(scriptName, String... args) {
+    int run(String programName, String... args) {
         final mainOptions = new MainCommand()
-        final JCommander cli = createCommander(mainOptions)
+        final JCommander cli = createCommander(programName, mainOptions)
         final helpCmd = new HelpCommand(errorConsumer, cli)
         final List<Command> commands = new ArrayList<>()
         commands.add(helpCmd)
@@ -60,10 +60,10 @@ class Main {
         return commands
     }
 
-    private JCommander createCommander(final MainCommand mainOptions) {
+    private JCommander createCommander(final String name, final MainCommand mainOptions) {
         final cli = new JCommander(mainOptions);
         cli.with {
-            programName = 'beam'
+            programName = name
             allowAbbreviatedOptions = true
         }
         return cli

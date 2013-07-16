@@ -33,7 +33,7 @@ public class MainTest {
     @Test(dataProvider = 'differentWaysToOutputUsageInfo')
     public void outputsUsageInfo(args, expectedExitCode) {
         final main = getTestableMain()
-        final exitCode = main.run(this, args)
+        final exitCode = main.run('test', args)
 
         assertThat(stdout.toString(), isEmptyString())
         assertThat(errout.toString(), containsString('--help, -h'))
@@ -52,7 +52,7 @@ public class MainTest {
     @Test(dataProvider = 'differentWaysToGivePositiveFeedback')
     public void canGivePositiveFeedback(args) {
         final main = getTestableMain()
-        final exitCode = main.run(this, args)
+        final exitCode = main.run('test', args)
 
         assertThat(errout.toString(), isEmptyString())
         assertThat(stdout.toString(), equalTo('Thnx, received your positive feedback: did good\n'))
@@ -70,7 +70,7 @@ public class MainTest {
     @Test(dataProvider = 'differentWaysToGiveNegativeFeedback')
     public void canGiveNegativeFeedback(args) {
         final main = getTestableMain()
-        final exitCode = main.run(this, args)
+        final exitCode = main.run('test', args)
 
         assertThat(errout.toString(), isEmptyString())
         assertThat(stdout.toString(), equalTo('Thnx, received your negative feedback: did bad\n'))
@@ -87,7 +87,7 @@ public class MainTest {
     @Test(dataProvider = 'differentWaysToRunAScript')
     public void canRunAScript(args) {
         final main = getTestableMain()
-        final exitCode = main.run(this, args)
+        final exitCode = main.run('test', args)
 
         assertThat(errout.toString(), isEmptyString())
         assertThat(stdout.toString(), equalTo('Hello World'))

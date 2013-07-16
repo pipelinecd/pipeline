@@ -1,5 +1,5 @@
 package nl.ikoodi.io.cy.cli
 
 def main = new Main()
-final exitStatus = main.run('nl.ikoodi.io.cy.beam', args)
+final exitStatus = main.run('beam', args)
 System.exit(exitStatus)
