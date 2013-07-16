@@ -41,14 +41,6 @@ public class FeedbackCommand implements Command {
         return NAME;
     }
 
-    public String getPositive() {
-        return positive;
-    }
-
-    public String getNegative() {
-        return negative;
-    }
-
     @Override
     public boolean canHandle(final String commandName) {
         return getName().equals(commandName);

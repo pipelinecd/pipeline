@@ -33,10 +33,6 @@ public class RunCommand implements Command {
         this.outputConsumer = outputConsumer;
     }
 
-    public List<File> getFiles() {
-        return files;
-    }
-
     @Override
     public String getName() {
         return NAME;

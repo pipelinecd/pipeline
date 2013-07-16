@@ -94,6 +94,22 @@ public class MainTest {
         assertThat(exitCode, equalTo(EXIT_SUCCESS))
     }
 
+    @DataProvider(name = 'differentWaysToFailsWhenAScriptDoesNotExist')
+    public Object[][] differentWaysToFailsWhenAScriptDoesNotExist() {
+        [
+                [['run', 'notexisting/notexisting.txt'] as String[]],
+        ] as Object[][]
+    }
+
+    @Test(
+            dataProvider = 'differentWaysToFailsWhenAScriptDoesNotExist',
+            expectedExceptions = IllegalArgumentException
+    )
+    public void failsWhenAScriptDoesNotExist(args) {
+        final main = getTestableMain()
+        main.run('test', args)
+    }
+
     private Main getTestableMain() {
         def main = new Main()
         main.outputConsumer = new PrintStream(stdout)
