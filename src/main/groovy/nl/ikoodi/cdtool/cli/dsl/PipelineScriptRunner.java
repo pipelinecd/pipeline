@@ -1,8 +1,8 @@
-package nl.ikoodi.cdtool.runner;
+package nl.ikoodi.cdtool.cli.dsl;
 
 import groovy.lang.GroovyShell;
 import nl.ikoodi.cdtool.dsl.internal.DefaultPipelineDsl;
-import nl.ikoodi.cdtool.runner.script.PipelineScript;
+import nl.ikoodi.cdtool.cli.dsl.script.PipelineScript;
 import org.codehaus.groovy.control.CompilerConfiguration;
 
 import java.io.PrintStream;

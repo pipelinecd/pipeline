@@ -3,7 +3,7 @@ package nl.ikoodi.cdtool.cli.command;
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.Parameters;
 import com.beust.jcommander.converters.FileConverter;
-import nl.ikoodi.cdtool.runner.PipelineScriptRunner;
+import nl.ikoodi.cdtool.cli.dsl.PipelineScriptRunner;
 
 import java.io.File;
 import java.io.IOException;

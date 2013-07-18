@@ -1,4 +1,4 @@
-package nl.ikoodi.cdtool.runner.script
+package nl.ikoodi.cdtool.cli.dsl.script
 
 import nl.ikoodi.cdtool.dsl.PipelineDsl
 

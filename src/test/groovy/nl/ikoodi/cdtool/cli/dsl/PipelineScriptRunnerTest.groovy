@@ -1,5 +1,6 @@
-package nl.ikoodi.cdtool.runner
+package nl.ikoodi.cdtool.cli.dsl
 
+import nl.ikoodi.cdtool.cli.dsl.PipelineScriptRunner
 import org.testng.annotations.Test
 
 import static org.hamcrest.MatcherAssert.assertThat

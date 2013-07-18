@@ -29,6 +29,7 @@ dependencies {
     compile libs.groovy
     compile libs.jcommander
     compile libs.'maven-shared-utils'
+
     testCompile(libs.spock) {
         exclude group: 'org.codehaus.groovy', module: 'groovy-all'
         exclude group: 'junit', module: 'junit-dep'
