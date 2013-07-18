@@ -1,4 +1,4 @@
-package nl.ikoodi.io.cy.dsl.model
+package nl.ikoodi.io.cy.dsl.internal
 
 import org.testng.annotations.Test
 
@@ -9,7 +9,7 @@ class DefaultPipelineTest {
 
     @Test
     public void stageShouldHaveAName() {
-        def pipeline = new DefaultPipeline();
+        def pipeline = new DefaultPipelineDsl();
         def expectedStageName = 'commit'
         def stage = pipeline.stage(expectedStageName, {
 
@@ -19,7 +19,7 @@ class DefaultPipelineTest {
 
     @Test
     public void stageShouldBeAbleToHaveADescriptionSetViaClosure() {
-        def pipeline = new DefaultPipeline();
+        def pipeline = new DefaultPipelineDsl();
         def expectedDescription = 'Commit stage description'
         def stage = pipeline.stage('commit', {
             description = expectedDescription
@@ -32,7 +32,7 @@ class DefaultPipelineTest {
             , expectedExceptionsMessageRegExp = '.*Cannot set readonly property: name for class:.*'
     )
     public void stageShouldNotAllowChangingTheStageNameInTheClosure() {
-        def pipeline = new DefaultPipeline();
+        def pipeline = new DefaultPipelineDsl();
         pipeline.stage('stageName', {
             name = 'changedStageName'
         })
@@ -42,7 +42,7 @@ class DefaultPipelineTest {
             expectedExceptions = MissingMethodException
     )
     public void stageClosureShouldNotBeAbleToCallPipelineMethods() {
-        def pipeline = new DefaultPipeline();
+        def pipeline = new DefaultPipelineDsl();
         pipeline.stage('commit', {
             stage 'stageFromAStage', {
 

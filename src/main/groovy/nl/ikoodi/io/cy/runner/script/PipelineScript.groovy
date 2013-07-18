@@ -1,13 +1,13 @@
 package nl.ikoodi.io.cy.runner.script
 
-import nl.ikoodi.io.cy.dsl.api.Pipeline
+import nl.ikoodi.io.cy.dsl.PipelineDsl
 
 public abstract class PipelineScript extends Script {
 
     @Delegate
-    private Pipeline pipeline;
+    private PipelineDsl pipeline;
 
-    public void init(final Pipeline pipeline) {
+    public void init(final PipelineDsl pipeline) {
         this.pipeline = pipeline;
     }
 }

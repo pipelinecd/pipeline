@@ -1,14 +1,14 @@
-package nl.ikoodi.io.cy.dsl.model;
+package nl.ikoodi.io.cy.dsl.internal;
 
 import groovy.lang.Closure;
-import nl.ikoodi.io.cy.dsl.api.Pipeline;
-import nl.ikoodi.io.cy.dsl.api.Stage;
+import nl.ikoodi.io.cy.dsl.PipelineDsl;
+import nl.ikoodi.io.cy.dsl.StageDsl;
 
-public class DefaultPipeline implements Pipeline {
+public class DefaultPipelineDsl implements PipelineDsl {
 
     @Override
-    public Stage stage(final String name, final Closure closure) {
-        final Stage stage = new DefaultStage(name);
+    public StageDsl stage(final String name, final Closure closure) {
+        final StageDsl stage = new DefaultStageDsl(name);
         closure.setDelegate(stage);
         closure.setResolveStrategy(Closure.DELEGATE_FIRST);
         closure.call();

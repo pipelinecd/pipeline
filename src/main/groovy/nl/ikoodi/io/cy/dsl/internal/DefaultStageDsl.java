@@ -1,6 +1,6 @@
-package nl.ikoodi.io.cy.dsl.model;
+package nl.ikoodi.io.cy.dsl.internal;
 
-import nl.ikoodi.io.cy.dsl.api.Stage;
+import nl.ikoodi.io.cy.dsl.StageDsl;
 import org.apache.maven.shared.utils.cli.CommandLineException;
 import org.apache.maven.shared.utils.cli.CommandLineUtils;
 import org.apache.maven.shared.utils.cli.Commandline;
@@ -11,11 +11,11 @@ import java.io.OutputStreamWriter;
 import java.io.PrintStream;
 import java.util.Properties;
 
-public class DefaultStage implements Stage {
+public class DefaultStageDsl implements StageDsl {
     private final String name;
     private String description;
 
-    public DefaultStage(final String name) {
+    public DefaultStageDsl(final String name) {
         this.name = name;
     }
 

@@ -1,10 +1,10 @@
-package nl.ikoodi.io.cy.dsl.api;
+package nl.ikoodi.io.cy.dsl;
 
 import groovy.lang.Closure;
 
-public interface Pipeline {
+public interface PipelineDsl {
 
-    Stage stage(String name, Closure closure);
+    StageDsl stage(String name, Closure closure);
 
     void echo(Object value);
 

@@ -1,6 +1,6 @@
-package nl.ikoodi.io.cy.dsl.api;
+package nl.ikoodi.io.cy.dsl;
 
-public interface Stage {
+public interface StageDsl {
 
     String getName();
 
