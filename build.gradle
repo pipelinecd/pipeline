@@ -17,6 +17,7 @@ dependencies {
     compile group: 'org.codehaus.groovy', name: 'groovy', version: '2.1.6'
     compile group: 'com.beust', name: 'jcommander', version: '1.30'
     compile group: 'org.apache.maven.shared', name: 'maven-shared-utils', version: '0.3'
+    testCompile group: 'org.spockframework', name: 'spock-core', version: '0.7-groovy-2.0'
     testCompile group: 'org.hamcrest', name: 'hamcrest-library', version: '1.3'
     testCompile group: 'org.testng', name: 'testng', version: '6.8'
     // force junit 4.11, as testng 6.8 comes with junit 4.10 which is has bloated dependencies
