@@ -1,8 +1,9 @@
 package nl.ikoodi.cdtool.cli.dsl;
 
 import groovy.lang.GroovyShell;
-import nl.ikoodi.cdtool.dsl.internal.DefaultPipelineDsl;
 import nl.ikoodi.cdtool.cli.dsl.script.PipelineScript;
+import nl.ikoodi.cdtool.dsl.PipelineDsl;
+import nl.ikoodi.cdtool.dsl.internal.DefaultPipelineDsl;
 import org.codehaus.groovy.control.CompilerConfiguration;
 
 import java.io.PrintStream;
@@ -22,7 +23,7 @@ public class PipelineScriptRunner {
         final GroovyShell shell = new GroovyShell(config);
         script = (PipelineScript) shell.parse(scriptText);
 
-        final DefaultPipelineDsl pipeline = new DefaultPipelineDsl();
+        final PipelineDsl pipeline = new DefaultPipelineDsl();
         script.init(pipeline);
     }
 

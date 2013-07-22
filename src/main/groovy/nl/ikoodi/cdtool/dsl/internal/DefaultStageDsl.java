@@ -1,6 +1,9 @@
 package nl.ikoodi.cdtool.dsl.internal;
 
+import nl.ikoodi.cdtool.api.Stage;
 import nl.ikoodi.cdtool.dsl.StageDsl;
+import nl.ikoodi.cdtool.dsl.TaskDsl;
+import nl.ikoodi.cdtool.runner.DefaultStage;
 import org.apache.maven.shared.utils.cli.CommandLineException;
 import org.apache.maven.shared.utils.cli.CommandLineUtils;
 import org.apache.maven.shared.utils.cli.Commandline;
@@ -9,11 +12,13 @@ import org.apache.maven.shared.utils.cli.WriterStreamConsumer;
 import java.io.BufferedWriter;
 import java.io.OutputStreamWriter;
 import java.io.PrintStream;
-import java.util.Properties;
+import java.util.LinkedList;
+import java.util.List;
 
-public class DefaultStageDsl implements StageDsl {
+public class DefaultStageDsl implements StageDsl, DslExporter<Stage> {
     private final String name;
     private String description;
+    private List<TaskDsl> tasks = new LinkedList<>();
 
     public DefaultStageDsl(final String name) {
         this.name = name;
@@ -36,32 +41,31 @@ public class DefaultStageDsl implements StageDsl {
 
     @Override
     public void run(final String command) throws Exception {
+        tasks.add(new ShellCommandTaskDsl(command));
+
         final ExternalProcess process = new ExternalProcess();
         process.setCommand(command);
         process.run();
     }
 
-    public class ExternalProcess {
+    @Override
+    public Stage export() {
+        Stage stage = new DefaultStage();
+        for (TaskDsl task : tasks) {
+            stage.add(((ShellCommandTaskDsl)task).export());
+        }
+
+        return null;
+    }
+
+    private class ExternalProcess {
 
         private PrintStream out = System.out;
         private PrintStream err = System.err;
         private String command;
-        private Properties environmentVariables = new Properties();
-
-        public String getCommand() {
-            return command;
-        }
 
         public void setCommand(final String command) {
             this.command = command;
-        }
-
-        public Properties getEnvironmentVariables() {
-            return environmentVariables;
-        }
-
-        public void setEnvironmentVariables(Properties environmentVariables) {
-            this.environmentVariables = environmentVariables;
         }
 
         public void run() {
