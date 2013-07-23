@@ -11,10 +11,8 @@ dependencies {
     cucumberRuntime files("${jar.archivePath}")
 }
 
-//sourceSets.test.output.resourcesDir = sourceSets.test.output.classesDir
-
 task cucumber {
-    dependsOn assemble, testClasses
+    dependsOn assemble, test
     group = 'verification'
     description = 'Run the features.'
     doLast {

@@ -40,6 +40,5 @@ dependencies {
     testCompile libs.junit
 }
 
-applicationName = 'cdtool'
-//version = '0.1.0'
-mainClassName = 'nl.ikoodi.cdtool.cli.cdtool'
+applicationName = 'pipe'
+mainClassName = 'nl.ikoodi.pipeline.cli.pipeline'

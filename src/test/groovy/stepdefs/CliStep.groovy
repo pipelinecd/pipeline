@@ -2,7 +2,7 @@ package stepdefs
 
 import cucumber.api.groovy.EN
 import cucumber.api.groovy.Hooks
-import nl.ikoodi.cdtool.cli.Main
+import nl.ikoodi.pipeline.cli.Main
 
 this.metaClass.mixin Hooks
 this.metaClass.mixin EN
