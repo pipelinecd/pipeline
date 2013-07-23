@@ -9,13 +9,13 @@ import nl.ikoodi.pipeline.runner.DefaultPipeline;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-public class DefaultPipelineDsl implements PipelineDsl, DslExporter<Pipeline> {
+public class DefaultPipelineDsl implements InternalPipelineDsl {
 
-    private Set<StageDsl> stages = new LinkedHashSet<>();
+    private Set<InternalStageDsl> stages = new LinkedHashSet<>();
 
     @Override
     public StageDsl stage(final String name, final Closure closure) {
-        final StageDsl stage = new DefaultStageDsl(name);
+        final InternalStageDsl stage = new DefaultStageDsl(name);
         closure.setDelegate(stage);
         closure.setResolveStrategy(Closure.DELEGATE_FIRST);
         closure.call();
@@ -36,9 +36,9 @@ public class DefaultPipelineDsl implements PipelineDsl, DslExporter<Pipeline> {
 
     @Override
     public Pipeline export() {
-        final DefaultPipeline pipeline = new DefaultPipeline();
-        for (StageDsl stage : stages) {
-            pipeline.add(((DefaultStageDsl) stage).export());
+        final Pipeline pipeline = new DefaultPipeline();
+        for (InternalStageDsl stage : stages) {
+            pipeline.add(stage.export());
         }
         return pipeline;
     }

@@ -20,14 +20,14 @@ When(~'^I provide (.*) as parameter$') { param ->
     }
     def orgOut = System.out
     System.out = output
-    final exitCode = cli.run('beam', param)
+    final exitCode = cli.run('pipe', param)
     System.out = orgOut
     (exitCode == 0)
 }
 
 Then(~'^I expect to see the application help$') {->
     def help = '''
-Usage: beam [options] [command] [command options]
+Usage: pipe [options] [command] [command options]
   Options:
     --help, -h
 
@@ -47,5 +47,6 @@ Usage: beam [options] [command] [command options]
           -p, --positive
              Your positive feedback message
     '''
-    (output == help)
+
+    (help == output)
 }

@@ -1,8 +1,6 @@
 package nl.ikoodi.pipeline.dsl.internal;
 
 import nl.ikoodi.pipeline.api.Stage;
-import nl.ikoodi.pipeline.dsl.StageDsl;
-import nl.ikoodi.pipeline.dsl.TaskDsl;
 import nl.ikoodi.pipeline.runner.DefaultStage;
 import org.apache.maven.shared.utils.cli.CommandLineException;
 import org.apache.maven.shared.utils.cli.CommandLineUtils;
@@ -15,10 +13,10 @@ import java.io.PrintStream;
 import java.util.LinkedList;
 import java.util.List;
 
-public class DefaultStageDsl implements StageDsl, DslExporter<Stage> {
+public class DefaultStageDsl implements InternalStageDsl {
     private final String name;
     private String description;
-    private List<TaskDsl> tasks = new LinkedList<>();
+    private List<InternalTaskDsl> tasks = new LinkedList<>();
 
     public DefaultStageDsl(final String name) {
         this.name = name;
@@ -50,12 +48,11 @@ public class DefaultStageDsl implements StageDsl, DslExporter<Stage> {
 
     @Override
     public Stage export() {
-        Stage stage = new DefaultStage();
-        for (TaskDsl task : tasks) {
-            stage.add(((ShellCommandTaskDsl)task).export());
+        final Stage stage = new DefaultStage();
+        for (InternalTaskDsl task : tasks) {
+            stage.add(task.export());
         }
-
-        return null;
+        return stage;
     }
 
     private class ExternalProcess {

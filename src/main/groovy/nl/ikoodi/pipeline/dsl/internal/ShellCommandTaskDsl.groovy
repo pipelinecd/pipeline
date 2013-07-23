@@ -1,9 +1,8 @@
 package nl.ikoodi.pipeline.dsl.internal
 
-import nl.ikoodi.pipeline.api.Task
-import nl.ikoodi.pipeline.dsl.TaskDsl
+import nl.ikoodi.pipeline.api.task.ShellCommand
 
-class ShellCommandTaskDsl implements TaskDsl, DslExporter<Task> {
+class ShellCommandTaskDsl implements InternalTaskDsl {
     private String command;
 
     ShellCommandTaskDsl(String command) {
@@ -11,7 +10,7 @@ class ShellCommandTaskDsl implements TaskDsl, DslExporter<Task> {
     }
 
     @Override
-    Task export() {
+    ShellCommand export() {
         return null
     }
 }

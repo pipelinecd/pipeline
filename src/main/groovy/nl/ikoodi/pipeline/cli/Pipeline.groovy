@@ -1,5 +1,5 @@
 package nl.ikoodi.pipeline.cli
 
 def main = new Main()
-final exitStatus = main.run('beam', args)
+final exitStatus = main.run('pipe', args)
 System.exit(exitStatus)
