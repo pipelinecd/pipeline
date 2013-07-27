@@ -1,7 +1,7 @@
 Pipeline
-=====
+========
 
-A Continuous Delivery (CD) tool, which we and all stakeholders of the CD Pipeline love to use. Licensed under the [MIT License][0]
+A Continuous Delivery (CD) tool, which we and all stakeholders of the CD pipeline love to use. Licensed under the [MIT License][0]
 
 > free, open-source  
 > Continuous Delivery tool  
@@ -15,19 +15,30 @@ Read [Why a new CD tool][1] for the reason and focus points behind this CD tool.
 > the Possible Simple  
 > the Simple automated Away  
 
-Feedback
---------
+State of the project
+--------------------
+This project is currently in a very early state of development. Being developed in my free-time and every friday at work, the friday being sponsored by my employer [Tricode](http://www.tricode.nl)
 
-I love to receive your feedback and your ideas, together we can create a CD tool that we and all stakeholders of the CD Pipeline love to use.
+Building Pipeline
+--------------
+The only prerequisite is that you have JDK 7 or higher installed.
 
-Find me on twitter as @pvdissel, you can also use this handle to contact me via google.com, linkedin.com and slideshare.net
+After cloning the project, type `./gradlew clean build` (Windows: `gradlew clean build`). All build dependencies,
+including [Gradle](http://www.gradle.org) itself, will be downloaded automatically (unless already present).
 
-I've started a Google discussion group, you can find it at [Google Groups][3]
+Resources
+---------
+* Pipeline Homepage -- http://pipelinelabs.org
+* GitHub Organization -- http://github.pipelinelabs.org
+* Documentation -- http://docs.pipelinelabs.org
+* User/Dev Forum -- [http://forum.pipelinelabs.org][3]
+* Issue Tracker -- http://issues.pipelinelabs.org
 
-![Google Groups][4]
+If you have any ideas, comments or questions, please direct them to the [user/dev forum][3].
+All feedback is appreciated!
+
 
 [0]: LICENSE
 [1]: docs/Why-a-new-CD-tool.md
 [2]: docs/DSL-design.md
-[3]: https://groups.google.com/d/forum/cdtool
-[4]: https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=https%3A%2F%2Fgroups.google.com%2Fd%2Fforum%2Fcdtool
+[3]: http://forum.pipelinelabs.org
