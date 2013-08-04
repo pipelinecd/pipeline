@@ -3,6 +3,7 @@ package nl.ikoodi.pipeline.cli
 import com.beust.jcommander.JCommander
 import com.beust.jcommander.ParameterException
 import nl.ikoodi.pipeline.cli.command.*
+import nl.ikoodi.pipeline.internal.ServiceRegistry
 
 class Main {
     static final int EXIT_FAILURE = 1
@@ -55,7 +56,7 @@ class Main {
 
     private List<Command> createCommands() {
         final List<Command> commands = new ArrayList<>()
-        commands.add(new RunCommand(outputConsumer))
+        commands.add(new RunCommand(outputConsumer, getRegistry()))
         commands.add(new FeedbackCommand(outputConsumer))
         return commands
     }
@@ -67,5 +68,9 @@ class Main {
             allowAbbreviatedOptions = true
         }
         return cli
+    }
+
+    private ServiceRegistry getRegistry() {
+        return new ServiceLocator().get(ServiceRegistry)
     }
 }

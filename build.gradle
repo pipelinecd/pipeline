@@ -10,7 +10,7 @@ repositories {
 }
 
 test {
-    useTestNG()
+//    useTestNG()
 }
 
 ext {

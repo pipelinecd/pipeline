@@ -4,6 +4,7 @@ import com.beust.jcommander.Parameter;
 import com.beust.jcommander.Parameters;
 import com.beust.jcommander.converters.FileConverter;
 import nl.ikoodi.pipeline.cli.dsl.PipelineScriptRunner;
+import nl.ikoodi.pipeline.internal.ServiceRegistry;
 
 import java.io.File;
 import java.io.IOException;
@@ -27,10 +28,12 @@ public class RunCommand implements Command {
     )
     private List<File> files = new ArrayList<File>(2);
 
-    private PrintStream outputConsumer;
+    private final PrintStream outputConsumer;
+    private final ServiceRegistry registry;
 
-    public RunCommand(final PrintStream outputConsumer) {
+    public RunCommand(final PrintStream outputConsumer, ServiceRegistry registry) {
         this.outputConsumer = outputConsumer;
+        this.registry = registry;
     }
 
     @Override
