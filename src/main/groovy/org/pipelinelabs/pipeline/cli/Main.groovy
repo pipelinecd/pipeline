@@ -71,6 +71,6 @@ class Main {
     }
 
     private ServiceRegistry getRegistry() {
-        return new ServiceLocator().get(ServiceRegistry)
+        return new ServiceLocator().find(ServiceRegistry)
     }
 }
