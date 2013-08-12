@@ -1,5 +1,6 @@
 package org.pipelinelabs.pipeline.cli.dsl
 
+import org.pipelinelabs.pipeline.internal.DefaultServiceRegistry
 import org.testng.annotations.Test
 
 import static org.hamcrest.MatcherAssert.assertThat
@@ -74,7 +75,8 @@ class PipelineScriptRunnerTest {
     private String runScript(final String script) {
         def output = new ByteArrayOutputStream()
         def stream = new PrintStream(output)
-        final PipelineScriptRunner buildScript = new PipelineScriptRunner(stream, script)
+        def registry = new DefaultServiceRegistry()
+        final PipelineScriptRunner buildScript = new PipelineScriptRunner(registry, stream, script)
 
         buildScript.run()
 

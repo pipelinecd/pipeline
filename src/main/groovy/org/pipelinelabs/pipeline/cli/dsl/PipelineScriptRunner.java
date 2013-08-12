@@ -5,6 +5,7 @@ import org.pipelinelabs.pipeline.cli.dsl.script.PipelineScript;
 import org.pipelinelabs.pipeline.dsl.PipelineDsl;
 import org.pipelinelabs.pipeline.dsl.internal.DefaultPipelineDsl;
 import org.codehaus.groovy.control.CompilerConfiguration;
+import org.pipelinelabs.pipeline.internal.ServiceRegistry;
 
 import java.io.PrintStream;
 
@@ -15,7 +16,7 @@ public class PipelineScriptRunner {
     private PrintStream originalStdOut;
     private PrintStream originalStdErr;
 
-    public PipelineScriptRunner(final PrintStream output, final String scriptText) {
+    public PipelineScriptRunner(final ServiceRegistry registry, final PrintStream output, final String scriptText) {
         redirectedOutput = output;
         final CompilerConfiguration config = new CompilerConfiguration();
         config.setScriptBaseClass(PipelineScript.class.getName());
@@ -23,7 +24,7 @@ public class PipelineScriptRunner {
         final GroovyShell shell = new GroovyShell(config);
         script = (PipelineScript) shell.parse(scriptText);
 
-        final PipelineDsl pipeline = new DefaultPipelineDsl();
+        final PipelineDsl pipeline = registry.get(PipelineDsl.class);
         script.init(pipeline);
     }
 

@@ -5,20 +5,19 @@ import org.pipelinelabs.pipeline.cli.ServiceLookupException
 import spock.lang.Specification
 
 class ServiceLocatorSpec extends Specification {
+    final locator = new ServiceLocator()
 
     def "Can locate a single implementation instance"() {
-        final locator = new ServiceLocator()
         when:
-        final clazz = locator.find(ServiceExpectedToBeImplementedByOneClass)
+        def clazz = locator.find(ServiceExpectedToBeImplementedByOneClass)
 
         then:
         assert clazz instanceof SingleImplementation
     }
 
     def "Can locate multiple implementation instances"() {
-        final locator = new ServiceLocator()
         when:
-        final clazz = locator.findAll(ServiceExpectedToBeImplementedByMultipleClasses)
+        def clazz = locator.findAll(ServiceExpectedToBeImplementedByMultipleClasses)
 
         then:
         assert clazz instanceof Set
@@ -26,7 +25,6 @@ class ServiceLocatorSpec extends Specification {
     }
 
     def "Throws a ServiceLookupException if no implementation can be found"() {
-        final locator = new ServiceLocator()
         when:
         locator.find(ServiceWithoutAvailableImplementation)
 
@@ -36,7 +34,6 @@ class ServiceLocatorSpec extends Specification {
     }
 
     def "Throws a ServiceLookupException when expecting one implementation while finding multiple"() {
-        final locator = new ServiceLocator()
         when:
         locator.find(ServiceExpectedToBeImplementedByMultipleClasses)
 
@@ -44,7 +41,6 @@ class ServiceLocatorSpec extends Specification {
         def e = thrown(ServiceLookupException)
         assert e.message.contains(ServiceExpectedToBeImplementedByMultipleClasses.class.simpleName)
     }
-
 }
 
 interface ServiceExpectedToBeImplementedByOneClass {}

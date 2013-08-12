@@ -1,20 +1,36 @@
 package org.pipelinelabs.pipeline.internal;
 
 import org.pipelinelabs.pipeline.cli.ServiceLookupException;
-import org.pipelinelabs.pipeline.runner.DefaultPipeline;
+import org.pipelinelabs.pipeline.dsl.internal.DefaultPipelineDsl;
 
 public class DefaultServiceRegistry implements ServiceRegistry {
 
     @Override
-    public <T> T get(Class<T> serviceType) throws ServiceLookupException {
+    @SuppressWarnings("unchecked")
+    public <T> T get(final Class<T> serviceType) throws ServiceLookupException {
         final T service;
-        switch (serviceType.getCanonicalName()) {
-            case "Pipeline":
-                service = (T) new DefaultPipeline();
+        switch (serviceType.getSimpleName()) {
+            case "PipelineDsl":
+                service = (T) new DefaultPipelineDsl();
                 break;
             default:
-                throw new RuntimeException();
+                throw new UnsupportedServiceType(serviceType);
         }
         return service;
+    }
+
+    private class UnsupportedServiceType extends ServiceLookupException {
+
+        private Class clazz;
+
+        <T> UnsupportedServiceType(final Class<T> clazz) {
+            this.clazz = clazz;
+        }
+
+        @Override
+        public String getMessage() {
+            final String msg = "Service type '%s' is not supported";
+            return String.format(msg, clazz.getSimpleName());
+        }
     }
 }

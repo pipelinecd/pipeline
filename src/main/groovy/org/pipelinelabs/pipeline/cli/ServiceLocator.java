@@ -15,7 +15,7 @@ public class ServiceLocator {
      * @throws ServiceLookupException When no implementation is found,
      *                                or when multiple implementations are found
      */
-    public <T> T find(Class<T> clazz) throws ServiceLookupException {
+    public <T> T find(final Class<T> clazz) throws ServiceLookupException {
         final Set<T> found = findAll(clazz);
         if (found.isEmpty()) {
             throw new NoServiceImplementationFound(clazz);
@@ -26,12 +26,18 @@ public class ServiceLocator {
         return found.iterator().next();
     }
 
-    public <T> Set<T> findAll(Class<T> clazz) {
+    /**
+     * Find all available implementations for the given class type.
+     *
+     * @param clazz Class type to find an implementation for
+     * @return Set of instances of the found implementations
+     */
+    public <T> Set<T> findAll(final Class<T> clazz) {
         final ServiceLoader<T> loader = ServiceLoader.load(clazz);
         return newSet(loader.iterator());
     }
 
-    private <T> Set<T> newSet(Iterator<T> it) {
+    private <T> Set<T> newSet(final Iterator<T> it) {
         final HashSet<T> set = new HashSet<>();
         while (it.hasNext()) {
             set.add(it.next());
@@ -39,11 +45,11 @@ public class ServiceLocator {
         return set;
     }
 
-    class NoServiceImplementationFound extends ServiceLookupException {
+    private class NoServiceImplementationFound extends ServiceLookupException {
 
         private Class clazz;
 
-        <T> NoServiceImplementationFound(Class<T> clazz) {
+        <T> NoServiceImplementationFound(final Class<T> clazz) {
             this.clazz = clazz;
         }
 
@@ -54,11 +60,11 @@ public class ServiceLocator {
         }
     }
 
-    class MultipleServiceImplementationsFound extends ServiceLookupException {
+    private class MultipleServiceImplementationsFound extends ServiceLookupException {
 
         private Class clazz;
 
-        <T> MultipleServiceImplementationsFound(Class<T> clazz) {
+        <T> MultipleServiceImplementationsFound(final Class<T> clazz) {
             this.clazz = clazz;
         }
 

@@ -56,7 +56,7 @@ public class RunCommand implements Command {
             final String msg = String.format("Could not read script [%s]", file.getAbsolutePath());
             throw new IllegalArgumentException(msg, e);
         }
-        final PipelineScriptRunner pipeline = new PipelineScriptRunner(outputConsumer, script);
+        final PipelineScriptRunner pipeline = new PipelineScriptRunner(registry, outputConsumer, script);
         pipeline.run();
     }
 }
