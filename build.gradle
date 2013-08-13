@@ -3,8 +3,6 @@ apply plugin: 'application'
 apply plugin: 'idea'
 apply from: 'gradle/cucumber.gradle'
 
-task wrapper(type: Wrapper)
-
 repositories {
     mavenCentral()
 }
