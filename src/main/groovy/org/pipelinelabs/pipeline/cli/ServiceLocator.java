@@ -5,6 +5,14 @@ import java.util.Iterator;
 import java.util.ServiceLoader;
 import java.util.Set;
 
+/**
+ * Locate services.
+ * <p/>
+ * Services are located via the standard Java 6+ way of discovering services,
+ * as done by the {@link ServiceLoader}.
+ *
+ * @see ServiceLoader
+ */
 public class ServiceLocator {
 
     /**
