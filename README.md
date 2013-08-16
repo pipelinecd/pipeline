@@ -34,11 +34,19 @@ Resources
 * User/Dev Forum -- [http://forum.pipelinelabs.org][3]
 * Issue Tracker -- http://issues.pipelinelabs.org
 
+Presentations
+-------------
+* Ignite talk "Continuous Integration and Delivery tools, do we really like using them?"
+  * [Preparation run recording][4]
+  * [@DevOpsDays Amsterdam, June 14th 2013 recording][5]
+
 If you have any ideas, comments or questions, please direct them to the [user/dev forum][3].
 All feedback is appreciated!
 
 
-[0]: LICENSE
-[1]: docs/Why-a-new-CD-tool.md
-[2]: docs/DSL-design.md
+[0]: http://github.pipelinelabs.org/blob/issue-3-config/LICENSE
+[1]: http://docs.pipelinelabs.org/Why-a-new-CD-tool
+[2]: http://docs.pipelinelabs.org/DSL-design
 [3]: http://forum.pipelinelabs.org
+[4]: http://www.youtube.com/watch?v=shF_v5shzjU
+[5]: http://www.youtube.com/watch?v=-StobwMgRNE
