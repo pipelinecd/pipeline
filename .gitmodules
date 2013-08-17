@@ -1,3 +1,3 @@
 [submodule "docs"]
 	path = docs
-	url = git@github.com:pvdissel/cy.io.wiki.git
+	url = git@github.com:pipelinelabs/pipeline.wiki.git
