@@ -1,0 +1,33 @@
+configurations {
+    cucumberRuntime {
+        extendsFrom testRuntime
+    }
+}
+
+dependencies {
+    testCompile group: 'info.cukes', name: 'cucumber-groovy', version: '1.1.2'
+    testCompile group: 'info.cukes', name: 'cucumber-junit', version: '1.1.2'
+
+    cucumberRuntime files("${jar.archivePath}")
+}
+
+task cucumber {
+    dependsOn assemble, test
+    group = 'verification'
+    description = 'Run the features.'
+    doLast {
+        javaexec {
+            main = "cucumber.api.cli.Main"
+            classpath = configurations.cucumberRuntime
+            args = [
+                    '-f'
+                    , 'pretty'
+                    , '--glue'
+                    , 'src/test/groovy/stepdefs'
+                    , 'src/test/resources/features'
+            ]
+        }
+    }
+}
+
+check.dependsOn cucumber

@@ -1,0 +1,3 @@
+org.pipelinelabs.pipeline.internal.MultipleImplementationsFirstImpl
+org.pipelinelabs.pipeline.internal.MultipleImplementationsSecondImpl
+org.pipelinelabs.pipeline.internal.MultipleImplementationsThirdImpl
