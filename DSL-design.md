@@ -2,21 +2,20 @@
 
 ## Legenda
 * **DSL**
-  Domain Specific Language
+  Domain Specific Language;
 * **Pipeline definition**
-  Defines the configurable pipeline that can be reused to be run with different execution configurations
+  Defines the configurable pipeline that can be reused to be run with different execution configurations;
 * **Execution configuration**
-  Configuration to configure the pipeline definition with to give the pipeline meaning
+  Configuration to use when executing the pipeline definition; giving meaning to the pipeline. 
 
 ## Pipeline definition
-The pipeline definition script is a DSL implemented in Groovy focussed on the domain of pipelines in the sense of Continuous-Integration (CI), -Delivery (CD), -Deployment, Release Management, Release Orchestration. Or as the total picture is often called "Application Lifecycle Management" (ALM).
+The pipeline definition script is a DSL implemented in Groovy focussed on the domain of pipelines in the sense of Continuous Integration (CI), Continuous Delivery (CD), Continuous Deployment, Release Management and Release Orchestration. Or "Application Lifecycle Management" (ALM) - as the total picture is often called.
 
-The pipeline definition is configurable. The execution configuration of the pipeline definition is decoupled from the pipeline definition so a single pipeline definition can be executed with different execution configurations.
-This makes it possible, to just have one pipeline definition and as many execution configurations you want without the need of "cascading project" or "template inheritance" as implemented by other CI tools.
+The pipeline definition is configurable. The execution configuration of the pipeline definition is decoupled from the pipeline definition, so a single pipeline definition can be executed with different execution configurations. This makes it possible, to just have one pipeline definition and as many execution configurations you want without the need of "cascading project" or "template inheritance" as implemented by other CI tools.
 
 ### Example configurations
 
-#### Simple Continous Integration pipeline
+#### Simple Continuous Integration pipeline
 Pipeline definition:
 
 ```groovy
@@ -87,7 +86,7 @@ Pipeline definition:
     }
 ```
 
-Required configuration to provide for pipeline:
+Required configuration to provide to the pipeline:
 
 ```groovy
     scm(name: latest) {
@@ -102,9 +101,9 @@ Required configuration to provide for pipeline:
 When executed, the above pipeline would do the following:
 
 1. Build an execution model based on provided configuration and the pipeline definition, containing:
-    * a model that represents the required environment
-    * a configuration model based on provided configuration
-    * a configuration verification model based the configuration section of the pipeline definition
+    * a model that represents the required environment;
+    * a configuration model based on provided configuration;
+    * a configuration verification model based the configuration section of the pipeline definition; and
     * a Directed Acyclic Graph (DAG) of the stages that looks as following:
         * _commit_
             * _document_
@@ -114,13 +113,13 @@ When executed, the above pipeline would do the following:
 2. Prepare an execution environment containing:
     * maven version 3.0.5 on the PATH
     * git version 1.7.9.5 on the PATH
-3. Verify that the provided configuration is valid according to the pipeline definition
+3. Verify that the provided configuration is valid according to the pipeline definition.
 4. Do some additional environment preparation and verification after the configuration is found valid
-   (eg. Verify that the provided scm configuration is correct by trying to connect)
-5. Start executing the _commit_ stage, as that's the starting point of this graph of stages
+   (e.g. verify that the provided scm configuration is correct by trying to connect).
+5. Start executing the _commit_ stage, as that's the starting point of this graph of stages: 
     1. Start stage _document_
     2. Start stage _inspect_
         1. Start stage _snapshot-release_
 
-If anything fails in this pipeline, it directly exists with a failure status.
-The _document_ and _inspect_ stages could be started in parallel. As they're on the same level, if one of them fails, the other will continue to run until it finished (succesful or not). At that point the pipeline will exist with a failure status.
+If anything fails in this pipeline, it directly exits with a failure status.
+The _document_ and _inspect_ stages could be started in parallel. As they are on the same level, if one of them fails, the other will continue to run until it finishes (successfully or not). At that point the pipeline will exit with a failure status.
