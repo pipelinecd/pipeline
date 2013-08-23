@@ -1,7 +1,7 @@
 # Pipeline
 
 ## Vision
-- [Why a new tool for Continuous Delivery](/wiki/Why-a-new-tool-for-Continuous-Delivery)
+- [Why a new tool for Continuous Delivery](/pipelinelabs/pipeline/wiki/Why-a-new-tool-for-Continuous-Delivery)
 
 ## User Guide
 - [Using Pipeline with a Central Repository](User Guide: Set-up with Central Repository)
