@@ -9,7 +9,7 @@ A Continuous Delivery (CD) tool, which we and all stakeholders of the CD pipelin
 > flexible enough for startups  
 > and powerful enough for the enterprise
 
-Read [Why a new CD tool][1] for the reason and focus points behind this CD tool. And [DSL Design][2] to give you an intro into the Domain Specific Languange (DSL) that is used to define the pipeline and configure the jobs.
+Read [Why a new CD tool][1] for the reason and focus points behind this CD tool. And [DSL Design ideas][2] to give you an intro into the Domain Specific Languange (DSL) that we're working towards for defining the pipeline and its stages.
 
 > Making the Impossible Possible  
 > the Possible Simple  
@@ -44,9 +44,9 @@ If you have any ideas, comments or questions, please direct them to the [user/de
 All feedback is appreciated!
 
 
-[0]: http://github.pipelinelabs.org/blob/issue-3-config/LICENSE
-[1]: http://docs.pipelinelabs.org/Why-a-new-CD-tool
-[2]: http://docs.pipelinelabs.org/DSL-design
+[0]: http://github.pipelinelabs.org/blob/master/LICENSE
+[1]: http://docs.pipelinelabs.org/Vision:-Why-a-new-tool-for-Continuous-Delivery
+[2]: http://docs.pipelinelabs.org/Technical-Design:-DSL-Design-Ideas
 [3]: http://forum.pipelinelabs.org
 [4]: http://www.youtube.com/watch?v=shF_v5shzjU
 [5]: http://www.youtube.com/watch?v=-StobwMgRNE
