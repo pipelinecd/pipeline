@@ -68,4 +68,4 @@ Installing Pipeline for this use-case is done as following:
 Configuration
 =============
 1. In the root of your code repository, create a `project.pipe` script
-2. Configure the pipeline. Configuration is explained on [Project-Pipeline-configuration]
+2. Configure the pipeline. Configuration is explained on [Project-Pipeline-configuration](project pipeline configuration)
