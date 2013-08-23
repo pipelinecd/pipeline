@@ -1,3 +1,5 @@
+_THIS IS WORK-IN-PROGRESS, we're working towards having Pipeline function as described here_
+
 Using Pipeline with a Central Repository
 ===============
 _Currently only git-based repositories are supported_  
