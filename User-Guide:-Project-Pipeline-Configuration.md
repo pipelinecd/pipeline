@@ -1,3 +1,5 @@
+# Configuring the Pipeline Configuration for your project
+
 The configuration of a project pipeline is stored in the file `project.pipe` in the root of the code repository of the project, and versioned together with the code. When referring to a pipeline, we talk about the configuration within the `project.pipe` file.
 
 Currently the following configuration is supported in the pipeline:
