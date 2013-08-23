@@ -1,4 +1,4 @@
-Central repository use-case
+Central repository use case
 ===============
 _Currently only git-based repositories are supported_  
 When a user pushes to a central code repository like git, a pipeline is triggered based on the configuration that is located within the that git repository.
@@ -28,7 +28,7 @@ When a user pushes to a central code repository like git, a pipeline is triggere
  |                 |Runs on one server|
  +-----------------+------------------+
 ```
-This simple use-case is about a central code repository which supports post-hooks which are executed after code is committed/pushed to the repository. Git is such type of code repository.
+This simple use case is about a central code repository which supports post-hooks which are executed after code is committed/pushed to the repository. Git is such type of code repository.
 
 Requirements
 ============
@@ -49,7 +49,7 @@ Installing Pipeline for this use-case is done as following:
 1. Download the Pipeline installation package
 2. Unpack the installation package to a location of choice
 3. Add `{unpack-location}/bin/` to your environment `PATH` variable
-4. Symlink `{unpack-location/etc/init.d/pipeline` to `/etc/init.d/pipeline`  
+4. Symlink `{unpack-location}/etc/init.d/pipeline` to `/etc/init.d/pipeline`  
     ```
     ln -s {unpack-location}/etc/init.d/pipeline /etc/init.d/pipeline
     ```
@@ -68,4 +68,5 @@ Installing Pipeline for this use-case is done as following:
 Configuration
 =============
 1. In the root of your code repository, create a `project.pipe` script
-2. Configure the pipeline. Configuration is explained on [Project-Pipeline-configuration](project pipeline configuration)
+2. Configure the pipeline. 
+- **Note:** Configuration is explained on [Project-Pipeline-configuration](project pipeline configuration)
