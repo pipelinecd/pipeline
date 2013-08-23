@@ -64,4 +64,4 @@ Which will execute the following commands in order:
 - `mvn -P generate-docs`
 - `mvn sonar:sonar`
 - `mvn deploy`
-- sent email to list@mailing.org notifying about the pipeline status
+- sent email to `list@mailing.org` notifying about the pipeline status
