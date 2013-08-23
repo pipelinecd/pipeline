@@ -1,4 +1,4 @@
-# DSL Design
+# Domain-Specific Languague (DSL) Design
 
 ## Legenda
 * **DSL**
