@@ -1,4 +1,11 @@
 # Pipeline
+A Continuous Delivery (CD) tool, which we and all stakeholders of the CD pipeline love to use. Licensed under the MIT License
+
+> free, open-source  
+> Continuous Delivery tool  
+> that's simple to use for hobbyists,  
+> flexible enough for startups  
+> and powerful enough for the enterprise
 
 ## Vision
 - [Why a new tool for Continuous Delivery](/pipelinelabs/pipeline/wiki/Vision:-Why-a-new-tool-for-Continuous-Delivery)
