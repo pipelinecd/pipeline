@@ -44,7 +44,7 @@ Requirements
 
 Installation
 ============
-Installing Pipeline for this use-case is done as following:
+Installing Pipeline for this simple set-up is done as follows:
 
 1. Download the Pipeline installation package
 2. Unpack the installation package to a location of choice
