@@ -1,4 +1,4 @@
-Central repository use case
+Using Pipeline with a Central Repository
 ===============
 _Currently only git-based repositories are supported_  
 When a user pushes to a central code repository like git, a pipeline is triggered based on the configuration that is located within the that git repository.
@@ -28,7 +28,7 @@ When a user pushes to a central code repository like git, a pipeline is triggere
  |                 |Runs on one server|
  +-----------------+------------------+
 ```
-This simple use case is about a central code repository which supports post-hooks which are executed after code is committed/pushed to the repository. Git is such type of code repository.
+The simple set-up requires that the central code repository supports post-hooks as these are executed after code is committed/pushed to the repository. Git is such type of code repository.
 
 Requirements
 ============
