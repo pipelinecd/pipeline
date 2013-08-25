@@ -1,5 +1,4 @@
 ext {
-    versions = [:]
     libraries = [:]
 }
 
@@ -11,7 +10,7 @@ libraries += [
 ]
 
 libraries.spock = dependencies.module('org.spockframework:spock-core:0.7-groovy-2.0') {
-    libraries.groovy
     exclude group: 'org.codehaus.groovy', module: 'groovy-all'
     exclude group: 'junit', module: 'junit-dep'
+    libraries.groovy
 }

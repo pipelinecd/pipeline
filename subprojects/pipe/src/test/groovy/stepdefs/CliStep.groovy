@@ -2,7 +2,7 @@ package stepdefs
 
 import cucumber.api.groovy.EN
 import cucumber.api.groovy.Hooks
-import org.pipelinelabs.pipeline.cli.Main
+import org.pipelinelabs.pipeline.pipe.cli.Main
 
 this.metaClass.mixin Hooks
 this.metaClass.mixin EN
