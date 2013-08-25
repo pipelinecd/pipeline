@@ -6,7 +6,6 @@ import spock.lang.Specification
 
 import static org.hamcrest.CoreMatchers.equalTo
 import static org.hamcrest.CoreMatchers.is
-import static org.hamcrest.Matchers.allOf
 import static org.hamcrest.Matchers.containsString
 import static spock.util.matcher.HamcrestSupport.that
 
@@ -81,10 +80,7 @@ class PipelineScriptRunnerSpec extends Specification {
 
         expect:
         def output = runScript(script)
-        that output, allOf(
-                containsString('build.gradle')
-                , containsString('gradlew')
-        )
+        that output, containsString('pipe.gradle')
     }
 
 

@@ -1,1 +1,11 @@
+include 'pipe'
+
 rootProject.name = 'pipeline'
+rootProject.children.each {project ->
+    String fileBaseName = project.name
+    String projectDirName = "subprojects/$fileBaseName"
+    project.projectDir = new File(settingsDir, projectDirName)
+    project.buildFileName = "${fileBaseName}.gradle"
+    assert project.projectDir.isDirectory()
+    assert project.buildFile.isFile()
+}
