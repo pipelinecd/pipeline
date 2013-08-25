@@ -1,7 +1,8 @@
 include 'pipe'
+include 'pipe-listener'
 
 rootProject.name = 'pipeline'
-rootProject.children.each {project ->
+rootProject.children.each { project ->
     String fileBaseName = project.name
     String projectDirName = "subprojects/$fileBaseName"
     project.projectDir = new File(settingsDir, projectDirName)

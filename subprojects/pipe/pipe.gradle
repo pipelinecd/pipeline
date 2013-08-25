@@ -2,14 +2,11 @@ apply plugin: 'groovy'
 apply plugin: 'application'
 apply from: script('cucumber')
 
-displayName = 'Pipeline - pipe'
-
 applicationName = 'pipe'
-description = '''\
-    pipe --the pipeline runner,
-    executes the project pipeline from the project.pipe configuration
-    '''.stripIndent().replaceAll("\n", ' ')
-mainClassName = 'org.pipelinelabs.pipeline.cli.Pipeline'
+description = 'pipe --the pipeline runner, executes the project pipeline from the project.pipe configuration'
+mainClassName = 'org.pipelinelabs.pipeline.pipe.cli.Pipeline'
+
+sourceCompatibility = '1.7'
 
 dependencies {
     compile libraries.groovy

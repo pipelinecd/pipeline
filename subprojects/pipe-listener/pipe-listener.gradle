@@ -1,0 +1,4 @@
+apply plugin: 'application'
+
+applicationName = 'pipe-listener'
+description = 'pipe-listener --the listener for pipeline triggers'
