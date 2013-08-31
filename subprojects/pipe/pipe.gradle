@@ -6,8 +6,6 @@ applicationName = 'pipe'
 description = 'pipe --the pipeline runner, executes the project pipeline from the project.pipe configuration'
 mainClassName = 'org.pipelinelabs.pipeline.pipe.cli.Pipeline'
 
-sourceCompatibility = '1.7'
-
 dependencies {
     compile libraries.groovy
     compile libraries.jcommander

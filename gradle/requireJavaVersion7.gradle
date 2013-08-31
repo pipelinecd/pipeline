@@ -1,0 +1,26 @@
+import static org.gradle.api.JavaVersion.VERSION_1_7
+
+if (!JavaVersion.current().isJava7()) {
+    throw new RequireJava7CompatibleJavaVersion()
+}
+
+subprojects {
+    apply plugin: 'java'
+
+    sourceCompatibility = VERSION_1_7
+    targetCompatibility = VERSION_1_7
+
+    test {
+        testLogging {
+            exceptionFormat = 'full'
+        }
+    }
+}
+
+class RequireJava7CompatibleJavaVersion extends RuntimeException {
+    @Override
+    String getMessage() {
+        final msg = "This project requires Java 7 or higher, you're running version '%s'"
+        return String.format(msg, JavaVersion.current())
+    }
+}
