@@ -1,3 +1,4 @@
+apply from: script('requireJavaVersion7')
 apply from: script('dependencies')
 
 description = 'Pipeline --the Continuous Delivery (CD) tool, which we and all stakeholders of the CD pipeline love to use'
@@ -15,10 +16,10 @@ subprojects {
     version = rootProject.version
 }
 
-private String createProjectGroupId(Project root, Project project) {
+String createProjectGroupId(Project root, Project project) {
     root.group << '.' << project.name.replaceAll('-', '.')
 }
 
-private File script(String name) {
+File script(String name) {
     project.file("gradle/${name}.gradle")
 }
