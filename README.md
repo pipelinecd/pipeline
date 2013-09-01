@@ -17,7 +17,8 @@ Read [Why a new CD tool][1] for the reason and focus points behind this CD tool.
 
 State of the project
 --------------------
-This project is currently in a very early state of development. Being developed in my free-time and every friday at work, the friday being sponsored by my employer [Tricode](http://www.tricode.nl)
+This project is currently in a very early state of development.
+[Tricode](http://www.tricode.nl) Sponsors developer-time and resources
 
 Building Pipeline
 --------------
