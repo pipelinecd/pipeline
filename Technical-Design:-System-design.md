@@ -29,6 +29,8 @@
 
 # Design Roadmap
 
+Namings in this roadmap are work-in-progress, just like the designs
+
 ## v1
 Starting with a single application that does it all in a single process, calling external commands from the `Runner`.
 ```
@@ -53,6 +55,7 @@ Starting with a single application that does it all in a single process, calling
  |  +---------------------------------------------+  |
  +---------------------------------------------------+
 ```
+(now called `pipe` or `pipe-runner`)
 
 ## v2
 Start moving out the `Runner` to its own application, introducing a `Coordinator` to coordinate the runner processes.
@@ -110,6 +113,71 @@ Move out the `Coordinator` to its own application as it proved to work in v2.
 ```
 
 ## v..
-...
+```
+                                         +-----------------------+
+                                         |      pipe-poll        |
+                                         |-----------------------|
+                                         |              CSV      |
+                                         |      SVN+-+    +      |
+                                         |           |    |      |
+                 Gitlab webhook          |           v    v      |
+                         +               |       +--+Providers   |
+                         |               |       |               |
+        GitHub webhook   |               |  +-----------+        |
+                   +     |  +--------------+| pipe-poll |        |
+                   |     |  |            |  +-----------+        |
+                   +--+  |  |            +-----------------------+
+                      |  |  |
+          +-----------|--|--|------------------------------------------+
+          |           |  |  |    pipe-listen                           |
+          |-----------|--|--|------------------------------------------|
+          |           |  |  |                                          |
+          |           v  v  v                                          |
+          |          +-------------+                                   |
+          |          | pipe-listen +-------------+Providers            |
+          |          +--------+----+               +  +  +             |
+          |                   |                +---+  |  +-----+       |
+          |                   |                |      |        v       |
+          |                   |                v      |    Pipe-poller |
+          |                   |             GitHub    |                |
+          |                   |                       v                |
+          |                   |                      Gitlab            |
+          |                   |                                        |
+          +-------------------|----------------------------------------+
+                              |
+                              |                       +-----------------------------------------+
+                              |                       |             pipe-monitor                |
+                              v                       |-----------------------------------------|
+          +----------------------------------+        | +---------------+                       |
+          |    event-queue / message-bus     |<---------+ pipe-monitor  +-----+Publishers       |
+          +----------------------------------+        | +---------------+         +    +        |
+                  ^                    ^              |                           |    v        |
+                  |                    |              |                           v    Graphite |
+                  |                    |              |                       Ganglia           |
+ +----------------|---------+          |              +-----------------------------------------+
+ | pipe-messenger |         |          |
+ |----------------|---------|    +-----|-----------------------------------+
+ |        +-------+------+  |    |     |       pipe-worker                 |
+ |        |pipe-messenger|  |    |-----|-----------------------------------|
+ |        +-----+--------+  |    |     |                                   |
+ |              |           |    |  +--+--------+                          |
+ |              +           |    |  |pipe-worker+-------+scm-providers     |
+ |          Publishers      |    |  +-+---------+            +  +  +       |
+ |          + +   +  +      |    |    |                    +-+  |  +-+     |
+ |       +--+ |   |  +-+    |    |    |                    v    |    v     |
+ |       v    |   |    v    |    |    |                  Git    v    CSV   |
+ |  Campfire  |   |   Email |    |    |                        SVN         |
+ |            |   |         |    |    |                                    |
+ |            v   v         |    +----|------------------------------------+
+ |       Gitlab  GitHub     |         |
+ +--------------------------+         |
+                                   +--|---------------------+
+                                   |  | pipe-runner         |
+                                   |--|---------------------|
+                                   |  |                     |
+                                   |  +>                    |
+                                   |                        |
+                                   +------------------------+
+```
 
 (diagrams simply drawn with http://www.asciiflow.com)
