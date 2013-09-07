@@ -8,3 +8,4 @@ target
 .gradle
 out
 classes
+*.sublime-*
