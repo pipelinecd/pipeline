@@ -1,9 +1,9 @@
 package org.pipelinelabs.pipeline.pipe.cli.dsl;
 
 import groovy.lang.GroovyShell;
+import org.codehaus.groovy.control.CompilerConfiguration;
 import org.pipelinelabs.pipeline.pipe.cli.dsl.script.PipelineScript;
 import org.pipelinelabs.pipeline.pipe.dsl.PipelineDsl;
-import org.codehaus.groovy.control.CompilerConfiguration;
 import org.pipelinelabs.pipeline.pipe.internal.ServiceRegistry;
 
 import java.io.PrintStream;

@@ -49,5 +49,4 @@ class DefaultPipelineDslSpec extends Specification {
         then:
         thrown(MissingMethodException)
     }
-
 }

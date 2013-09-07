@@ -1,9 +1,14 @@
 package org.pipelinelabs.pipeline.listen
 
+import com.yammer.dropwizard.Service
+
 class Main {
-    public static void main(String... args) {
-        println 'lalalala'
-        new PipeListenService().run(args)
-        println 'lalalala2'
+
+    static void main(String... args) {
+        new Main().createService().run(args)
+    }
+
+    Service createService() {
+        new PipeListenService()
     }
 }

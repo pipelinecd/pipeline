@@ -5,11 +5,13 @@ applicationName = 'pipe-listen'
 description = 'pipe-listen --the listener for pipeline triggers'
 mainClassName = 'org.pipelinelabs.pipeline.listen.Main'
 
-
 dependencies {
     compile libraries.dropwizard
     compile libraries.groovy
     testCompile libraries.spock
+
+    // this dropwizard dependency is needed due to http://issues.gradle.org/browse/GRADLE-2647
+//    compile libraries.'jersey-client'
 }
 
 //run {

@@ -1,11 +1,11 @@
 package org.pipelinelabs.pipeline.pipe.dsl.internal;
 
-import org.pipelinelabs.pipeline.pipe.api.Stage;
-import org.pipelinelabs.pipeline.pipe.runner.DefaultStage;
 import org.apache.maven.shared.utils.cli.CommandLineException;
 import org.apache.maven.shared.utils.cli.CommandLineUtils;
 import org.apache.maven.shared.utils.cli.Commandline;
 import org.apache.maven.shared.utils.cli.WriterStreamConsumer;
+import org.pipelinelabs.pipeline.pipe.api.Stage;
+import org.pipelinelabs.pipeline.pipe.runner.DefaultStage;
 
 import java.io.BufferedWriter;
 import java.io.OutputStreamWriter;
