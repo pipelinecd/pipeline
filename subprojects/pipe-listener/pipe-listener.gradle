@@ -1,28 +1,17 @@
-buildscript {
-    repositories {
-        maven { url "http://oss.jfrog.org/repo" }
-        mavenCentral()
-    }
-    dependencies {
-        classpath 'org.ratpack-framework:ratpack-gradle:0.9.0-SNAPSHOT'
-    }
-}
+apply plugin: 'groovy'
+apply plugin: 'application'
 
-repositories {
-    maven { url "http://oss.jfrog.org/repo" }
-    mavenCentral()
-    maven { url "http://repo.springsource.org/repo" } // for springloaded
-}
-apply plugin: "ratpack-groovy"
+applicationName = 'pipe-listen'
+description = 'pipe-listen --the listener for pipeline triggers'
+mainClassName = 'org.pipelinelabs.pipeline.listen.Main'
 
-applicationName = 'pipe-listener'
-description = 'pipe-listener --the listener for pipeline triggers'
 
 dependencies {
-    // SpringLoaded enables runtime hot reloading.
-    // It is not part of the app runtime and is not shipped in the distribution.
-    springloaded "org.springsource.springloaded:springloaded-core:1.1.1"
-
+    compile libraries.dropwizard
     compile libraries.groovy
     testCompile libraries.spock
 }
+
+//run {
+//    args 'server', './src/dist/config/helloworld.yml'
+//}
