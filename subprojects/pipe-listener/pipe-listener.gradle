@@ -1,0 +1,21 @@
+apply plugin: 'groovy'
+apply plugin: 'application'
+
+applicationName = 'pipe-listen'
+description = 'pipe-listen --the listener for pipeline triggers'
+mainClassName = 'org.pipelinelabs.pipeline.listen.Main'
+
+dependencies {
+    compile libraries.dropwizard
+    compile libraries.groovy
+    compile libraries.groovyJson
+    testCompile libraries.spock
+    testCompile libraries.dropwizardTesting
+
+    // this dropwizard dependency is needed due to http://issues.gradle.org/browse/GRADLE-2647
+//    compile libraries.'jersey-client'
+}
+
+//run {
+//    args 'server', './src/dist/config/helloworld.yml'
+//}

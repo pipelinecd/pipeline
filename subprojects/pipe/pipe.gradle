@@ -1,0 +1,16 @@
+apply plugin: 'groovy'
+apply plugin: 'application'
+apply from: script('cucumber')
+
+applicationName = 'pipe'
+description = 'pipe --the pipeline runner, executes the project pipeline from the project.pipe configuration'
+mainClassName = 'org.pipelinelabs.pipeline.pipe.cli.Pipeline'
+
+dependencies {
+    compile libraries.groovy
+    compile libraries.jcommander
+    compile libraries.mavenSharedUtils
+
+    testCompile libraries.spock
+    testCompile libraries.hamcrest
+}
