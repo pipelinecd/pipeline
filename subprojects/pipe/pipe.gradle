@@ -9,7 +9,7 @@ mainClassName = 'org.pipelinelabs.pipeline.pipe.cli.Pipeline'
 dependencies {
     compile libraries.groovy
     compile libraries.jcommander
-    compile libraries.'maven-shared-utils'
+    compile libraries.mavenSharedUtils
 
     testCompile libraries.spock
     testCompile libraries.hamcrest

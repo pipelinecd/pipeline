@@ -1,0 +1,17 @@
+{
+    "commits": [
+        { }
+    ],
+    "pusher": {
+        "email": "lolwut@noway.biz",
+        "name": "Garen Torikian"
+    },
+    "ref": "refs/heads/master",
+    "repository": {
+        "name": "testing",
+        "master_branch": "master",
+        "language": "Ruby",
+        "private": false,
+        "url": "https://github.com/octokitty/testing"
+    }
+}
