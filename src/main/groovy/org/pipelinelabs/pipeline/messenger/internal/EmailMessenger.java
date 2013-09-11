@@ -12,9 +12,11 @@ import org.pipelinelabs.pipeline.event.PipeEvent;
 
 public class EmailMessenger implements SpecializedMessenger {
     private final JavaMailSender sender;
+    private final String from;
 
-    public EmailMessenger(JavaMailSender sender) {
+    public EmailMessenger(JavaMailSender sender, String from) {
         this.sender = sender;
+        this.from = from;
     }
 
     public boolean accepts(MessageContext context) {
@@ -47,7 +49,7 @@ public class EmailMessenger implements SpecializedMessenger {
         MimeMessage msg = sender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(msg);
         try {
-            helper.setFrom(context.getFrom());
+            helper.setFrom(from);
             helper.setTo(context.getTo().toArray(new String[0]));
             helper.setCc(context.getCc().toArray(new String[0]));
             helper.setSubject(subject.toString());

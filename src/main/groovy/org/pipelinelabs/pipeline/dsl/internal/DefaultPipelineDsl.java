@@ -2,23 +2,22 @@ package org.pipelinelabs.pipeline.dsl.internal;
 
 import groovy.lang.Closure;
 import org.pipelinelabs.pipeline.api.Pipeline;
+import org.pipelinelabs.pipeline.dsl.AnnounceDsl;
+import org.pipelinelabs.pipeline.dsl.MessengerDsl;
 import org.pipelinelabs.pipeline.dsl.StageDsl;
 import org.pipelinelabs.pipeline.runner.DefaultPipeline;
+import org.pipelinelabs.pipeline.util.ConfigureUtil;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class DefaultPipelineDsl implements InternalPipelineDsl {
-
     private Set<InternalStageDsl> stages = new LinkedHashSet<>();
 
     @Override
     public StageDsl stage(final String name, final Closure closure) {
         final InternalStageDsl stage = new DefaultStageDsl(name);
-        closure.setDelegate(stage);
-        closure.setResolveStrategy(Closure.DELEGATE_FIRST);
-        closure.call();
-
+        ConfigureUtil.configure(stage, closure);
         stages.add(stage);
         return stage;
     }
@@ -40,5 +39,19 @@ public class DefaultPipelineDsl implements InternalPipelineDsl {
             pipeline.add(stage.export());
         }
         return pipeline;
+    }
+
+    @Override
+    public AnnounceDsl announce(Closure closure) {
+        AnnounceDsl announce = new DefaultAnnounceDsl();
+        ConfigureUtil.configure(announce, closure);
+        return announce;
+    }
+
+    @Override
+    public MessengerDsl messenger(Closure closure) {
+        MessengerDsl messenger = new DefaultMessengerDsl();
+        ConfigureUtil.configure(messenger, closure);
+        return messenger;
     }
 }
