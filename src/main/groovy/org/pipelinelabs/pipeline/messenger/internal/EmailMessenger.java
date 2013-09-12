@@ -42,7 +42,7 @@ public class EmailMessenger implements SpecializedMessenger {
         body.append("Description:   ");
         body.append(event.getDescription());
         body.append(System.getProperty("line.separator"));
-        body.append("Details:       ");
+        body.append("Details:");
         body.append(System.getProperty("line.separator"));
         body.append(event.getDetails());
 
