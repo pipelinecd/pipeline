@@ -9,7 +9,11 @@ public interface PipelineDsl {
 
     void echo(String format, Object... values);
 
+    // MessengerDsl getMessenger();
+
     MessengerDsl messenger(Closure closure);
+
+    // AnnounceDsl getAnnounce();
 
     AnnounceDsl announce(Closure closure);
 }

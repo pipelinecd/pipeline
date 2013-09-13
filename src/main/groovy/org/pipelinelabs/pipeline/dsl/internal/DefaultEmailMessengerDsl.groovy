@@ -8,6 +8,7 @@ import org.springframework.mail.javamail.JavaMailSenderImpl
 class DefaultEmailMessengerDsl implements EmailMessengerDsl {
     String host
     int port
+    boolean tls = false
     String username
     String password
     String from
@@ -18,6 +19,10 @@ class DefaultEmailMessengerDsl implements EmailMessengerDsl {
             port = this.port
             username = this.username
             password = this.password
+            if (tls) {
+                javaMailProperties = new Properties()
+                javaMailProperties['mail.smtp.starttls.enable'] = 'true'
+            }
             it
         }
         return new EmailMessenger(sender, from)

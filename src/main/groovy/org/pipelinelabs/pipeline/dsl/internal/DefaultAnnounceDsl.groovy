@@ -1,17 +1,20 @@
 package org.pipelinelabs.pipeline.dsl.internal
 
 import org.pipelinelabs.pipeline.dsl.AnnounceDsl
+import org.pipelinelabs.pipeline.dsl.EmailDsl
 import org.pipelinelabs.pipeline.dsl.internal.DefaultEmailDsl
 import org.pipelinelabs.pipeline.messenger.MessageContext
+import org.pipelinelabs.pipeline.util.ConfigureUtil
 
 class DefaultAnnounceDsl implements AnnounceDsl {
-    private final List<MessageContext> contexts = []
+    final EmailDsl email = new DefaultEmailDsl()
 
     @Override
     void email(Closure config) {
-        new DefaultEmailDsl().with {
-            ConfigureUtil.configure(dsl, config)
-            contexts << dsl.toContext()
-        }
+        ConfigureUtil.configure(email, config)
+    }
+
+    List<MessageContext> toContexts() {
+        return [email].collect { it.toContext() }
     }
 }
