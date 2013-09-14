@@ -1,9 +1,9 @@
 package org.pipelinelabs.pipeline.messenger.internal;
 
+import org.pipelinelabs.pipeline.messenger.MessageContext;
+
 import java.util.Collections;
 import java.util.List;
-
-import org.pipelinelabs.pipeline.messenger.MessageContext;
 
 public class EmailContext implements MessageContext {
     private final List<String> to;

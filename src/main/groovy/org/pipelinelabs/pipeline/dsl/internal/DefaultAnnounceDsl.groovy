@@ -2,7 +2,6 @@ package org.pipelinelabs.pipeline.dsl.internal
 
 import org.pipelinelabs.pipeline.dsl.AnnounceDsl
 import org.pipelinelabs.pipeline.dsl.EmailDsl
-import org.pipelinelabs.pipeline.dsl.internal.DefaultEmailDsl
 import org.pipelinelabs.pipeline.messenger.MessageContext
 import org.pipelinelabs.pipeline.util.ConfigureUtil
 

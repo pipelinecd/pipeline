@@ -1,14 +1,13 @@
 package org.pipelinelabs.pipeline.messenger.internal;
 
-import javax.mail.MessagingException;
-import javax.mail.internet.MimeMessage;
-
+import org.pipelinelabs.pipeline.event.PipeEvent;
+import org.pipelinelabs.pipeline.messenger.MessageContext;
+import org.pipelinelabs.pipeline.messenger.SpecializedMessenger;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 
-import org.pipelinelabs.pipeline.messenger.SpecializedMessenger;
-import org.pipelinelabs.pipeline.messenger.MessageContext;
-import org.pipelinelabs.pipeline.event.PipeEvent;
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
 
 public class EmailMessenger implements SpecializedMessenger {
     private final JavaMailSender sender;

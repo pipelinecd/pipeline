@@ -11,8 +11,8 @@ import org.pipelinelabs.pipeline.messenger.MessageContext;
 import org.pipelinelabs.pipeline.runner.DefaultPipeline;
 import org.pipelinelabs.pipeline.util.ConfigureUtil;
 
-import java.util.LinkedHashSet;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -55,11 +55,6 @@ public class DefaultPipelineDsl implements InternalPipelineDsl {
         return pipeline;
     }
 
-    // @Override
-    // public AnnounceDsl getAnnounce() {
-    //     return announce;
-    // }
-
     @Override
     public AnnounceDsl announce(Closure closure) {
         ConfigureUtil.configure(announce, closure);
@@ -70,11 +65,6 @@ public class DefaultPipelineDsl implements InternalPipelineDsl {
         }
         return announce;
     }
-
-    // @Override
-    // public MessengerDsl getMessenger() {
-    //     return messenger;
-    // }
 
     @Override
     public MessengerDsl messenger(Closure closure) {
