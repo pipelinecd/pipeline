@@ -6,6 +6,7 @@ import org.pipelinelabs.pipeline.dsl.AnnounceDsl;
 import org.pipelinelabs.pipeline.dsl.MessengerDsl;
 import org.pipelinelabs.pipeline.dsl.StageDsl;
 import org.pipelinelabs.pipeline.event.PipeEvent;
+import org.pipelinelabs.pipeline.exception.PipelineException;
 import org.pipelinelabs.pipeline.messenger.MessageContext;
 import org.pipelinelabs.pipeline.runner.DefaultPipeline;
 import org.pipelinelabs.pipeline.util.ConfigureUtil;
@@ -29,7 +30,7 @@ public class DefaultPipelineDsl implements InternalPipelineDsl {
             events.add(new PipeEvent("ProjectName", "Success", stage.getDescription(), ""));
             stages.add(stage);
             return stage;
-        } catch (Exception e) {
+        } catch (PipelineException e) {
             events.add(new PipeEvent("ProjectName", "Failure", stage.getDescription(), e.getMessage()));
             return stage;
         }

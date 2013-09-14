@@ -9,7 +9,7 @@ import org.pipelinelabs.pipeline.messenger.SpecializedMessenger
 
 class AggregateMessengerSpec extends Specification {
     MessageContext context = Mock()
-    PipeEvent event = Mock()
+    PipeEvent event = new PipeEvent('', '', '', '')
 
     def 'if no messengers, does nothing'() {
         given:

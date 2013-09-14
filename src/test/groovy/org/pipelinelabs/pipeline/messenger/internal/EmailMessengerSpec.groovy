@@ -27,12 +27,11 @@ class EmailMessengerSpec extends Specification {
 
     def 'process generates the correct email'() {
         given:
-        PipeEvent event = [
-            getName: { 'MyProject' },
-            getStatus: { 'Success' },
-            getDescription: { 'Gradle build succeeded in 10 seconds.' },
-            getDetails: { 'a bunch of\nlog data\n' }
-        ] as PipeEvent
+        PipeEvent event = new PipeEvent(
+            'MyProject',
+            'Success',
+            'Gradle build succeeded in 10 seconds.',
+            'a bunch of\nlog data\n')
         def from = '1@2.com'
         def to = ['a@b.com', 'c@d.com']
         def cc = ['e@f.com']

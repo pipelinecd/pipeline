@@ -1,6 +1,7 @@
 package org.pipelinelabs.pipeline.dsl.internal;
 
 import org.pipelinelabs.pipeline.api.Stage;
+import org.pipelinelabs.pipeline.exception.PipelineException;
 import org.pipelinelabs.pipeline.runner.DefaultStage;
 import org.apache.maven.shared.utils.cli.CommandLineException;
 import org.apache.maven.shared.utils.cli.CommandLineUtils;
@@ -71,7 +72,7 @@ public class DefaultStageDsl implements InternalStageDsl {
             final int exitStatus = executeCommand(cl, createStreamingConsumer(out), createStreamingConsumer(err));
             if (0 != exitStatus) {
                 final String msg = "Error occurred during execution of command [%s]";
-                throw new RuntimeException(String.format(msg, command));
+                throw new PipelineException(String.format(msg, command));
             }
         }
 
@@ -81,7 +82,7 @@ public class DefaultStageDsl implements InternalStageDsl {
             try {
                 exitStatus = CommandLineUtils.executeCommandLine(cl, stdOut, stdErr);
             } catch (CommandLineException e) {
-                throw new RuntimeException("Failed to execute command", e);
+                throw new PipelineException("Failed to execute command", e);
             }
             return exitStatus;
         }
