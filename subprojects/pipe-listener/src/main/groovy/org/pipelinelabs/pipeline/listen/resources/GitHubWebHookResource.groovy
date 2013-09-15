@@ -1,7 +1,9 @@
 package org.pipelinelabs.pipeline.listen.resources
 
+import com.google.common.eventbus.EventBus
 import groovy.json.JsonSlurper
 import groovy.util.logging.Slf4j
+import org.pipelinelabs.pipeline.listen.core.GitTriggerEvent
 
 import javax.ws.rs.*
 import javax.ws.rs.core.Response
@@ -15,28 +17,44 @@ import static javax.ws.rs.core.Response.Status.BAD_REQUEST
 @Consumes(APPLICATION_JSON)
 class GitHubWebHookResource {
 
+    private final EventBus bus
+
+    GitHubWebHookResource(EventBus bus) {
+        this.bus = bus
+    }
+
     @POST
     Response trigger(@FormParam('payload') String payload) {
         final slurper = new JsonSlurper()
         def info = slurper.parseText(payload)
         try {
-            assert info.commits
-            assert info.head_commit
-            assert info.pusher
-            assert info.pusher.email
-            assert info.pusher.name
-            assert info.ref
-            assert info.repository
-            assert info.repository.name
-            assert info.repository.master_branch
-            assert info.repository.language
-            assert info.repository.private == true ||
-                    info.repository.private == false
-            assert info.repository.url
+            verifyRequest(info)
         } catch (AssertionError e) {
             log.warn("Received GitHub WebHook payload with unexpected format:\n{}", info)
             return Response.status(BAD_REQUEST.statusCode).build()
         }
-        return Response.noContent().build()
+        return handleRequest(info)
+    }
+
+    private Response handleRequest(request) {
+        def event = new GitTriggerEvent(request.repository.url)
+        bus.post(event)
+        Response.noContent().build()
+    }
+
+    private verifyRequest(request) throws AssertionError {
+        assert request.commits
+        assert request.head_commit
+        assert request.pusher
+        assert request.pusher.email
+        assert request.pusher.name
+        assert request.ref
+        assert request.repository
+        assert request.repository.name
+        assert request.repository.master_branch
+        assert request.repository.language
+        assert request.repository.private == true ||
+                request.repository.private == false
+        assert request.repository.url
     }
 }

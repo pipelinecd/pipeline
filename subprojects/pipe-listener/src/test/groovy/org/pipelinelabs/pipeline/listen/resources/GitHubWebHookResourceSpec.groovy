@@ -1,12 +1,12 @@
 package org.pipelinelabs.pipeline.listen.resources
 
+import com.google.common.eventbus.EventBus
 import com.sun.jersey.api.client.Client
 import com.sun.jersey.api.client.ClientResponse
 import com.sun.jersey.api.client.WebResource
 import com.sun.jersey.api.representation.Form
 import com.yammer.dropwizard.testing.ResourceTest
-import spock.lang.Ignore
-import spock.lang.Shared
+import org.pipelinelabs.pipeline.listen.core.GitTriggerEvent
 import spock.lang.Specification
 import spock.lang.Unroll
 
@@ -17,13 +17,13 @@ import static javax.ws.rs.core.MediaType.APPLICATION_JSON_TYPE
 
 class GitHubWebHookResourceSpec extends Specification {
 
-    @Shared TestResource resource = new TestResource()
+    def eventBus = Mock(EventBus)
+    TestResource resource = new TestResource(eventBus)
 
-    @Ignore('Must implement event queue')
     def 'Correct payload results in event on queue'() {
         given:
         def form = new Form()
-        form.add('payload', jsonFixture("providers/github/samplePayload.json"))
+        form.add('payload', jsonFixture("github/samplePayload.json"))
 
         when:
         def response = requestBuilder()
@@ -32,14 +32,17 @@ class GitHubWebHookResourceSpec extends Specification {
                 .post(ClientResponse, form)
 
         then:
-        !response
+        1 * eventBus.post(_ as GitTriggerEvent)
+        response.type == APPLICATION_JSON_TYPE
+        response.clientResponseStatus == NO_CONTENT
+        response.length == -1
     }
 
     @Unroll
     def "POST with '#type' payload results in 204 NO_CONTENT"() {
         given:
         def form = new Form()
-        form.add('payload', jsonFixture("providers/github/${fixture}"))
+        form.add('payload', jsonFixture("github/${fixture}"))
 
         when:
         def response = requestBuilder()
@@ -62,7 +65,7 @@ class GitHubWebHookResourceSpec extends Specification {
     def "POST missing '#missing' in payload results in 400 BAD_REQUEST"() {
         given:
         def form = new Form()
-        form.add('payload', jsonFixture("providers/github/${fixture}"))
+        form.add('payload', jsonFixture("github/${fixture}"))
 
         when:
         def response = requestBuilder()
@@ -87,11 +90,11 @@ class GitHubWebHookResourceSpec extends Specification {
         'repository.url'           | 'minimalPayloadMissingRepositoryUrl.json'
     }
 
-    def setupSpec() {
+    def setup() {
         resource.setUpJersey()
     }
 
-    def cleanupSpec() {
+    def cleanup() {
         resource.tearDownJersey()
     }
 
@@ -101,9 +104,15 @@ class GitHubWebHookResourceSpec extends Specification {
 
     private class TestResource extends ResourceTest {
 
+        private EventBus bus
+
+        TestResource(EventBus bus) {
+            this.bus = bus
+        }
+
         @Override
         protected void setUpResources() throws Exception {
-            addResource(new GitHubWebHookResource())
+            addResource(new GitHubWebHookResource(bus))
         }
 
         @Override
