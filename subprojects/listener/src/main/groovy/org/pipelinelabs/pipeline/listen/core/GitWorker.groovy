@@ -29,6 +29,6 @@ class GitWorker implements Managed {
         def dir = Files.createTempDirectory("pipeline/")
         List envProps = null
         "git clone ${event.url}".execute(envProps, dir.toFile())
-        // TODO: Call pipe-runner
+        "pipe-runner run project.pipe".execute(envProps, dir.toFile())
     }
 }
