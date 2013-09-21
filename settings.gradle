@@ -1,5 +1,5 @@
-include 'pipe'
-include 'pipe-listener'
+include 'runner'
+include 'listener'
 
 rootProject.name = 'pipeline'
 rootProject.children.each { project ->

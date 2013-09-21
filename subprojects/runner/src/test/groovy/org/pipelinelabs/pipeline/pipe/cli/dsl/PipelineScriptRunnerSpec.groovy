@@ -80,7 +80,7 @@ class PipelineScriptRunnerSpec extends Specification {
 
         expect:
         def output = runScript(script)
-        that output, containsString('pipe.gradle')
+        that output, containsString('runner.gradle')
     }
 
 
