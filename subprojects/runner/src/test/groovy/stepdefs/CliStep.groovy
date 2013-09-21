@@ -2,7 +2,7 @@ package stepdefs
 
 import cucumber.api.groovy.EN
 import cucumber.api.groovy.Hooks
-import org.pipelinelabs.pipeline.pipe.cli.Main
+import org.pipelinelabs.pipeline.runner.cli.Main
 
 this.metaClass.mixin Hooks
 this.metaClass.mixin EN
@@ -20,14 +20,14 @@ When(~'^I provide (.*) as parameter$') { param ->
     }
     def orgOut = System.out
     System.out = output
-    final exitCode = cli.run('pipe', param)
+    final exitCode = cli.run('pipe-runner', param)
     System.out = orgOut
     (exitCode == 0)
 }
 
 Then(~'^I expect to see the application help$') {->
     def help = '''
-Usage: pipe [options] [command] [command options]
+Usage: pipe-runner [options] [command] [command options]
   Options:
     --help, -h
 
