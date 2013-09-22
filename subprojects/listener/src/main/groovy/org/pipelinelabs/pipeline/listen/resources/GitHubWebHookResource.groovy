@@ -8,13 +8,14 @@ import org.pipelinelabs.pipeline.listen.core.GitTriggerEvent
 import javax.ws.rs.*
 import javax.ws.rs.core.Response
 
+import static javax.ws.rs.core.MediaType.APPLICATION_FORM_URLENCODED
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON
 import static javax.ws.rs.core.Response.Status.BAD_REQUEST
 
 @Slf4j
 @Path("/providers/github")
 @Produces(APPLICATION_JSON)
-@Consumes(APPLICATION_JSON)
+@Consumes(APPLICATION_FORM_URLENCODED)
 class GitHubWebHookResource {
 
     private final EventBus bus

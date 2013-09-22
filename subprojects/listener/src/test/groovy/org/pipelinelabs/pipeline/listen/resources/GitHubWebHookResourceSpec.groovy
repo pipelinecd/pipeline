@@ -13,6 +13,7 @@ import spock.lang.Unroll
 import static com.sun.jersey.api.client.ClientResponse.Status.BAD_REQUEST
 import static com.sun.jersey.api.client.ClientResponse.Status.NO_CONTENT
 import static com.yammer.dropwizard.testing.JsonHelpers.jsonFixture
+import static javax.ws.rs.core.MediaType.APPLICATION_FORM_URLENCODED_TYPE
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON_TYPE
 
 class GitHubWebHookResourceSpec extends Specification {
@@ -27,7 +28,7 @@ class GitHubWebHookResourceSpec extends Specification {
 
         when:
         def response = requestBuilder()
-                .type(APPLICATION_JSON_TYPE)
+                .type(APPLICATION_FORM_URLENCODED_TYPE)
                 .accept(APPLICATION_JSON_TYPE)
                 .post(ClientResponse, form)
 
@@ -46,7 +47,7 @@ class GitHubWebHookResourceSpec extends Specification {
 
         when:
         def response = requestBuilder()
-                .type(APPLICATION_JSON_TYPE)
+                .type(APPLICATION_FORM_URLENCODED_TYPE)
                 .accept(APPLICATION_JSON_TYPE)
                 .post(ClientResponse, form)
 
@@ -69,7 +70,7 @@ class GitHubWebHookResourceSpec extends Specification {
 
         when:
         def response = requestBuilder()
-                .type(APPLICATION_JSON_TYPE)
+                .type(APPLICATION_FORM_URLENCODED_TYPE)
                 .accept(APPLICATION_JSON_TYPE)
                 .post(ClientResponse, form)
 
