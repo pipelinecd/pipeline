@@ -1,5 +1,3 @@
-_THIS IS WORK-IN-PROGRESS, we're working towards having Pipeline function as described here_
-
 Using Pipeline with a Central Repository
 ===============
 _Currently only git-based repositories are supported_  
@@ -51,21 +49,13 @@ Installing Pipeline for this simple set-up is done as follows:
 1. Download the Pipeline installation package
 2. Unpack the installation package to a location of choice
 3. Add `{unpack-location}/bin/` to your environment `PATH` variable
-4. Symlink `{unpack-location}/etc/init.d/pipeline` to `/etc/init.d/pipeline`  
-    ```
-    ln -s {unpack-location}/etc/init.d/pipeline /etc/init.d/pipeline
-    ```
-5. Add Pipeline to your default init runlevel to auto-start Pipeline on server startup:  
-    In Ubuntu:
-    ```
-    sudo update-rc.d /etc/init.d/pipeline defaults
-    ```
-6. Test if you can access Pipeline, by opening your browser to url:  
-    [http://{ip}:{port}/status](http://{ip}:{port}/status)
-7. Register the Pipeline post-hook with the central code repository:
+4. Start pipeline by executing the command `pipe-listen server`, the log output will tell that the server is running on port 8080
+5. Register the Pipeline post-hook with the central code repository:
   - For github this means, configure the Pipeline post hook url as `Service Hooks > Web Hook URLS`:  
-        [http://{ip}:{port}/hooks/post](http://{ip}:{port}/hooks/post)
-8. That's it! On your next push to the central code repository, your pipeline should be triggered
+        [http://{ip}:8080/providers/github](http://{ip}:8080/providers/github)
+6. That's it! On your next push to the central code repository, your pipeline should be triggered
+
+Now, add a pipeline configuration to your project!
 
 Configuration
 =============
