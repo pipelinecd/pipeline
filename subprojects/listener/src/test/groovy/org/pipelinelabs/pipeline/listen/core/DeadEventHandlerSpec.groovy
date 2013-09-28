@@ -9,11 +9,9 @@ import spock.lang.Specification
 
 class DeadEventHandlerSpec extends Specification {
     private EventBus bus = Mock(EventBus)
+    private DeadEventHandler worker = new DeadEventHandler(bus)
 
     def 'Start registers itself to the event bus'() {
-        given:
-        def worker = new DeadEventHandler(bus)
-
         when:
         worker.start()
 
@@ -22,9 +20,6 @@ class DeadEventHandlerSpec extends Specification {
     }
 
     def 'Stop unregisters itself from the event bus'() {
-        given:
-        def worker = new DeadEventHandler(bus)
-
         when:
         worker.stop()
 
@@ -32,7 +27,7 @@ class DeadEventHandlerSpec extends Specification {
         1 * bus.unregister(worker)
     }
 
-    def 'Work handles DeadEvent and is annotated with @Subscribe'() {
+    def 'work() is the event handler of DeadEvent objects'() {
         def method = DeadEventHandler.getMethod("work", DeadEvent)
 
         expect:

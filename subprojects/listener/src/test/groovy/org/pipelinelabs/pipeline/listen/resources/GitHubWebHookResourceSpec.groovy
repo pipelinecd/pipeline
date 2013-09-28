@@ -7,6 +7,7 @@ import com.sun.jersey.api.client.WebResource
 import com.sun.jersey.api.representation.Form
 import com.yammer.dropwizard.testing.ResourceTest
 import org.pipelinelabs.pipeline.listen.core.GitTriggerEvent
+import spock.lang.Ignore
 import spock.lang.Specification
 import spock.lang.Unroll
 
@@ -21,7 +22,28 @@ class GitHubWebHookResourceSpec extends Specification {
     def eventBus = Mock(EventBus)
     TestResource resource = new TestResource(eventBus)
 
-    def 'Correct payload results in event on queue'() {
+    @Ignore
+    def 'Valid payload results in git event with github ssh url on queue'() {
+        given:
+        def form = new Form()
+        form.add('payload', jsonFixture("github/samplePayload.json"))
+
+        when:
+        def response = requestBuilder()
+                .type(APPLICATION_FORM_URLENCODED_TYPE)
+                .accept(APPLICATION_JSON_TYPE)
+                .post(ClientResponse, form)
+
+        then:
+        1 * eventBus.post(_ as GitTriggerEvent) >> { event ->
+            assert event.url == 'git@github.com:/octokitty/testing.git'
+        }
+        response.type == APPLICATION_JSON_TYPE
+        response.clientResponseStatus == NO_CONTENT
+        response.length == -1
+    }
+
+    def 'Valid payload results in git event on queue'() {
         given:
         def form = new Form()
         form.add('payload', jsonFixture("github/samplePayload.json"))

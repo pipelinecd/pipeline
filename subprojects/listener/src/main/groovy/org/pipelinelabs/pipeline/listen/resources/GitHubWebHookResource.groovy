@@ -11,6 +11,7 @@ import javax.ws.rs.core.Response
 import static javax.ws.rs.core.MediaType.APPLICATION_FORM_URLENCODED
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON
 import static javax.ws.rs.core.Response.Status.BAD_REQUEST
+import static org.pipelinelabs.pipeline.listen.core.github.GithubUtils.toGithubSshUrl
 
 @Slf4j
 @Path("/providers/github")
@@ -26,19 +27,19 @@ class GitHubWebHookResource {
 
     @POST
     Response trigger(@FormParam('payload') String payload) {
-        final slurper = new JsonSlurper()
+        def slurper = new JsonSlurper()
         def info = slurper.parseText(payload)
         try {
             verifyRequest(info)
         } catch (AssertionError e) {
-            log.warn("Received GitHub WebHook payload with unexpected format:\n{}", info)
+            log.warn("Received GitHub WebHook payload with unexpected format:\n{}", e.message)
             return Response.status(BAD_REQUEST.statusCode).build()
         }
         return handleRequest(info)
     }
 
     private Response handleRequest(request) {
-        def event = new GitTriggerEvent(request.repository.url)
+        def event = new GitTriggerEvent(toGithubSshUrl(request.repository.url))
         bus.post(event)
         Response.noContent().build()
     }
@@ -57,5 +58,14 @@ class GitHubWebHookResource {
         assert request.repository.private == true ||
                 request.repository.private == false
         assert request.repository.url
+        assertValidUri(request.repository.url)
+    }
+
+    private assertValidUri(String uri) throws AssertionError {
+        try {
+            new URI(uri)
+        } catch (URISyntaxException e) {
+            throw new AssertionError(e.message, e)
+        }
     }
 }

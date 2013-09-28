@@ -11,11 +11,8 @@ dependencies {
     compile libraries.groovyJson
     testCompile libraries.spock
     testCompile libraries.dropwizardTesting
-
-    // this dropwizard dependency is needed due to http://issues.gradle.org/browse/GRADLE-2647
-//    compile libraries.'jersey-client'
 }
 
-//run {
-//    args 'server', './src/dist/config/helloworld.yml'
-//}
+run {
+    args 'server'
+}

@@ -3,7 +3,7 @@ apply plugin: 'application'
 apply from: script('cucumber')
 
 applicationName = 'pipe-runner'
-description = 'pipe-runner --the pipeline runner, executes the project pipeline from the project.pipe configuration'
+description = 'pipe-runner --the pipeline runner, executes the project pipeline a pipeline configuration file'
 mainClassName = 'org.pipelinelabs.pipeline.runner.cli.Pipeline'
 
 dependencies {

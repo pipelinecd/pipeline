@@ -7,11 +7,9 @@ import spock.lang.Specification
 
 class GitWorkerSpec extends Specification {
     private EventBus bus = Mock(EventBus)
+    private GitWorker worker = new GitWorker(bus)
 
     def 'Start registers itself to the event bus'() {
-        given:
-        def worker = new GitWorker(bus)
-
         when:
         worker.start()
 
@@ -20,9 +18,6 @@ class GitWorkerSpec extends Specification {
     }
 
     def 'Stop unregisters itself from the event bus'() {
-        given:
-        def worker = new GitWorker(bus)
-
         when:
         worker.stop()
 
@@ -30,16 +25,15 @@ class GitWorkerSpec extends Specification {
         1 * bus.unregister(worker)
     }
 
-    def 'Work handles GitTriggerEvent and is annotated with @Subscribe'() {
+    def 'work() is the event handler of GitTriggerEvent objects'() {
         def method = GitWorker.getMethod("work", GitTriggerEvent)
 
         expect:
         method.isAnnotationPresent(Subscribe)
     }
 
-    @Ignore('Needs to be testable somehow')
+    @Ignore
     def 'Work clones the git repo and starts pipe-runner'() {
-        def worker = new GitWorker(bus)
         final event = Mock(GitTriggerEvent)
 
         expect:

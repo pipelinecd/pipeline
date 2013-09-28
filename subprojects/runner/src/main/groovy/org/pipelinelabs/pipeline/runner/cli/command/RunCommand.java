@@ -15,13 +15,13 @@ import java.util.List;
 
 @Parameters(
         commandNames = {RunCommand.NAME}
-        , commandDescription = "Run, baby run!"
+        , commandDescription = "Run pipeline"
 )
 public class RunCommand implements Command {
     public static final String NAME = "run";
 
     @Parameter(
-            description = ""
+            description = "Pipeline configuration to run"
             , listConverter = FileConverter.class
             , required = true
             , arity = 1
