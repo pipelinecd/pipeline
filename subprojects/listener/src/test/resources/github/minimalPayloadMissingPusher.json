@@ -1,0 +1,16 @@
+{
+    "commits": [
+        { }
+    ],
+    "head_commit": {
+        "url": "https://github.com/octokitty/testing/commit/1481a2de7b2a7d02428ad93446ab166be7793fbb"
+    },
+    "ref": "refs/heads/master",
+    "repository": {
+        "name": "testing",
+        "master_branch": "master",
+        "language": "Ruby",
+        "private": false,
+        "url": "https://github.com/octokitty/testing"
+    }
+}

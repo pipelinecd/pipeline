@@ -1,37 +1,46 @@
-apply plugin: 'groovy'
-apply plugin: 'application'
-apply plugin: 'idea'
-apply from: 'gradle/cucumber.gradle'
+apply from: script('requireJavaVersion7')
+apply from: script('dependencies')
+apply plugin: 'distribution'
 
-repositories {
-    mavenCentral()
-}
+description = 'Pipeline --the Continuous Delivery (CD) tool, which we and all stakeholders of the CD pipeline love to use'
+group = 'org.pipelinelabs.pipeline'
+version = '0.1.0'
 
-ext {
-    libs = [
-            'maven-shared-utils': 'org.apache.maven.shared:maven-shared-utils:0.3',
-            groovy: 'org.codehaus.groovy:groovy:2.1.6:indy',
-            hamcrest: 'org.hamcrest:hamcrest-library:1.3',
-            jcommander: 'com.beust:jcommander:1.30',
-            spock: 'org.spockframework:spock-core:0.7-groovy-2.0',
-            mail: 'javax.mail:mail:1.4.7',
-            'spring-context-support':'org.springframework:spring-context-support:3.2.4.RELEASE'
-    ]
-}
-
-dependencies {
-    compile libs.groovy
-    compile libs.jcommander
-    compile libs.'maven-shared-utils'
-    compile libs.'spring-context-support'
-    compile libs.mail
-
-    testCompile(libs.spock) {
-        exclude group: 'org.codehaus.groovy', module: 'groovy-all'
-        exclude group: 'junit', module: 'junit-dep'
+allprojects {
+    repositories {
+        mavenCentral()
     }
-    testCompile libs.hamcrest
 }
 
-applicationName = 'pipe'
-mainClassName = 'org.pipelinelabs.pipeline.cli.Pipeline'
+subprojects {
+    group = createProjectGroupId(rootProject, it)
+    version = rootProject.version
+}
+
+distributions {
+    main {
+        contents {
+            into('bin') {
+                from { project(':listener').startScripts.outputs.files }
+                from { project(':runner').startScripts.outputs.files }
+                fileMode = 0755
+            }
+            into('lib') {
+                def libs = []
+                libs << project(':listener').configurations.runtime - project(':runner').configurations.runtime
+                libs << project(':runner').configurations.runtime
+                from libs
+                from project(':listener').jar
+                from project(':runner').jar
+            }
+        }
+    }
+}
+
+String createProjectGroupId(Project root, Project project) {
+    root.group << '.' << project.name.replaceAll('-', '.')
+}
+
+File script(String name) {
+    project.file("gradle/${name}.gradle")
+}
