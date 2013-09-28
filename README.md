@@ -92,12 +92,10 @@ Special thanks to
 
 
 [0]: http://github.pipelinelabs.org/blob/master/LICENSE
-[1]: http://docs.pipelinelabs.org/Vision:-Why-a-new-tool-for-Continuous-Delivery
-[2]: http://docs.pipelinelabs.org/Technical-Design:-DSL-Design-Ideas
 [3]: http://forum.pipelinelabs.org
 [4]: http://www.youtube.com/watch?v=shF_v5shzjU
 [5]: http://www.youtube.com/watch?v=-StobwMgRNE
 [6]: https://github.com/pipelinelabs/pipeline/releases
 [7]: https://help.github.com/articles/post-receive-hooks
-[8]: https://github.com/pipelinelabs/pipeline/wiki/User-Guide%3A-Set-up-with-Central-Repository
-[9]: https://github.com/pipelinelabs/pipeline/wiki/User-Guide%3A-Project-Pipeline-Configuration
+[8]: http://docs.pipelinelabs.org/User-Guide%3A-Set-up-with-Central-Repository
+[9]: http://docs.pipelinelabs.org/User-Guide%3A-Project-Pipeline-Configuration
