@@ -108,5 +108,4 @@ project:
 
 By contributing your code,
 
-You agree to license your contribution under the terms of the MIT License
-https://github.com/pipelinelabs/pipeline/blob/master/LICENSE
+You agree to license your contribution under the terms of the [MIT License](https://github.com/pipelinelabs/pipeline/blob/master/LICENSE)
