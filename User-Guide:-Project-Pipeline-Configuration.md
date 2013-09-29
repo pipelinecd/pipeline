@@ -18,6 +18,17 @@ When a stage command exits with an error status, the whole pipeline is stopped a
 As there's no GUI of any kind to Pipeline, the way to get notified of failed or succeeding pipeline runs is (currently) by email. To get notifications, add the following configuration to the pipeline:
 
 ```groovy
+messenger {
+    email {
+        host = 'smtp.gmail.com'
+        port = 587
+        tls  = true
+        username = 'user@site.com'
+        password = 'password'
+        from = 'from@site.org'
+    }
+}
+
 announce {
     email {
         to 'EMAIL'
@@ -26,7 +37,11 @@ announce {
 ```
 Replace `EMAIL` with the emailaddress to sent notifications to.
 
-To be able to sent the email, you need to configure an email messenger. The example pipeline below shows this, and should speak for itself.
+> **WARNING** 
+> Don't store your email server password in a __public__ git repository. Even in a __private__ repository be warned that this password will stay in your history, so for collaborators or when the repository eventually gets public, can recover your password from the git history. See Github' [Remove sensitive data](https://help.github.com/articles/remove-sensitive-data) article for details.
+>
+> The email functionality is **NOT** required, if you don't add the messenger and announce sections to your pipeline configuration, the pipeline will work just fine. Without it, the only way to see if the pipeline succeeded/failed is in the pipe-listen log.
+__(in the future there will be a secure solution for this)__
 
 Example pipeline
 ================
