@@ -1,15 +1,20 @@
 Pipeline
 ========
 
-A Continuous Delivery (CD) tool, which we and all stakeholders of the CD pipeline love to use. Licensed under the [MIT License][0]
-
-> free, open-source  
-> Continuous Delivery tool  
-> that's simple to use for hobbyists,  
-> flexible enough for startups  
-> and powerful enough for the enterprise
+[Pipeline](http://pipelinelabs.org) is a Continuous Delivery (CD) tool, which we and all stakeholders of the CD pipeline love to use. Licensed under the [MIT License][0]
 
 Find the latest release on the [releases][6] page. And follow the [installation][8] and [configuration][9] documentation to get started.
+
+- [Website](http://pipelinelabs.org)
+- [Source](http://github.pipelinelabs.org)
+- [Documentation](http://docs.pipelinelabs.org)
+- [User/Dev Forum][3]
+- [Issue Tracker](http://issues.pipelinelabs.org)
+- Ignite talk "Continuous Integration and Delivery tools, do we really like using them?"
+    - [Preparation run recording][4]
+    - [@DevOpsDays Amsterdam, June 14th 2013 recording][5]
+
+Follow us on Twitter [@pipelinelabs](https://twitter.com/pipelinelabs)
 
 State of the project
 --------------------
@@ -22,24 +27,6 @@ Features
 - Version controlled pipeline configuration
 - Support for public and private git repositories
     - hosted on [Github](http://github.com), triggered via [webhook][7]
-
-Resources
----------
-- Pipeline Homepage -- http://pipelinelabs.org
-- GitHub Organization -- http://github.pipelinelabs.org
-- Documentation -- http://docs.pipelinelabs.org
-- User/Dev Forum -- [http://forum.pipelinelabs.org][3]
-- Issue Tracker -- http://issues.pipelinelabs.org
-
-Follow us on Twitter [@pipelinelabs](https://twitter.com/pipelinelabs)
-
-If you have any ideas, comments or questions, please direct them to the [user/dev forum][3].
-All feedback is appreciated!
-
-### Presentations
-- Ignite talk "Continuous Integration and Delivery tools, do we really like using them?"
-    - [Preparation run recording][4]
-    - [@DevOpsDays Amsterdam, June 14th 2013 recording][5]
 
 Roadmap
 -------
@@ -62,27 +49,18 @@ Building Pipeline
 --------------
 The only prerequisite is that you have JDK 7 or higher installed.
 
-After cloning the project, type `./gradlew clean build` (Windows: `gradlew clean build`). All build dependencies,
+After cloning the project, type `./gradlew build` (Windows: `gradlew build`). All build dependencies,
 including [Gradle](http://www.gradle.org) itself, will be downloaded automatically (unless already present).
 
-Contributing
-------------
-Feel free to contribute! Follow these steps:
+Contributing to this project
+----------------------------
 
-First time only:
+Anyone and everyone is welcome to contribute. Please take a moment to
+review the [guidelines for contributing](CONTRIBUTING.md).
 
-- Fork the repo (`upstream`) to your GitHub account (`origin`).
-- Clone `origin` as your `local` repo
-
-Every other time:
-
-- Update both `origin` and `local` repos from `upstream`
-- Create new branch for a feature or bug fix
-- Commit often :)
-- Once when work is done, push local changes to your `origin`
-- Send us a pull request (PR)
-
-We will pickup up from there :)
+- [Bug reports](CONTRIBUTING.md#bugs)
+- [Feature requests](CONTRIBUTING.md#features)
+- [Pull requests](CONTRIBUTING.md#pull-requests)
 
 Special thanks to
 -----------------
