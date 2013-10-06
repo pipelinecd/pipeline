@@ -1,0 +1,11 @@
+{
+    "commits": [
+        { }
+    ],
+    "ref": "refs/heads/master",
+    "repository": {
+        "homepage": "https://git.domain.com/group/project",
+        "name": "project"
+    },
+    "user_name": "Garen Torikian"
+}

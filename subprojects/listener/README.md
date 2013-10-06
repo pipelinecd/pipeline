@@ -15,3 +15,7 @@ Pipeline Listener (`pipe-listener`) provides a HTTP REST API that providers like
 ### POST /providers/github
 
 GitHub provider, supports the GitHub WebHook format as explained on [Post-Receive Hooks](https://help.github.com/articles/post-receive-hooks)
+
+### POST /providers/gitlab
+
+GitLab provider, supports the GitLab WebHook format as explained on [Web hooks] help page of your GitLab installation
