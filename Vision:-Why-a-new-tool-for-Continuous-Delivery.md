@@ -53,4 +53,4 @@ In summary the focus points of this CD server:
   * Developers a way to focus on solving broken builds
   * Pipeline maintainers a way to simply create and maintain the pipelines
   * Manual QA a way to pull down the version that's ready to manual test
-  * *Manager a way to release a version that came correctly through the pipeline
+  * Manager a way to release a version that came correctly through the pipeline
