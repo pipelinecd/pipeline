@@ -35,6 +35,7 @@ class GitHubWebHookResourceSpec extends Specification {
         then:
         1 * eventBus.post(_ as GitTriggerEvent) >> { GitTriggerEvent event ->
             assert event.url == 'git@github.com:/octokitty/testing.git'
+            assert event.branch == 'master'
         }
         response.type == APPLICATION_JSON_TYPE
         response.clientResponseStatus == NO_CONTENT

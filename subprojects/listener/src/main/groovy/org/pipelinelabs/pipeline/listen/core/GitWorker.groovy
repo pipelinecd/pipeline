@@ -38,8 +38,11 @@ class GitWorker implements Managed {
         def workDir = Paths.get(dir.toString(), workDirName)
         List envProps = null
 
-        def gitCommand = "git clone ${event.url} ${workDirName}"
-        executeCommand(gitCommand, dir, envProps)
+        def gitCloneCommand = "git clone ${event.url} ${workDirName}"
+        executeCommand(gitCloneCommand, dir, envProps)
+
+        def gitCheckoutCommand = "git checkout --force ${event.branch}"
+        executeCommand(gitCheckoutCommand, workDir, envProps)
 
         def runnerCommand = "pipe-runner run project.pipe"
         executeCommand(runnerCommand, workDir, envProps)
@@ -49,6 +52,6 @@ class GitWorker implements Managed {
         log.info('Executing command [{}] in pipeline directory [{}]', command, workDir)
         def runnerProc = command.execute(envProps, workDir.toFile())
         def runnerExitStatus = runnerProc.waitFor()
-        log.info('Command [{}] exitted with status [{}]', command, runnerExitStatus)
+        log.info('Command [{}] exited with status [{}]', command, runnerExitStatus)
     }
 }

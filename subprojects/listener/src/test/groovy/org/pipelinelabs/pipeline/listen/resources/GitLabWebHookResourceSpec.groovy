@@ -19,9 +19,10 @@ class GitLabWebHookResourceSpec extends Specification {
     def eventBus = Mock(EventBus)
     TestResource resource = new TestResource(eventBus)
 
-    def 'Valid payload results in git event with gitlab ssh url on queue'() {
+    @Unroll
+    def "Valid payload '#payloadFixture' results in git event with gitlab ssh url (#url) and branch (#branch) on queue"() {
         given:
-        def payload = jsonFixture("gitlab/samplePayload.json")
+        def payload = jsonFixture("gitlab/${payloadFixture}")
 
         when:
         def response = requestBuilder()
@@ -31,11 +32,17 @@ class GitLabWebHookResourceSpec extends Specification {
 
         then:
         1 * eventBus.post(_ as GitTriggerEvent) >> { GitTriggerEvent event ->
-            assert event.url == 'git@git.domain.com:group/project.git'
+            assert event.url == url
+            assert event.branch == branch
         }
         response.type == APPLICATION_JSON_TYPE
         response.clientResponseStatus == NO_CONTENT
         response.length == -1
+
+        where:
+        payloadFixture                        || url | branch
+        'samplePayload.json'           || 'git@git.domain.com:group/project.git' | 'master'
+        'samplePayloadFromBranch.json' || 'git@git.domain.com:group/project.git' | 'somebranch'
     }
 
     def 'Valid payload results in git event on queue'() {

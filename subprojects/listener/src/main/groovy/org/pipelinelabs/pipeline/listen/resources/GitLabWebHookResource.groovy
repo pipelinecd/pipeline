@@ -13,6 +13,7 @@ import javax.ws.rs.core.Response
 
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON
 import static javax.ws.rs.core.Response.Status.BAD_REQUEST
+import static org.pipelinelabs.pipeline.listen.core.git.GitUtils.toBranchName
 
 @Slf4j
 @Path("/providers/gitlab")
@@ -40,9 +41,15 @@ class GitLabWebHookResource {
     }
 
     private Response handleRequest(request) {
-        def event = new GitTriggerEvent(request.repository.url)
+        def event = createGitTriggerEvent(request)
         bus.post(event)
         Response.noContent().build()
+    }
+
+    private createGitTriggerEvent(request) {
+        def url = request.repository.url
+        def branch = toBranchName(request.ref)
+        new GitTriggerEvent(url, branch)
     }
 
     private verifyRequest(request) throws AssertionError {
