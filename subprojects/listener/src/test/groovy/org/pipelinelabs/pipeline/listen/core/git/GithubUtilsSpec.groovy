@@ -1,4 +1,4 @@
-package org.pipelinelabs.pipeline.listen.core.github
+package org.pipelinelabs.pipeline.listen.core.git
 
 import spock.lang.Specification
 import spock.lang.Unroll
