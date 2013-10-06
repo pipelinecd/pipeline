@@ -9,6 +9,7 @@ import org.pipelinelabs.pipeline.listen.core.GitWorker
 import org.pipelinelabs.pipeline.listen.core.healthcheck.GitCommandHealthCheck
 import org.pipelinelabs.pipeline.listen.core.healthcheck.PipeRunnerCommandHealthCheck
 import org.pipelinelabs.pipeline.listen.resources.GitHubWebHookResource
+import org.pipelinelabs.pipeline.listen.resources.GitLabWebHookResource
 
 import static java.util.concurrent.TimeUnit.SECONDS
 
@@ -24,6 +25,7 @@ class PipeListenService extends Service<PipeListenConfiguration> {
         env.manage(new DeadEventHandler(bus))
         env.manage(new GitWorker(bus));
         env.addResource(new GitHubWebHookResource(bus))
+        env.addResource(new GitLabWebHookResource(bus))
         env.addHealthCheck(new GitCommandHealthCheck())
         env.addHealthCheck(new PipeRunnerCommandHealthCheck())
     }
