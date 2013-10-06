@@ -6,6 +6,7 @@ Receives and queues service hook notifications, like `push` events from GitHub.
 This listener supports the following provider:
 
 - github.com
+- gitlab.org/com
 
 Usage
 -----
