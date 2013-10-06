@@ -1,0 +1,46 @@
+{
+    "after": "caef9001d8a6e86e798a15d5ce4b87629e959a06",
+    "before": "a1a0d677c3414dce9d0b64a6573161e295ec3842",
+    "commits": [
+        {
+            "author": {
+                "email": "lolwut@noway.biz",
+                "name": "Garen Torikian"
+            },
+            "id": "caef9001d8a6e86e798a15d5ce4b87629e959a06",
+            "message": "Test",
+            "timestamp": "2013-10-04T11:33:01+02:00",
+            "url": "https://git.domain.com/group/project/commit/caef9001d8a6e86e798a15d5ce4b87629e959a06"
+        },
+        {
+            "author": {
+                "email": "lolwut@noway.biz",
+                "name": "Garen Torikian"
+            },
+            "id": "93bed336334536f375041bbb84ed20415f902f30",
+            "message": "Test 2",
+            "timestamp": "2013-10-04T11:26:42+02:00",
+            "url": "https://git.domain.com/group/project/commit/93bed336334536f375041bbb84ed20415f902f30"
+        },
+        {
+            "author": {
+                "email": "lolwut@noway.biz",
+                "name": "Garen Torikian"
+            },
+            "id": "a1a0d677c3414dce9d0b64a6573161e295ec3842",
+            "message": "Test 3",
+            "timestamp": "2013-10-04T11:08:45+02:00",
+            "url": "https://git.domain.com/group/project/commit/a1a0d677c3414dce9d0b64a6573161e295ec3842"
+        }
+    ],
+    "ref": "refs/heads/master",
+    "repository": {
+        "description": "",
+        "homepage": "https://git.domain.com/group/project",
+        "name": "project",
+        "url": "git@git.domain.com:group/project.git"
+    },
+    "total_commits_count": 3,
+    "user_id": 5,
+    "user_name": "Garen Torikian"
+}
