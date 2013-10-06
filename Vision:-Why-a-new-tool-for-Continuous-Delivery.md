@@ -54,15 +54,3 @@ In summary the focus points of this CD server:
   * Pipeline maintainers a way to simply create and maintain the pipelines
   * Manual QA a way to pull down the version that's ready to manual test
   * *Manager a way to release a version that came correctly through the pipeline
-
-## Slogans
-
-> free, open-source CI tool  
-> that's simple to use for hobbyists,  
-> flexible enough for startups  
-> and powerful enough for the enterprise  
-
-Or described differently:
-> Make the Impossible Possible  
-> the Possible Simple  
-> the Simple automated Away  
