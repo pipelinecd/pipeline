@@ -4,10 +4,13 @@ import spock.lang.Specification
 
 class GitTriggerEventSpec extends Specification {
 
-    def 'Event has an url'() {
+    def 'Event requires an url and branch'() {
         def url = "url"
+        def branch = "branch"
 
         expect:
-        new GitTriggerEvent(url).url == url
+        def event = new GitTriggerEvent(url, branch)
+        event.url == url
+        event.branch == branch
     }
 }

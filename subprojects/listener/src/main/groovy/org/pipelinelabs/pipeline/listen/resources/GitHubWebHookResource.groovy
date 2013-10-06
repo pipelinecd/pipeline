@@ -11,7 +11,8 @@ import javax.ws.rs.core.Response
 import static javax.ws.rs.core.MediaType.APPLICATION_FORM_URLENCODED
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON
 import static javax.ws.rs.core.Response.Status.BAD_REQUEST
-import static org.pipelinelabs.pipeline.listen.core.github.GithubUtils.toGithubSshUrl
+import static org.pipelinelabs.pipeline.listen.core.git.GitUtils.toBranchName
+import static org.pipelinelabs.pipeline.listen.core.git.GithubUtils.toGithubSshUrl
 
 @Slf4j
 @Path("/providers/github")
@@ -39,9 +40,15 @@ class GitHubWebHookResource {
     }
 
     private Response handleRequest(request) {
-        def event = new GitTriggerEvent(toGithubSshUrl(request.repository.url))
+        def event = createGitTriggerEvent(request)
         bus.post(event)
         Response.noContent().build()
+    }
+
+    private createGitTriggerEvent(request) {
+        def url = toGithubSshUrl(request.repository.url)
+        def branch = toBranchName(request.ref)
+        new GitTriggerEvent(url, branch)
     }
 
     private verifyRequest(request) throws AssertionError {
