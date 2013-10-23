@@ -1,4 +1,4 @@
-package org.pipelinelabs.pipeline.runner.runner;
+package org.pipelinelabs.pipeline.config;
 
 import org.pipelinelabs.pipeline.api.Stage;
 import org.pipelinelabs.pipeline.api.Task;

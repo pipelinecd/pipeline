@@ -10,7 +10,7 @@ dependencies {
     compile libraries.groovy
     compile project(':api')
     compile project(':groovydsl')
-    runtime project(':configmodel')
+    compile project(':configmodel')
 
     compile libraries.jcommander
     compile libraries.mavenSharedUtils

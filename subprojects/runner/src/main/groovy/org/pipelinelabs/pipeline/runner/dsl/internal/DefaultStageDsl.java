@@ -5,7 +5,7 @@ import org.apache.maven.shared.utils.cli.CommandLineUtils;
 import org.apache.maven.shared.utils.cli.Commandline;
 import org.apache.maven.shared.utils.cli.WriterStreamConsumer;
 import org.pipelinelabs.pipeline.api.Stage;
-import org.pipelinelabs.pipeline.runner.runner.DefaultStage;
+import org.pipelinelabs.pipeline.config.DefaultStage;
 
 import java.io.BufferedWriter;
 import java.io.OutputStreamWriter;

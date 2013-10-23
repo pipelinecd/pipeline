@@ -7,7 +7,7 @@ import org.pipelinelabs.pipeline.runner.dsl.MessengerDsl;
 import org.pipelinelabs.pipeline.runner.dsl.StageDsl;
 import org.pipelinelabs.pipeline.runner.event.PipeEvent;
 import org.pipelinelabs.pipeline.runner.messenger.MessageContext;
-import org.pipelinelabs.pipeline.runner.runner.DefaultPipeline;
+import org.pipelinelabs.pipeline.config.DefaultPipeline;
 import org.pipelinelabs.pipeline.util.ConfigureUtil;
 
 import java.util.ArrayList;
