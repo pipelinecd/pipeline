@@ -1,6 +1,6 @@
 package org.pipelinelabs.pipeline.runner.dsl.internal
 
-import org.pipelinelabs.pipeline.runner.api.task.ShellCommand
+import org.pipelinelabs.pipeline.api.task.ShellCommand
 
 class ShellCommandTaskDsl implements InternalTaskDsl {
     private String command;

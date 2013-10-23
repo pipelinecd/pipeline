@@ -1,4 +1,4 @@
-package org.pipelinelabs.pipeline.runner.api;
+package org.pipelinelabs.pipeline.api;
 
 import java.util.Set;
 

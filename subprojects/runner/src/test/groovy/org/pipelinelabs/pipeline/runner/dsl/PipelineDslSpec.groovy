@@ -1,6 +1,6 @@
 package org.pipelinelabs.pipeline.runner.dsl
 
-import org.pipelinelabs.pipeline.runner.api.Pipeline
+import org.pipelinelabs.pipeline.api.Pipeline
 import org.pipelinelabs.pipeline.runner.dsl.internal.DefaultPipelineDsl
 import spock.lang.Specification
 

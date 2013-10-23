@@ -1,7 +1,7 @@
 package org.pipelinelabs.pipeline.runner.dsl.internal;
 
 import groovy.lang.Closure;
-import org.pipelinelabs.pipeline.runner.api.Pipeline;
+import org.pipelinelabs.pipeline.api.Pipeline;
 import org.pipelinelabs.pipeline.runner.dsl.AnnounceDsl;
 import org.pipelinelabs.pipeline.runner.dsl.MessengerDsl;
 import org.pipelinelabs.pipeline.runner.dsl.StageDsl;

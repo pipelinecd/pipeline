@@ -6,5 +6,9 @@ dependencies {
     compile libraries.groovy
     compile project(':api')
 
+    compile libraries.mavenSharedUtils
+    compile libraries.mail
+    compile libraries.springContextSupport
+
     testCompile libraries.spock
 }

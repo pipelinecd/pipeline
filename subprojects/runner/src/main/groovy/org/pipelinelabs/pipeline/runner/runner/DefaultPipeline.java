@@ -1,7 +1,7 @@
 package org.pipelinelabs.pipeline.runner.runner;
 
-import org.pipelinelabs.pipeline.runner.api.Pipeline;
-import org.pipelinelabs.pipeline.runner.api.Stage;
+import org.pipelinelabs.pipeline.api.Pipeline;
+import org.pipelinelabs.pipeline.api.Stage;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
