@@ -1,3 +1,6 @@
+include 'api'
+include 'configmodel'
+include 'groovydsl'
 include 'runner'
 include 'listener'
 

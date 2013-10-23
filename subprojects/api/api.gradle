@@ -1,5 +1,7 @@
 apply plugin: 'groovy'
 
+description = 'pipeline api  --API, api, ApI, aPI'
+
 dependencies {
     compile libraries.groovy
 

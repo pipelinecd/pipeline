@@ -8,6 +8,8 @@ mainClassName = 'org.pipelinelabs.pipeline.runner.cli.Pipeline'
 
 dependencies {
     compile libraries.groovy
+    compile project(':api')
+
     compile libraries.jcommander
     compile libraries.mavenSharedUtils
     compile libraries.mail
