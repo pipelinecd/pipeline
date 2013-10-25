@@ -40,7 +40,7 @@ class GitLabWebHookResourceSpec extends Specification {
         response.length == -1
 
         where:
-        payloadFixture                        || url | branch
+        payloadFixture                 || url | branch
         'samplePayload.json'           || 'git@git.domain.com:group/project.git' | 'master'
         'samplePayloadFromBranch.json' || 'git@git.domain.com:group/project.git' | 'somebranch'
     }

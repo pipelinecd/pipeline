@@ -1,8 +1,8 @@
 package org.pipelinelabs.pipeline.runner.internal
 
+import org.pipelinelabs.pipeline.dsl.PipelineDsl
+import org.pipelinelabs.pipeline.dsl.internal.DefaultPipelineDsl
 import org.pipelinelabs.pipeline.runner.cli.ServiceLookupException
-import org.pipelinelabs.pipeline.runner.dsl.PipelineDsl
-import org.pipelinelabs.pipeline.runner.dsl.internal.DefaultPipelineDsl
 import spock.lang.Specification
 import spock.lang.Unroll
 

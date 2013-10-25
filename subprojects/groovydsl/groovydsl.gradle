@@ -5,6 +5,7 @@ description = 'pipeline DSL in groovy  --the DSL used by users to configure thei
 dependencies {
     compile libraries.groovy
     compile project(':api')
+    compile project(':configmodel')
 
     compile libraries.mavenSharedUtils
     compile libraries.mail

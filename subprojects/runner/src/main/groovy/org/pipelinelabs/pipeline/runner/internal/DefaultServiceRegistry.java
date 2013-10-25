@@ -1,7 +1,7 @@
 package org.pipelinelabs.pipeline.runner.internal;
 
+import org.pipelinelabs.pipeline.dsl.internal.DefaultPipelineDsl;
 import org.pipelinelabs.pipeline.runner.cli.ServiceLookupException;
-import org.pipelinelabs.pipeline.runner.dsl.internal.DefaultPipelineDsl;
 
 public class DefaultServiceRegistry implements ServiceRegistry {
 

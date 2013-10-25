@@ -1,6 +1,6 @@
 package org.pipelinelabs.pipeline.runner.cli.dsl.script
 
-import org.pipelinelabs.pipeline.runner.dsl.PipelineDsl
+import org.pipelinelabs.pipeline.dsl.PipelineDsl
 
 public abstract class PipelineScript extends Script {
     @Delegate
