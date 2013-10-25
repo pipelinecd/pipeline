@@ -4,7 +4,7 @@ apply plugin: 'distribution'
 
 description = 'Pipeline --the Continuous Delivery (CD) tool, which we and all stakeholders of the CD pipeline love to use'
 group = 'org.pipelinelabs.pipeline'
-version = '0.1.0'
+version = '0.2.0'
 
 allprojects {
     repositories {
@@ -15,6 +15,7 @@ allprojects {
 subprojects {
     group = createProjectGroupId(rootProject, it)
     version = rootProject.version
+    jar.baseName = "${rootProject.name}-${it.name}"
 }
 
 distributions {
