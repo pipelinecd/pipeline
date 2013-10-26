@@ -11,11 +11,7 @@ dependencies {
     compile project(':api')
     compile project(':groovydsl')
     compile project(':configmodel')
-
     compile libraries.jcommander
-    compile libraries.mavenSharedUtils
-    compile libraries.mail
-    compile libraries.springContextSupport
 
     testCompile libraries.spock
     testCompile libraries.hamcrest

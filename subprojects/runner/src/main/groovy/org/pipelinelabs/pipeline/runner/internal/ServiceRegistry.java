@@ -1,6 +1,6 @@
 package org.pipelinelabs.pipeline.runner.internal;
 
-import org.pipelinelabs.pipeline.runner.cli.ServiceLookupException;
+import org.pipelinelabs.pipeline.util.ServiceLookupException;
 
 public interface ServiceRegistry {
 

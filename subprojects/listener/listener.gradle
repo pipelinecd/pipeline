@@ -9,6 +9,7 @@ dependencies {
     compile libraries.dropwizard
     compile libraries.groovy
     compile libraries.groovyJson
+
     testCompile libraries.spock
     testCompile libraries.dropwizardTesting
 }

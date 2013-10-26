@@ -4,6 +4,7 @@ import com.beust.jcommander.JCommander
 import com.beust.jcommander.ParameterException
 import org.pipelinelabs.pipeline.runner.cli.command.*
 import org.pipelinelabs.pipeline.runner.internal.ServiceRegistry
+import org.pipelinelabs.pipeline.util.ServiceLocator
 
 class Main {
     static final int EXIT_FAILURE = 1
