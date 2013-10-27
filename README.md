@@ -27,6 +27,7 @@ Features
 - Version controlled pipeline configuration
 - Support for public and private git repositories
     - hosted on [Github](http://github.com), triggered via [webhook][7]
+    - hosted on [GitLab(.org/com)](http://gitlab.org), triggered via [webhook] as explained on [Web hooks] help page of your GitLab installation
 
 Roadmap
 -------
