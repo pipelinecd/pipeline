@@ -69,6 +69,8 @@ Special thanks to
 - [Martin Kovachki](http://www.linkedin.com/in/martinkov) for awesome logo designs
 - [Tricode](http://www.tricode.nl) for sponsoring developer-time and resources
 
+[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/023704bf7b05b09d0e82efd38b02e1a4 "githalytics.com")](http://githalytics.com/pipelinelabs/pipeline)
+
 
 [0]: http://github.pipelinelabs.org/blob/master/LICENSE
 [3]: http://forum.pipelinelabs.org
