@@ -1,1 +1,0 @@
-Dictionary of the deployment pipeline, continuous integration, continuous delivery, continuous deployment domain specific language.
