@@ -52,3 +52,11 @@ Idea for a screen layout for the Pipeline specific view:
 |                |        }                                                            |
 +----------------+---------------------------------------------------------------------+
 ------------
+
+
+== Technologies ideas
+* REST API
+** DropWizard - http://www.dropwizard.io
+** DropWizard with Websockets - https://github.com/mgutz/dropwizard-atmosphere
+* WebApp
+** AngularJs - http://angularjs.org
