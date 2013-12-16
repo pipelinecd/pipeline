@@ -60,3 +60,5 @@ Idea for a screen layout for the Pipeline specific view:
 ** DropWizard with Websockets - https://github.com/mgutz/dropwizard-atmosphere
 * WebApp
 ** AngularJs - http://angularjs.org
+* Monitoring
+** DropWizard Dashboard - https://github.com/kimble/dropwizard-dashboard
