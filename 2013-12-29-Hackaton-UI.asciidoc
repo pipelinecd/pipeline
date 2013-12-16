@@ -27,4 +27,27 @@ A developer friendly view on the Pipelines
 ** For one specific pipeline
 ** For all pipelines
 
-
+Idea for a screen layout for the Pipeline specific view:
+------------
++------+-------------------------------------------------------------------------------+
+| Logo |        {menu, or if browser supports... put menu in browser menu}             |
+|      |-------------------------------------------------------------------------------+
++------+                                                                               |
+|              +------+                 +-------+             {pipeline workflow view  |
+|            +>|      |+-+           +->|       |+---+         - zoomable              |
+|   +-----+  | +------+  |  +-----+  |  +-------+    |         - scrollable            |
+|   |     +--+           +->|     |+-+               +->       - resizable             |
+|   +-----+  +           |  +-----+  +  +-------+              - onclick/onkey show    |
+|            | +------+  |           +->|       |                details in lower      |
+|            +>|      |+-+              +-------+                section               |
+|              +------+                                       }                        |
+|                                                                                      |
++----------------+---------------------------------------------------------------------+
+|                |                                                                     |
+| { execution    |        { details screen                                             |
+|   specs/stats  |          - console / log                                            |
+| }              |          - report                                                   |
+|                |          - ....                                                     |
+|                |        }                                                            |
++----------------+---------------------------------------------------------------------+
+------------
