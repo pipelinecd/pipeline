@@ -1,0 +1,30 @@
+At 29th of December 2013, we're doing a Hackaton on a or some UI(s) for Pipeline. The hackers can decide what type of UIs they create (CLI, GUI, Web-UI, ...) and for what user type the UIs are (dev, test, business, wallboard, ...).
+
+Some requirements for the UIs:
+- uses API provided by Pipeline
+- view-only (for now)
+- user-type specific
+
+The API provided by Pipeline, is a REST API. During the hackaton the API will be extended as needed, though the implementation of the API will (most probably) be mocked at this time.
+
+== Ideas for UIs
+=== Developer Web-UI
+A developer friendly view on the Pipelines
+
+==== Use-cases
+
+* Overview of (all accessible) pipelines
+** support filtering
+** have different kind of views, like list, grid, ...
+
+* Pipeline specific view
+** show queue?
+** specific pipeline overview picture
+** show details on-request
+** option to show history?
+
+* Pipeline statistics...
+** For one specific pipeline
+** For all pipelines
+
+
