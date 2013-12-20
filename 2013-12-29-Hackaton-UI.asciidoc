@@ -14,21 +14,43 @@ A developer friendly view on the Pipelines
 
 ==== Use-cases
 
+===== Overview
+-------
+*Given* multiple pipelines
+*When* I go to the overview page
+*Then* I get an overview of all known pipelines
+-------
+-------
+*Given* multiple pipelines
+*When* I go to the overview page
+*Then* I can choose between a list and a grid view of the pipelines
+-------
+-------
+*Given* multiple pipelines
+*When* I go to the overview page
+*Then* I filter to only see the pipelines I'm interested in
+-------
+
 * Overview of (all accessible) pipelines
 ** support filtering
 ** have different kind of views, like list, grid, ...
 
+===== Pipeline Specific view
+-------
+*Given* a specific pipeline
+*When* I select the pipeline
+*Then* I get a visualization of the pipeline
+ *and* I have insight in the history of this pipeline
+ *and* I have insight in the current state (eg. running, failed, ...)
+ *and* I have the possibility to see more details on specific parts (stages, tasks, ..) of this pipeline
+-------
 * Pipeline specific view
 ** show queue?
 ** specific pipeline overview picture
 ** show details on-request
 ** option to show history?
 
-* Pipeline statistics...
-** For one specific pipeline
-** For all pipelines
-
-Idea for a screen layout for the Pipeline specific view:
+*UI Idea*
 ------------
 +------+-------------------------------------------------------------------------------+
 | Logo |        {menu, or if browser supports... put menu in browser menu}             |
@@ -53,6 +75,11 @@ Idea for a screen layout for the Pipeline specific view:
 +----------------+---------------------------------------------------------------------+
 ------------
 
+
+
+* Pipeline statistics...
+** For one specific pipeline
+** For all pipelines
 
 == Technologies ideas
 * REST API
