@@ -6,7 +6,7 @@ Some requirements for the UIs:
 - view-only (for now)
 - user-type specific
 
-The API provided by Pipeline, is a REST API. During the hackaton the API will be extended as needed, though the implementation of the API will (most probably) be mocked at this time.
+The API provided by Pipeline, is a REST API which can be found at https://github.com/pipelinecd/client-api. During the hackaton this API will be extended as needed, though the implementation of the API will (most probably) be mocked at this time.
 
 == Ideas for UIs
 === Developer Web-UI
