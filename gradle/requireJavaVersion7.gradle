@@ -5,14 +5,14 @@ if (!JavaVersion.current().isJava7Compatible()) {
 }
 
 subprojects {
-    apply plugin: 'java'
+    if (project.plugins.hasPlugin('java')) {
+        sourceCompatibility = VERSION_1_7
+        targetCompatibility = VERSION_1_7
 
-    sourceCompatibility = VERSION_1_7
-    targetCompatibility = VERSION_1_7
-
-    test {
-        testLogging {
-            exceptionFormat = 'full'
+        test {
+            testLogging {
+                exceptionFormat = 'full'
+            }
         }
     }
 }
