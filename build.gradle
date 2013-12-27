@@ -13,6 +13,7 @@ allprojects {
 }
 
 subprojects {
+    apply plugin: 'java'
     group = createProjectGroupId(rootProject, it)
     version = rootProject.version
 }
