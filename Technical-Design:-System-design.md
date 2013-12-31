@@ -20,6 +20,13 @@
         - its configuration
         - its command script
         - its OS dependend "start as daemon" scripts (eg. unix rc.d scripts)
+  - Micro-service theory presentations:
+      - From Macro To Micro - Sam Newman  
+        http://www.youtube.com/watch?v=2ofzdPXeQ6o
+      - Implementing Micro service architectures - Fred George  
+        https://vimeo.com/79866979
+      - Micro Services: Java, the Unix Way - James Lewis  
+        http://www.infoq.com/presentations/Micro-Services
 
 ## Todo
 - Determine universal dataformat and protocol for the micro-services to communicate, candidates are:
