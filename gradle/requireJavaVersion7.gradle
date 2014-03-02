@@ -1,6 +1,6 @@
 import static org.gradle.api.JavaVersion.VERSION_1_7
 
-if (!JavaVersion.current().isJava7()) {
+if (!JavaVersion.current().isJava7Compatible()) {
     throw new RequireJava7CompatibleJavaVersion()
 }
 
