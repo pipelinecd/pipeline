@@ -9,7 +9,7 @@ class Main {
     }
 
     Application createApplication() {
-        new PipeServiceDiscoveryApplication()
+        new ServiceDiscoveryApplication()
     }
 }
 
