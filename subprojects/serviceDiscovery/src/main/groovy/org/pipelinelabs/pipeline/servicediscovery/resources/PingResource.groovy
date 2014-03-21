@@ -1,8 +1,9 @@
 package org.pipelinelabs.pipeline.servicediscovery.resources
 
+import io.dropwizard.jersey.caching.CacheControl
+
 import javax.ws.rs.GET
 import javax.ws.rs.Path
-import javax.ws.rs.core.CacheControl
 import javax.ws.rs.core.Response
 
 import static javax.ws.rs.core.MediaType.TEXT_PLAIN_TYPE
@@ -12,13 +13,8 @@ class PingResource {
     private static final String CONTENT = "pong";
 
     @GET
+    @CacheControl(mustRevalidate = true, noCache = true, noStore = true)
     def get() {
-        def cacheControl = new CacheControl()
-        cacheControl.with {
-            mustRevalidate = true
-            noCache = true
-            noStore = true
-        }
-        return Response.ok(CONTENT).type(TEXT_PLAIN_TYPE).cacheControl(cacheControl).build()
+        return Response.ok(CONTENT).type(TEXT_PLAIN_TYPE).build()
     }
 }
