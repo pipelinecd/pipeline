@@ -1,0 +1,18 @@
+apply plugin: 'groovy'
+apply plugin: 'application'
+
+applicationName = 'pipe-servicediscovery'
+description = 'pipe-servicediscovery --central service discovery service'
+mainClassName = 'org.pipelinelabs.pipeline.servicediscovery.Main'
+
+dependencies {
+    compile libraries.dropwizard
+    compile libraries.groovy
+    compile libraries.groovyJson
+    testCompile libraries.spock
+    testCompile libraries.dropwizardTesting
+}
+
+run {
+    args 'server'
+}

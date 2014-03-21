@@ -1,6 +1,6 @@
 apply from: script('requireJavaVersion7')
 apply from: script('dependencies')
-apply plugin: 'distribution'
+//apply plugin: 'distribution'
 
 description = 'Pipeline --the Continuous Delivery (CD) tool, which we and all stakeholders of the CD pipeline love to use'
 group = 'org.pipelinelabs.pipeline'
@@ -18,25 +18,25 @@ subprojects {
     version = rootProject.version
 }
 
-distributions {
-    main {
-        contents {
-            into('bin') {
-                from { project(':listener').startScripts.outputs.files }
-                from { project(':runner').startScripts.outputs.files }
-                fileMode = 0755
-            }
-            into('lib') {
-                def libs = []
-                libs << project(':listener').configurations.runtime - project(':runner').configurations.runtime
-                libs << project(':runner').configurations.runtime
-                from libs
-                from project(':listener').jar
-                from project(':runner').jar
-            }
-        }
-    }
-}
+//distributions {
+//    main {
+//        contents {
+//            into('bin') {
+//                from { project(':listener').startScripts.outputs.files }
+//                from { project(':runner').startScripts.outputs.files }
+//                fileMode = 0755
+//            }
+//            into('lib') {
+//                def libs = []
+//                libs << project(':listener').configurations.runtime - project(':runner').configurations.runtime
+//                libs << project(':runner').configurations.runtime
+//                from libs
+//                from project(':listener').jar
+//                from project(':runner').jar
+//            }
+//        }
+//    }
+//}
 
 String createProjectGroupId(Project root, Project project) {
     root.group << '.' << project.name.replaceAll('-', '.')
