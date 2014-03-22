@@ -1,5 +1,6 @@
-include 'runner'
-include 'listener'
+//include 'runner'
+//include 'listener'
+include 'serviceDiscovery'
 
 rootProject.name = 'pipeline'
 rootProject.children.each { project ->
