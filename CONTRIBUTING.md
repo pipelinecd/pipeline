@@ -58,7 +58,7 @@ project:
    # Navigate to the newly cloned directory
    cd <repo-name>
    # Assign the original repo to a remote called "upstream"
-   git remote add upstream git://github.com/pipelinelabs/pipeline
+   git remote add upstream git://github.com/pipelinecd/pipeline
    ```
 
 2. If you cloned a while ago, get the latest changes from upstream:
@@ -108,4 +108,4 @@ project:
 
 By contributing your code,
 
-You agree to license your contribution under the terms of the [MIT License](https://github.com/pipelinelabs/pipeline/blob/master/LICENSE)
+You agree to license your contribution under the terms of the [MIT License](https://github.com/pipelinecd/pipeline/blob/master/LICENSE)

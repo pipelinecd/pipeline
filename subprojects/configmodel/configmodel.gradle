@@ -1,0 +1,10 @@
+apply plugin: 'groovy'
+
+description = 'pipeline configuration model  --the INTERNAL model implementation for the :api'
+
+dependencies {
+    compile libraries.groovy
+    compile project(':api')
+
+    testCompile libraries.spock
+}
