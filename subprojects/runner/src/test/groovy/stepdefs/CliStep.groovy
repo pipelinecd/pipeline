@@ -1,8 +1,8 @@
 package stepdefs
 
+import cd.pipeline.runner.cli.Main
 import cucumber.api.groovy.EN
 import cucumber.api.groovy.Hooks
-import org.pipelinelabs.pipeline.runner.cli.Main
 
 this.metaClass.mixin Hooks
 this.metaClass.mixin EN
@@ -10,7 +10,7 @@ this.metaClass.mixin EN
 def Main cli
 def output
 
-Given(~'^the command line application$') {->
+Given(~'^the command line application$') { ->
     cli = new Main()
 }
 
@@ -25,7 +25,7 @@ When(~'^I provide (.*) as parameter$') { param ->
     (exitCode == 0)
 }
 
-Then(~'^I expect to see the application help$') {->
+Then(~'^I expect to see the application help$') { ->
     def help = '''
 Usage: pipe-runner [options] [command] [command options]
   Options:
