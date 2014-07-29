@@ -3,12 +3,13 @@ apply plugin: 'application'
 
 applicationName = 'pipe-listen'
 description = 'pipe-listen --the listener for pipeline triggers'
-mainClassName = 'org.pipelinelabs.pipeline.listen.Main'
+mainClassName = 'cd.pipeline.listen.Main'
 
 dependencies {
     compile libraries.dropwizard
     compile libraries.groovy
     compile libraries.groovyJson
+
     testCompile libraries.spock
     testCompile libraries.dropwizardTesting
 }

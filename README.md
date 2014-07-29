@@ -1,20 +1,20 @@
 Pipeline
 ========
 
-[Pipeline](http://pipelinelabs.org) is a Continuous Delivery (CD) tool, which we and all stakeholders of the CD pipeline love to use. Licensed under the [MIT License][0]
+[Pipeline](http://pipeline.cd) is a Continuous Delivery (CD) tool, which we and all stakeholders of the CD pipeline love to use. Licensed under the [MIT License][0]
 
 Find the latest release on the [releases][6] page. And follow the [installation][8] and [configuration][9] documentation to get started.
 
-- [Website](http://pipelinelabs.org)
-- [Source](http://github.pipelinelabs.org)
-- [Documentation](http://docs.pipelinelabs.org)
+- [Website](http://pipeline.cd)
+- [Source](http://github.pipeline.cd)
+- [Documentation](http://docs.pipeline.cd)
 - [User/Dev Forum][3]
-- [Issue Tracker](http://issues.pipelinelabs.org)
+- [Issue Tracker](http://issues.pipeline.cd)
 - Ignite talk "Continuous Integration and Delivery tools, do we really like using them?"
     - [Preparation run recording][4]
     - [@DevOpsDays Amsterdam, June 14th 2013 recording][5]
 
-Follow us on Twitter [@pipelinelabs](https://twitter.com/pipelinelabs)
+Follow us on Twitter [@pipelinecd](https://twitter.com/pipelinecd)
 
 State of the project
 --------------------
@@ -67,16 +67,13 @@ Special thanks to
 -----------------
 - [Andrew Oberstar](http://www.andrewoberstar.com) for being the very first code contributor and all-round providing great support and feedback
 - [Martin Kovachki](http://www.linkedin.com/in/martinkov) for awesome logo designs
-- [Tricode](http://www.tricode.nl) for sponsoring developer-time and resources
+- [Tricode](http://www.tricode.nl) for sponsoring developer-time and resources in 2013
 
-[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/023704bf7b05b09d0e82efd38b02e1a4 "githalytics.com")](http://githalytics.com/pipelinelabs/pipeline)
-
-
-[0]: http://github.pipelinelabs.org/blob/master/LICENSE
-[3]: http://forum.pipelinelabs.org
+[0]: http://github.pipeline.cd/blob/master/LICENSE
+[3]: http://forum.pipeline.cd
 [4]: http://www.youtube.com/watch?v=shF_v5shzjU
 [5]: http://www.youtube.com/watch?v=-StobwMgRNE
-[6]: https://github.com/pipelinelabs/pipeline/releases
+[6]: https://github.com/pipelinecd/pipeline/releases
 [7]: https://help.github.com/articles/post-receive-hooks
-[8]: http://docs.pipelinelabs.org/User-Guide%3A-Set-up-with-Central-Repository
-[9]: http://docs.pipelinelabs.org/User-Guide%3A-Project-Pipeline-Configuration
+[8]: http://docs.pipeline.cd/User-Guide%3A-Set-up-with-Central-Repository
+[9]: http://docs.pipeline.cd/User-Guide%3A-Project-Pipeline-Configuration

@@ -3,8 +3,8 @@ apply from: script('dependencies')
 apply plugin: 'distribution'
 
 description = 'Pipeline --the Continuous Delivery (CD) tool, which we and all stakeholders of the CD pipeline love to use'
-group = 'org.pipelinelabs.pipeline'
-version = '0.2.0'
+group = 'cd.pipeline'
+version = '0.3.0'
 
 allprojects {
     repositories {
@@ -16,6 +16,7 @@ subprojects {
     apply plugin: 'java'
     group = createProjectGroupId(rootProject, it)
     version = rootProject.version
+    jar.baseName = "${rootProject.name}-${it.name}"
 }
 
 distributions {

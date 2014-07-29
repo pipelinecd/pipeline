@@ -1,0 +1,15 @@
+apply plugin: 'groovy'
+
+description = 'pipeline DSL in groovy  --the DSL used by users to configure their pipelines'
+
+dependencies {
+    compile libraries.groovy
+    compile project(':api')
+    compile project(':configmodel')
+
+    compile libraries.mavenSharedUtils
+    compile libraries.mail
+    compile libraries.springContextSupport
+
+    testCompile libraries.spock
+}
