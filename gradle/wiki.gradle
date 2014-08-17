@@ -1,0 +1,11 @@
+apply plugin: 'github-pages'
+
+githubPages {
+    repoUri = 'git@github.com:pipelinecd/pipeline.wiki.git'
+    targetBranch = 'master'
+    workingPath = "$buildDir/wiki"
+    commitMessage 'Publish gitHub wiki from docs'
+    pages {
+        from 'docs'
+    }
+}

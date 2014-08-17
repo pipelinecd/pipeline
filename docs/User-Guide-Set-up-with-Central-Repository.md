@@ -64,4 +64,4 @@ Configuration
 =============
 1. In the root of your code repository, create a `project.pipe` script
 2. Configure the pipeline. 
-- **Note:** Configuration is explained on [project pipeline configuration](User-Guide%3A-Project-Pipeline-Configuration)
+- **Note:** Configuration is explained on [project pipeline configuration](User-Guide-Project-Pipeline-Configuration)

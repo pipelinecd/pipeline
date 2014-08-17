@@ -1,5 +1,9 @@
+buildscript {
+    apply from: file('gradle/buildscript.gradle'), to: buildscript
+}
 apply from: script('requireJavaVersion7')
 apply from: script('dependencies')
+apply from: script('wiki')
 apply plugin: 'distribution'
 
 description = 'Pipeline --the Continuous Delivery (CD) tool, which we and all stakeholders of the CD pipeline love to use'
