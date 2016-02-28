@@ -175,6 +175,11 @@ h2. Semaphore
 Travis-CI look-a-like, specific for ruby
 "https://semaphoreapp.com":https://semaphoreapp.com
 
+h2. Buildkite
+
+Travis-CI look-a-like
+"https://buildkite.com":https://buildkite.com
+
 h2. Electric Cloud toolset
 
 After quick look at their site. It looks like the combined tools of electic-cloud come to the same set of features as ThoughtWorks Go and UrbanCode' tools.
@@ -202,6 +207,8 @@ h2. Pulse
 * project dependencies view (a'la hudson up/downstream projects)
 
 h2. Go
+
+update 2016-02-28: Go has been open-sourced and is now available as "go.cd":https://www.go.cd
 
 "http://www.thoughtworks-studios.com/go-agile-release-management":http://www.thoughtworks-studios.com/go-agile-release-management has the pipeline principle in its job configuration naming, but it's still bound to a specific job/project. Templating is available but you shouldn't need templating if a job is only a small bunch of config which you put through the pipeline.
 Also, Go Enterprise costs 300 dollar per user per year. And everything that makes configuring jobs a bit easier is only available in the enterprise edition. Incl. Pipeline templates and easy grid usage (not tested this, this is what the version compare shows: "http://www.thoughtworks-studios.com/go-agile-release-management/compare":http://www.thoughtworks-studios.com/go-agile-release-management/compare)
