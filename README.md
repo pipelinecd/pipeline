@@ -1,6 +1,8 @@
 Pipeline
 ========
 
+**THIS PROJECT IS ABANDONED**
+
 [Pipeline](http://pipeline.cd) is a Continuous Delivery (CD) tool, which we and all stakeholders of the CD pipeline love to use. Licensed under the [MIT License][0]
 
 Find the latest release on the [releases][6] page. And follow the [installation][8] and [configuration][9] documentation to get started.
@@ -18,7 +20,9 @@ Follow us on Twitter [@pipelinecd](https://twitter.com/pipelinecd)
 
 State of the project
 --------------------
-This project is currently in a very early state of development. Development happens in a LEAN way, bit by bit adding features and improving based on user experiences and feedback. Give your feedback at the [user/dev forum][3].
+~~This project is currently in a very early state of development. Development happens in a LEAN way, bit by bit adding features and improving based on user experiences and feedback. Give your feedback at the [user/dev forum][3].~~
+
+**THIS PROJECT IS ABANDONED**
 
 Features
 --------
